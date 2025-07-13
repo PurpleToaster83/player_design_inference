@@ -371,6 +371,26 @@ experimentApp.controller('ExperimentController',
       return rating;
     };
 
+    $scope.style_statement = function (stmt) {
+      stmt = stmt.replaceAll("red key", "<span class='key-red'>red key</span>");
+      stmt = stmt.replaceAll(" red ", " <span class='key-red'>red</span> ");
+      stmt = stmt.replaceAll("blue key", "<span class='key-blue'>blue key</span>");
+      stmt = stmt.replaceAll(" blue ", " <span class='key-blue'>blue</span> ");
+      stmt = stmt.replaceAll("no key", "<span class='key-none'>no key</span>");
+      stmt = stmt.replaceAll(" not ", " <span class='key-none'>not</span> ");
+      stmt = stmt.replaceAll(" could ", " <span class='modal'>could</span> ");
+      stmt = stmt.replaceAll(" must ", " <span class='modal'>must</span> ");
+      stmt = stmt.replaceAll(" might ", " <span class='modal'>might</span> ");
+      stmt = stmt.replaceAll(" likely ", " <span class='modal'>likely</span> ");
+      stmt = stmt.replaceAll(" unlikely ", " <span class='modal'>unlikely</span> ");
+      stmt = stmt.replaceAll(" sure ", " <span class='modal'>sure</span> ");
+      stmt = stmt.replaceAll(" unsure ", " <span class='modal'>unsure</span> ");
+      stmt = stmt.replaceAll(" certain ", " <span class='modal'>certain</span> ");
+      stmt = stmt.replaceAll(" uncertain ", " <span class='modal'>uncertain</span> ");
+      stmt = stmt.replaceAll(/(box \d)/g, "<strong>$1</strong>");
+      return stmt
+    }
+
     $scope.rating_text = [
       "Definitely<br>Poison",
       "",
