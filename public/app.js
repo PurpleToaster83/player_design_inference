@@ -559,7 +559,7 @@ experimentApp.controller('ExperimentController',
       {
         text: `At each step in this game, you will watch the player take several actions.<br>
               <br>
-              We will then ask you one question about the <strong>type</strong> of liquid in the flask.<br>
+              We will then ask you questions about the <strong>type</strong> of liquid in the flask.<br>
               <br>
               Press <strong>Next</strong> to watch what happens.
               `,
@@ -574,8 +574,8 @@ experimentApp.controller('ExperimentController',
         tutorial: true,
         show_questions: true,
         question_types: ["beliefs"],
-        statements: ["The player believes that there is a <strong>potion</strong> in this flask.",
-                       "The player believes that there is a <strong>poison</strong> in this flask."],
+        statements: ["Flask <strong>A</strong> is a: ",
+                    "Flask <strong>B</strong> is a:"],
         image: "stimuli/segments/tutorial.png",
       },
       {

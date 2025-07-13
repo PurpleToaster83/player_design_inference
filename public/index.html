@@ -138,31 +138,6 @@
         </p>
       </div>
 
-      <!-- Goal Question -->
-      <div ng-show="!hide_questions() && has_goal_question()" id="question" class="captions" ng-cloak>
-        <p><strong>What liquid is in the bottle?</strong></p>
-        <ul class="no-bullets-horizontal">
-          <li><input type="checkbox" ng-model="response.goals[0]" ng-change="validate_goal()"
-              ng-disabled="disable_questions()" id="goal0">
-            <label for="goal0">
-              <img src="images/sparkles.png" class="checkboximage"> <span class='checkboxtext'>Potion</span>
-            </label>
-          </li>
-          <li><input type="checkbox" ng-model="response.goals[1]" ng-change="validate_goal()"
-              ng-disabled="disable_questions()" id="goal1">
-            <label for="goal1">
-              <img src="images/skull.png" class="checkboximage"> <span class='checkboxtext'>Poison</span>
-            </label>
-          </li>
-          <!-- <br>
-          <li><input type="checkbox" ng-model="response.dontKnow" ng-change="toggle_dontknow()"
-              ng-disabled="disable_questions()">
-            <i class='checkboxtext'>All Equally Likely</i>
-          </li> -->
-        </ul>
-        <br>
-      </div>
-
       <!-- Belief Question -->
       <div ng-show="!hide_questions() && has_belief_question()" id="question" class="captions" ng-cloak>
         <p><strong>Please rate the following statements about the agent's <span class="underline">current beliefs</span>:</strong></p>
