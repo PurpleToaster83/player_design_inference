@@ -25,12 +25,10 @@ experimentApp.controller('ExperimentController',
     $scope.comprehension_response = "";
 
     $scope.response = {
-      "goals": [false, false, false, false],
       "beliefs": [NaN, NaN],
       "belief_ids": [1, 2]
     };
 
-    $scope.valid_goal = false;
     $scope.valid_belief = false;
 
     $scope.valid_exam = false;
@@ -43,11 +41,10 @@ experimentApp.controller('ExperimentController',
     $scope.show_rhs = true;
     $scope.anim_complete = true;
 
-    $scope.true_goal = -1;
     $scope.belief_statements = [];
     $scope.belief_statement_ids = [];
     $scope.belief_statement_counts = [];
-    $scope.n_displayed_statements = 2;
+    $scope.n_displayed_statements = 4;
 
     $scope.ratings = [];
 
@@ -117,19 +114,6 @@ experimentApp.controller('ExperimentController',
       }
     }
 
-    $scope.reload_gif = function () {
-      if ($scope.section == "stimuli") {
-        if ($scope.part_id == -1) {
-          var id = document.getElementById("stimulus-img-final");
-        } else {
-          var id = document.getElementById("stimulus-img");
-        }
-      } else {
-        var id = document.getElementById("instruction-img");
-      }
-      id.src = id.src;
-    }
-
     $scope.replay_all = function () {
       if ($scope.section == "stimuli") {
         var stim = $scope.stimuli_set[$scope.stim_id];
@@ -158,10 +142,6 @@ experimentApp.controller('ExperimentController',
       $scope.valid_comprehension = ans == $scope.instructions[$scope.inst_id].options[index];
     }
 
-    $scope.validate_goal = function () {
-      $scope.valid_goal = $scope.response.goals.filter(c => c == true).length > 0;
-    }
-
     $scope.validate_belief = function () {
       $scope.valid_belief = $scope.response.beliefs.every(rating => !isNaN(rating));
     }
@@ -173,6 +153,7 @@ experimentApp.controller('ExperimentController',
 
     $scope.set_belief_statements = async function (stim_id) {
       let cur_stim = $scope.stimuli_set[stim_id];
+      $scope.n_displayed_statements = cur_stim.statements.length
       if ($location.search().local == "true") {
         let n = cur_stim.statements.length;
         let ids = Array.from(Array(n).keys());
@@ -205,7 +186,6 @@ experimentApp.controller('ExperimentController',
 
     $scope.reset_response = function () {
       $scope.response = {
-        "goals": [false, false, false, false],
         "beliefs": Array($scope.belief_statements.length).fill(NaN),
         "belief_ids": $scope.belief_statement_ids
       };
@@ -228,7 +208,6 @@ experimentApp.controller('ExperimentController',
         $scope.stim_id = 0;
         $scope.part_id = 0;
         $scope.ratings = [];
-        $scope.true_goal = $scope.stimuli_set[$scope.stim_id].goal;
         $scope.anim_complete = true;
         await $scope.set_belief_statements($scope.stim_id);
         // Get time of first stimulus
@@ -281,7 +260,6 @@ experimentApp.controller('ExperimentController',
         }
       }
       $scope.reset_response();
-      $scope.valid_goal = false;
       $scope.valid_belief = false;
       $scope.comprehension_response = "";
       $scope.valid_comprehension = false;
@@ -297,7 +275,6 @@ experimentApp.controller('ExperimentController',
         // Advance to first part
         $scope.part_id = $scope.part_id + 1;
         $scope.ratings = [];
-        $scope.true_goal = $scope.stimuli_set[$scope.stim_id].goal;
         await $scope.set_belief_statements($scope.stim_id);
         $scope.anim_complete = true;
         start_time = (new Date()).getTime();
@@ -328,23 +305,11 @@ experimentApp.controller('ExperimentController',
         }
       }
       $scope.reset_response();
-      $scope.valid_goal = false;
       $scope.valid_belief = false;
     };
 
     $scope.compute_ratings = function (response) {
       let cur_stim = $scope.stimuli_set[$scope.stim_id];
-
-      // Count probabilities from checkboxes
-      let n_checked = response.goals.filter(c => c == true).length;
-      let goal_probs = [0, 0, 0, 0];
-      response.goals.forEach((check, index) => {
-        if (check) {
-          goal_probs[index] = (1 / n_checked);
-        }
-      });
-      let true_goal_probs = goal_probs[$scope.true_goal-1];
-
       // Create array of belief ratings for every statement
       let n_ratings = cur_stim.statements.length;
       let statement_ratings = Array(n_ratings).fill(-1);
@@ -362,8 +327,6 @@ experimentApp.controller('ExperimentController',
       rating = {
         "timestep": cur_stim.times[$scope.part_id],
         "time_spent": ((new Date()).getTime() - start_time) / 1000.,
-        "goal_probs": goal_probs,
-        "true_goal_probs": true_goal_probs,
         "statement_ratings": statement_ratings,
         "statement_probs": statement_probs,
         "statement_ids": response.belief_ids.map(v => v+1),
@@ -372,22 +335,6 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.style_statement = function (stmt) {
-      stmt = stmt.replaceAll("red key", "<span class='key-red'>red key</span>");
-      stmt = stmt.replaceAll(" red ", " <span class='key-red'>red</span> ");
-      stmt = stmt.replaceAll("blue key", "<span class='key-blue'>blue key</span>");
-      stmt = stmt.replaceAll(" blue ", " <span class='key-blue'>blue</span> ");
-      stmt = stmt.replaceAll("no key", "<span class='key-none'>no key</span>");
-      stmt = stmt.replaceAll(" not ", " <span class='key-none'>not</span> ");
-      stmt = stmt.replaceAll(" could ", " <span class='modal'>could</span> ");
-      stmt = stmt.replaceAll(" must ", " <span class='modal'>must</span> ");
-      stmt = stmt.replaceAll(" might ", " <span class='modal'>might</span> ");
-      stmt = stmt.replaceAll(" likely ", " <span class='modal'>likely</span> ");
-      stmt = stmt.replaceAll(" unlikely ", " <span class='modal'>unlikely</span> ");
-      stmt = stmt.replaceAll(" sure ", " <span class='modal'>sure</span> ");
-      stmt = stmt.replaceAll(" unsure ", " <span class='modal'>unsure</span> ");
-      stmt = stmt.replaceAll(" certain ", " <span class='modal'>certain</span> ");
-      stmt = stmt.replaceAll(" uncertain ", " <span class='modal'>uncertain</span> ");
-      stmt = stmt.replaceAll(/(box \d)/g, "<strong>$1</strong>");
       return stmt
     }
 
@@ -430,18 +377,10 @@ experimentApp.controller('ExperimentController',
       }
       return true
     };
-    $scope.has_goal_question = function () {
-      if ($scope.section == "stimuli") {
-        return $scope.part_id > 0
-      } else if ($scope.section == "instructions") {
-        return ($scope.instructions[$scope.inst_id].question_types != null &&
-                $scope.instructions[$scope.inst_id].question_types.includes("goals"))
-      }
-      return false
-    };
+
     $scope.has_belief_question = function () {
       if ($scope.section == "stimuli") {
-        return $scope.part_id > 0
+        return $scope.part_id >= 0
       } else if ($scope.section == "instructions") {
         return ($scope.instructions[$scope.inst_id].question_types != null &&
                 $scope.instructions[$scope.inst_id].question_types.includes("beliefs") )
@@ -455,7 +394,7 @@ experimentApp.controller('ExperimentController',
 
     $scope.cur_stim_image = function () {
       if ($scope.section != "stimuli" || $scope.stim_id < 0) {
-        return "stimuli/segments/demo_1.gif"
+        return "stimuli/segments/tutorial.png"
       } else if ($scope.part_id < 0) {
         return $scope.stimuli_set[$scope.stim_id-1].images.slice(-1)[0]
       } else if ($scope.replaying) {
@@ -534,166 +473,166 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.stimuli_sets = [
-      [1]
+      [1, 2]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
     $scope.instructions = [
-      {
-        text: `Welcome to our guessing game!
-              <br><br>
-              Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
-              <br><br>
-              Press <strong>Next</strong> to continue.`,
-      },
-      {
-        text: `You're watching someone play the treasure game shown to the left.
-              <br><br>
-              The player controls a character <img class="caption-image" src="images/human.png">,
-              and their goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
-              The player is currently too weak to fight the monster and must collect potions <img class="caption-image" src="images/potion.png">
-              to become strong enough to fight the monster. However, there are also poisons <img class="caption-image" src="images/potion.png"> on
-              the map that look identical to the potions. You, the player must identify which flasks contain potions and which contain poisons.
+      // {
+      //   text: `Welcome to our guessing game!
+      //         <br><br>
+      //         Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
+      //         <br><br>
+      //         Press <strong>Next</strong> to continue.`,
+      // },
+      // {
+      //   text: `You're watching someone play the treasure game shown to the left.
+      //         <br><br>
+      //         The player controls a character <img class="caption-image" src="images/human.png">,
+      //         and their goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
+      //         The player is currently too weak to fight the monster and must collect potions <img class="caption-image" src="images/potion.png">
+      //         to become strong enough to fight the monster. However, there are also poisons <img class="caption-image" src="images/potion.png"> on
+      //         the map that look identical to the potions. You, the player must identify which flasks contain potions and which contain poisons.
 
-              <br><br>
-              <u>Note: The map designer placed the flasks in a helpful and logical manner</u>
+      //         <br><br>
+      //         <u>Note: The map designer placed the flasks in a helpful and logical manner</u>
 
-              <br><br>
-              The rules of the game are as follows:
-              <br>
-              <ul>
-              <li> The player has a full view of the map at all time.</li>
-              <li> The player's goal is to collect <strong>only</strong> the potions.</li>
-              <li> Each flask <img class="caption-image" src="images/potion.png">
-                 contains <strong>either</strong> a <strong>potion or poison</strong>
-              </li>
-              <li> The player <strong>does not</strong> know what's in each flask.</li>
-              </ul>
-              Your task is to discern the <strong>location</strong> of the potions to collect and <strong>avoid</strong> the poison,
-              based on them being placed by a rational designer.<br>
-              <br>
-              Press the <strong>Next</strong> button to continue.
-              `,
-        image: "stimuli/segments/tutorial.png"
-      }, 
-      {
-        text: `At each step in this game, you will watch the player take several actions.<br>
-              <br>
-              We will then ask you questions about the <strong>type</strong> of liquid in the flask.<br>
-              <br>
-              Press <strong>Next</strong> to watch what happens.
-              `,
-        image: "stimuli/segments/tutorial.png"
-      }, 
-      {
-        text: `Please read each of the following statements about what the player currently believes and answer them.<br>
-              <br>
-              Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
-              Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
-              Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.`,
-        tutorial: true,
-        show_questions: true,
-        question_types: ["beliefs"],
-        statements: ["Flask <strong>A</strong> is a: ",
-                    "Flask <strong>B</strong> is a:"],
-        image: "stimuli/segments/tutorial.png",
-      },
-      {
-        text: `You've now finished the practice round and the player can fight the monster using the potions and poisons you've collected!`
-      },
-      {
-        text: `<strong>Comprehension Questions</strong> <br>
-               <br>
-               For the last part of the tutorial, we will ask 5 quick questions to check your understanding of the task.<br>
-               <br>
-               Answer <strong>all questions correctly</strong> in order to proceed to the main experiment.
-               You can retake the quiz as many times as necessary.
-              `
-      },
-      {
-        text: `<strong>Question 1/5:</strong> What is the player investigating?`,
-        options: ["The map",
-                  "The flasks",
-                  "The monster"],
-        answer: 1,
-        exam: true
-      },
-      {
-        text: `<strong>Question 1/5:</strong>  What is the player investigating?`,
-        options: ["The map",
-                  "The flasks",
-                  "The monster"],
-        answer: 1,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Run away from the monster",
-                  "Explore the map",
-                  "Guess the identity of the liquid in each flask"],
-        answer: 2,
-        exam: true
-      },
-      {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Run away from the monster",
-                  "Explore the map",
-                  "Guess the identity of the liquid in each flask"],
-        answer: 2,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
-                  "The player <strong> knows perfectly </strong> what's inside each flask.",
-                  "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
-        answer: 0,
-        exam: true
-      },
-      {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
-                  "The player <strong> knows perfectly </strong> what's inside each flask.",
-                  "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
-        answer: 0,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 4/5:</strong> Which of the following is true?`,
-        options: ["The map designer placed the flasks logically and helpfully.",
-                  "The map designer placed the flasks randomly.",
-                  "The flasks are all potions."],
-        answer: 0,
-        exam: true
-      },
-      {
-        text: `<strong>Question 4/5:</strong> Which of the following is true?`,
-        options: ["The map designer placed the flasks logically and helpfully.",
-                  "The map designer placed the flasks randomly.",
-                  "The flasks are all potions."],
-        answer: 0,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
-        options: ["Guess <strong>either potion or poison</strong> and hope for the best",
-                  "The liquid type is explicitly stated somewhere on the map",
-                  "Try your best to infer the liquid type knwoing the designer placed them logically"],
-        answer: 2,
-        exam: true
-      },
-      {
-        text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
-        options: ["Guess <strong>either potion or poison</strong> and hope for the best",
-                  "The liquid type is explicitly stated somewhere on the map",
-                  "Try your best to infer the liquid type knwoing the designer placed them logically"],
-        answer: 2,
-        feedback: true
-      },
-      {
-        exam_end: true,
-        exam_start_id: 11
-      },
+      //         <br><br>
+      //         The rules of the game are as follows:
+      //         <br>
+      //         <ul>
+      //         <li> The player has a full view of the map at all time.</li>
+      //         <li> The player's goal is to collect <strong>only</strong> the potions.</li>
+      //         <li> Each flask <img class="caption-image" src="images/potion.png">
+      //            contains <strong>either</strong> a <strong>potion or poison</strong>
+      //         </li>
+      //         <li> The player <strong>does not</strong> know what's in each flask.</li>
+      //         </ul>
+      //         Your task is to discern the <strong>location</strong> of the potions to collect and <strong>avoid</strong> the poison,
+      //         based on them being placed by a rational designer.<br>
+      //         <br>
+      //         Press the <strong>Next</strong> button to continue.
+      //         `,
+      //   image: "stimuli/segments/tutorial.png"
+      // }, 
+      // {
+      //   text: `At each step in this game, you will watch the player take several actions.<br>
+      //         <br>
+      //         We will then ask you questions about the <strong>type</strong> of liquid in the flask.<br>
+      //         <br>
+      //         Press <strong>Next</strong> to watch what happens.
+      //         `,
+      //   image: "stimuli/segments/tutorial.png"
+      // }, 
+      // {
+      //   text: `Please read each of the following statements about what the player currently believes and answer them.<br>
+      //         <br>
+      //         Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
+      //         Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
+      //         Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.`,
+      //   tutorial: true,
+      //   show_questions: true,
+      //   question_types: ["beliefs"],
+      //   statements: ["Flask <strong>A</strong> is: ",
+      //               "Flask <strong>B</strong> is:"],
+      //   image: "stimuli/segments/tutorial.png",
+      // },
+      // {
+      //   text: `You've now finished the practice round and the player can fight the monster using the potions and poisons you've collected!`
+      // },
+      // {
+      //   text: `<strong>Comprehension Questions</strong> <br>
+      //          <br>
+      //          For the last part of the tutorial, we will ask 5 quick questions to check your understanding of the task.<br>
+      //          <br>
+      //          Answer <strong>all questions correctly</strong> in order to proceed to the main experiment.
+      //          You can retake the quiz as many times as necessary.
+      //         `
+      // },
+      // {
+      //   text: `<strong>Question 1/5:</strong> What is the player investigating?`,
+      //   options: ["The map",
+      //             "The flasks",
+      //             "The monster"],
+      //   answer: 1,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 1/5:</strong>  What is the player investigating?`,
+      //   options: ["The map",
+      //             "The flasks",
+      //             "The monster"],
+      //   answer: 1,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 2/5:</strong> What is your task in this game?`,
+      //   options: ["Run away from the monster",
+      //             "Explore the map",
+      //             "Guess the identity of the liquid in each flask"],
+      //   answer: 2,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 2/5:</strong> What is your task in this game?`,
+      //   options: ["Run away from the monster",
+      //             "Explore the map",
+      //             "Guess the identity of the liquid in each flask"],
+      //   answer: 2,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 3/5:</strong> Which of the following is true?`,
+      //   options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
+      //             "The player <strong> knows perfectly </strong> what's inside each flask.",
+      //             "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
+      //   answer: 0,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 3/5:</strong> Which of the following is true?`,
+      //   options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
+      //             "The player <strong> knows perfectly </strong> what's inside each flask.",
+      //             "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
+      //   answer: 0,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 4/5:</strong> Which of the following is true?`,
+      //   options: ["The map designer placed the flasks logically and helpfully.",
+      //             "The map designer placed the flasks randomly.",
+      //             "The flasks are all potions."],
+      //   answer: 0,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 4/5:</strong> Which of the following is true?`,
+      //   options: ["The map designer placed the flasks logically and helpfully.",
+      //             "The map designer placed the flasks randomly.",
+      //             "The flasks are all potions."],
+      //   answer: 0,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
+      //   options: ["Guess <strong>either potion or poison</strong> and hope for the best",
+      //             "The liquid type is explicitly stated somewhere on the map",
+      //             "Try your best to infer the liquid type knwoing the designer placed them logically"],
+      //   answer: 2,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
+      //   options: ["Guess <strong>either potion or poison</strong> and hope for the best",
+      //             "The liquid type is explicitly stated somewhere on the map",
+      //             "Try your best to infer the liquid type knwoing the designer placed them logically"],
+      //   answer: 2,
+      //   feedback: true
+      // },
+      // {
+      //   exam_end: true,
+      //   exam_start_id: 11
+      // },
       {
         text: `Congratulations! You've finished the tutorial.
                <br><br>
@@ -717,18 +656,458 @@ experimentApp.controller('ExperimentController',
       {
         "name": "1_1",
         "images": [
-          "stimuli/segments/M1L1P1.png",
-          "stimuli/segments/M1L1P1_1.gif",
-          "stimuli/segments/M1L1P1_2.gif",
+          "stimuli/segments/M1L1P1.png" //not load new statements at right time
         ],
         "times": [
           1,
-          6,
-          25
+          1
         ],
-        "statements": ["The player believes that there is a <strong>potion</strong> in this flask.",
-                       "The player believes that there is a <strong>poison</strong> in this flask."],
-        "length": 3
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: ",
+          "Flask <strong>D</strong> is: " //why not always shows them properly or in order => set_belief_statements
+        ],
+        "length": 2
+      },
+      {
+        "name": "1_2",
+        "images": [
+          "stimuli/segments/M1L1P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "1_3",
+        "images": [
+          "stimuli/segments/M1L1P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "1_4",
+        "images": [
+          "stimuli/segments/M1L2P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "1_5",
+        "images": [
+          "stimuli/segments/M1L2P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "1_6",
+        "images": [
+          "stimuli/segments/M1L2P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "2_1",
+        "images": [
+          "stimuli/segments/M2L1P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "2_2",
+        "images": [
+          "stimuli/segments/M2L1P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+        {
+        "name": "2_3",
+        "images": [
+          "stimuli/segments/M2L1P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "2_4",
+        "images": [
+          "stimuli/segments/M2L2P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: ",
+          "Flask <strong>D</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "2_5",
+        "images": [
+          "stimuli/segments/M2L2P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "2_6",
+        "images": [
+          "stimuli/segments/M2L2P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "3_1",
+        "images": [
+          "stimuli/segments/M3L1P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "3_2",
+        "images": [
+          "stimuli/segments/M3L1P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+        ],
+        "length": 2
+      },
+      {
+        "name": "3_3",
+        "images": [
+          "stimuli/segments/M3L1P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+        ],
+        "length": 2
+      },
+      {
+        "name": "3_4",
+        "images": [
+          "stimuli/segments/M3L2P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "3_5",
+        "images": [
+          "stimuli/segments/M3L2P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "3_6",
+        "images": [
+          "stimuli/segments/M3L2P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "4_1",
+        "images": [
+          "stimuli/segments/M4L1P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "4_2",
+        "images": [
+          "stimuli/segments/M4L1P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "4_3",
+        "images": [
+          "stimuli/segments/M4L1P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "4_4",
+        "images": [
+          "stimuli/segments/M4L2P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "4_5",
+        "images": [
+          "stimuli/segments/M4L2P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+        ],
+        "length": 2
+      },
+      {
+        "name": "4_6",
+        "images": [
+          "stimuli/segments/M4L2P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+        ],
+        "length": 2
+      },
+      {
+        "name": "5_1",
+        "images": [
+          "stimuli/segments/M5L1P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "5_2",
+        "images": [
+          "stimuli/segments/M5L1P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "5_3",
+        "images": [
+          "stimuli/segments/M5L1P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "5_4",
+        "images": [
+          "stimuli/segments/M5L2P1.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: ",
+          "Flask <strong>D</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "5_5",
+        "images": [
+          "stimuli/segments/M5L2P2.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
+      },
+      {
+        "name": "5_6",
+        "images": [
+          "stimuli/segments/M5L2P3.png",
+        ],
+        "times": [
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
+        ],
+        "length": 2
       }
     ]
   }

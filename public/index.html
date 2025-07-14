@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html ng-app="experimentApp">
 
 <head>
@@ -112,8 +112,7 @@
         </button>
         <button class="button" ng-click="advance()" ng-hide="section == 'stimuli' && part_id <= 0"
           ng-disabled="section == 'endscreen' ||
-            (stimuli_set.length == 0) ||
-            (valid_goal == false && has_goal_question()) && !hide_questions() ||
+            (stimuli_set.length == 0) || && !hide_questions() ||
             (valid_belief == false && has_belief_question()) && !hide_questions() ||
             (valid_exam == false && section == 'instructions' && is_exam()) ||
             (valid_comprehension == false && section == 'instructions' && instruction_has_question())">
@@ -130,7 +129,7 @@
       <div ng-show="section == 'instructions' && instruction_has_image()" class="captions"
         ng-bind-html="instructions[inst_id].text" ng-cloak>
       </div>
-      
+
       <!-- Scenario Start -->
       <div ng-show="(section == 'stimuli' && part_id == 0)" class="captions" ng-cloak>
         <p>Please take a moment to look over this scenario.<br><br>
@@ -138,12 +137,13 @@
         </p>
       </div>
 
+
       <!-- Belief Question -->
       <div ng-show="!hide_questions() && has_belief_question()" id="question" class="captions" ng-cloak>
-        <p><strong>Please rate the following statements about the agent's <span class="underline">current beliefs</span>:</strong></p>
+        <p>Please answer the following questions:</p>
         <ul class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
-            <span class="statement"><strong>Statement:</strong> <span ng-bind-html="style_statement(stmt)"></span></span> <!--TODO: statements not showing-->
-            <div class="rating-scale">
+          <span class="statement"><strong>Statement:</strong> <span ng-bind-html="style_statement(stmt)"></span></span>
+          <div class="rating-scale">
               <!-- Definitely False -->
               <div class="rating-button" ng-repeat="n in [1, 2, 3, 4, 5, 6, 7]">
                 <label for="belief_rating_{{$parent.$index}}_{{n}}" class="rating-number">{{n}}</label>
