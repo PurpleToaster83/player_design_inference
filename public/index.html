@@ -137,10 +137,9 @@
         </p>
       </div>
 
-
       <!-- Belief Question -->
       <div ng-show="!hide_questions() && has_belief_question()" id="question" class="captions" ng-cloak>
-        <p>Please answer the following questions:</p>
+        <p>Please answer the following questions:</strong></p>
         <ul class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
           <span class="statement"><strong>Statement:</strong> <span ng-bind-html="style_statement(stmt)"></span></span>
           <div class="rating-scale">

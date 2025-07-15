@@ -87,7 +87,7 @@ experimentApp.controller('ExperimentController',
 
     $scope.get_statement_counts = async function (stim_id) {
       let cur_stim = $scope.stimuli_set[stim_id];
-      let n = cur_stim.statements.length
+      let n = cur_stim.statements.length;
       if ($location.search().local == "true") {
         $scope.belief_statement_counts = Array(n).fill(0);
         return $scope.belief_statement_counts;
@@ -150,7 +150,7 @@ experimentApp.controller('ExperimentController',
       $scope.exam_response = ans;
       $scope.valid_exam = true;
     }
-
+    
     $scope.set_belief_statements = async function (stim_id) {
       let cur_stim = $scope.stimuli_set[stim_id];
       $scope.n_displayed_statements = cur_stim.statements.length
@@ -158,20 +158,11 @@ experimentApp.controller('ExperimentController',
         let n = cur_stim.statements.length;
         let ids = Array.from(Array(n).keys());
         $scope.belief_statement_ids =
-          $scope.array_sample(ids, $scope.n_displayed_statements);
+        $scope.array_sample(ids, $scope.n_displayed_statements);
       } else {
         var counts = await $scope.get_statement_counts(stim_id);
         $scope.log("Belief statement counts: " + counts);
-        var count_idxs = counts.map((c, i) => [i, c, Math.random()]);
-        count_idxs.sort((a, b) => { // Sort statement indices by count
-          if (a[1] < b[1]) {
-            return -1;
-          } else if (a[1] > b[1]) {
-            return 1;
-          } else {
-            return a[2] < b[2] ? -1 : 1; // Break ties at random
-          }
-        });
+        var count_idxs = counts.map((c, i) => [i, c, i]);
         $scope.belief_statement_ids =
           count_idxs.map(c => c[0]).slice(0, $scope.n_displayed_statements);
         $scope.belief_statement_ids.forEach(id => {counts[id] += 1;});
@@ -380,7 +371,7 @@ experimentApp.controller('ExperimentController',
 
     $scope.has_belief_question = function () {
       if ($scope.section == "stimuli") {
-        return $scope.part_id >= 0
+        return $scope.part_id > 0
       } else if ($scope.section == "instructions") {
         return ($scope.instructions[$scope.inst_id].question_types != null &&
                 $scope.instructions[$scope.inst_id].question_types.includes("beliefs") )
@@ -434,7 +425,7 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.array_sample = function(arr, n) {
-      return $scope.array_shuffle(arr).slice(0, n); 
+      return $scope.arr.slice(0, n); 
     }
 
     $scope.stimuli_set = [];
@@ -473,7 +464,7 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.stimuli_sets = [
-      [1, 2]
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
@@ -656,7 +647,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "1_1",
         "images": [
-          "stimuli/segments/M1L1P1.png" //not load new statements at right time
+          "stimuli/segments/M1L1P1.png"
         ],
         "times": [
           1,
@@ -666,7 +657,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: ",
-          "Flask <strong>D</strong> is: " //why not always shows them properly or in order => set_belief_statements
+          "Flask <strong>D</strong> is: "
         ],
         "length": 2
       },
