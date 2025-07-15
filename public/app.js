@@ -499,6 +499,8 @@ experimentApp.controller('ExperimentController',
               <li> Each flask <img class="caption-image" src="images/potion.png">
                  contains <strong>either</strong> a <strong>potion or poison</strong>
               </li>
+              <li>Flasks can <strong>only</strong> exist in orange squares</li>
+              <li>Some orange squares <strong>may not</strong> have flasks in them</li>
               <li> The player <strong>does not</strong> know what's in each flask.</li>
               </ul>
               Your task is to discern the <strong>location</strong> of the potions to collect and <strong>avoid</strong> the poison,
