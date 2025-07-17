@@ -3,7 +3,7 @@
 
 <head>
   <title>Player Pragmatic Design Inferance</title>
-  <link rel="icon" type="image/x-icon" href="images/potion_fav.png">
+  <link rel="icon" type="image/x-icon" href="images/icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="styling.css"
@@ -94,32 +94,18 @@
 
       <!-- Controls -->
       <div class="controls" ng-cloak>
-        <button class="button" ng-click="replay_all()"
-          ng-show="section == 'stimuli' && part_id >= 0" ng-disabled="part_id <= 0">
-          Replay All ⟲
-        </button>
-        <button class="button" ng-click="reload_gif()"
-          ng-show="section == 'stimuli' && part_id >= 0" ng-disabled="part_id <= 0 || replaying">
-          Replay ↶
-        </button>
-        <button class="button" ng-click="reload_gif()"
-          ng-show="section == 'instructions' && instruction_has_image()">
-          Replay ↶
-        </button>
         <button class="button" ng-click="advance()" ng-show="section == 'stimuli' && part_id <= 0"
           ng-disabled="(stimuli_set.length == 0)">
           Next&ensp;▶
         </button>
-        <button class="button" ng-click="advance()" ng-hide="section == 'stimuli' && part_id <= 0"
+        <button class="button" ng-click="advance()" ng-hide="section == 'stimuli' && part_id <= 0 || section == 'endscreen'"
           ng-disabled="section == 'endscreen' ||
-            (stimuli_set.length == 0) || && !hide_questions() ||
-            (valid_belief == false && has_belief_question()) && !hide_questions() ||
+            (stimuli_set.length == 0) && !hide_questions() || (valid_belief == false && has_belief_question()) && !hide_questions() ||
             (valid_exam == false && section == 'instructions' && is_exam()) ||
             (valid_comprehension == false && section == 'instructions' && instruction_has_question())">
           Next&ensp;▶
         </button>
       </div>
-
     </div>
 
     <!-- Right Side -->
@@ -147,8 +133,7 @@
               <div class="rating-button" ng-repeat="n in [1, 2, 3, 4, 5, 6, 7]">
                 <label for="belief_rating_{{$parent.$index}}_{{n}}" class="rating-number">{{n}}</label>
                 <input type="radio" name="belief_rating_{{$parent.$index}}" id="belief_rating_{{$parent.$index}}_{{n}}"
-                  ng-model="response.beliefs[$parent.$index]" ng-value="n" ng-change="validate_belief()"
-                  ng-disabled="disable_questions()"/>
+                  ng-model="response.beliefs[$parent.$index]" ng-value="n" ng-change="validate_belief()"/>
                 <label for="belief_rating_{{$parent.$index}}_{{n}}" class="rating-text" ng-bind-html="rating_text[n-1]"></label>
                 </div>
               <!-- Definitely True -->

@@ -39,7 +39,6 @@ experimentApp.controller('ExperimentController',
     $scope.last_exam_response = "";
 
     $scope.show_rhs = true;
-    $scope.anim_complete = true;
 
     $scope.belief_statements = [];
     $scope.belief_statement_ids = [];
@@ -114,28 +113,6 @@ experimentApp.controller('ExperimentController',
       }
     }
 
-    $scope.replay_all = function () {
-      if ($scope.section == "stimuli") {
-        var stim = $scope.stimuli_set[$scope.stim_id];
-        let start_dur = $scope.stim_anim_duration(stim, 1) * 333;
-        $scope.replay_id = 1;
-        $scope.replaying = true;
-        $scope.reload_gif();
-        var advance_replay = function () {
-          if ($scope.replaying && $scope.replay_id < $scope.part_id) {
-            $scope.replay_id += 1;
-            $scope.reload_gif();
-            let dur = $scope.stim_anim_duration(stim, $scope.replay_id) * 333;
-            $timeout(advance_replay, dur);
-          } else {
-            $scope.replaying = false;
-            $scope.replay_id = 0;
-          }
-        }
-        $timeout(advance_replay, start_dur);
-      }
-    }
-
     $scope.validate_answer = function (ans) {
       $scope.comprehension_response = ans;
       let index = $scope.instructions[$scope.inst_id].answer;
@@ -185,7 +162,7 @@ experimentApp.controller('ExperimentController',
     $scope.advance = async function () {
       if ($scope.section == "instructions") {
         await $scope.advance_instructions()
-      } else if ($scope.section == "stimuli" ) {
+      } else if ($scope.section == "stimuli") {
         await $scope.advance_stimuli()
       } else if ($scope.section == "endscreen") {
         // Do nothing
@@ -199,7 +176,6 @@ experimentApp.controller('ExperimentController',
         $scope.stim_id = 0;
         $scope.part_id = 0;
         $scope.ratings = [];
-        $scope.anim_complete = true;
         await $scope.set_belief_statements($scope.stim_id);
         // Get time of first stimulus
         if (start_time == undefined) {
@@ -267,7 +243,6 @@ experimentApp.controller('ExperimentController',
         $scope.part_id = $scope.part_id + 1;
         $scope.ratings = [];
         await $scope.set_belief_statements($scope.stim_id);
-        $scope.anim_complete = true;
         start_time = (new Date()).getTime();
       } else if ($scope.part_id < $scope.stimuli_set[$scope.stim_id].length) {
         // Advance to next part
@@ -279,20 +254,14 @@ experimentApp.controller('ExperimentController',
         $scope.part_id = $scope.part_id + 1;
         if ($scope.part_id == $scope.stimuli_set[$scope.stim_id].length) {
           // Store ratings
-          $scope.store_to_db($scope.user_id + "/" + $scope.stimuli_set[$scope.stim_id].name, $scope.ratings);
+          $scope.store_to_db($scope.user_id + "/" + $scope.stimuli_set[$scope.stim_id].name, $scope.ratings); //TODO: I think the issue is here
           // Advance to next problem.
           $scope.part_id = -1;
           $scope.stim_id = $scope.stim_id + 1;
-          $scope.anim_complete = true;
           if ($scope.stim_id < $scope.stimuli_set.length) {
             preloader.preloadImages($scope.stimuli_set[$scope.stim_id].images).then(
               function handleResolve(imglocs) {console.info("Preloaded next stimulus.");});
           }
-        } else {
-          // Begin timer to set animation completion flag
-          $scope.anim_complete = false;
-          anim_duration = $scope.cur_stim_anim_duration() * 333;
-          $timeout(function() {$scope.anim_complete = true;}, anim_duration);
         }
       }
       $scope.reset_response();
@@ -379,10 +348,6 @@ experimentApp.controller('ExperimentController',
       return false
     };
 
-    $scope.disable_questions = function () {
-      return $scope.section == "stimuli" && !$scope.anim_complete;
-    };
-
     $scope.cur_stim_image = function () {
       if ($scope.section != "stimuli" || $scope.stim_id < 0) {
         return "stimuli/segments/tutorial.png"
@@ -396,21 +361,6 @@ experimentApp.controller('ExperimentController',
         return stim.images[$scope.part_id];
       }
     };
-
-    $scope.cur_stim_anim_duration = function () {
-      let stimulus = $scope.stimuli_set[$scope.stim_id];
-      return $scope.stim_anim_duration(stimulus, $scope.part_id);
-    }
-
-    $scope.stim_anim_duration = function (stimulus, part_id) {
-      if (part_id <= 0 || part_id == stimulus.length) {
-        return 0
-      } else {
-        t_start = stimulus.times[part_id - 1];
-        t_stop = stimulus.times[part_id];
-        return t_stop - t_start
-      }
-    }
 
     $scope.array_equals = function (a, b) {
       return Array.isArray(a) &&
@@ -471,163 +421,163 @@ experimentApp.controller('ExperimentController',
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
     $scope.instructions = [
-      {
-        text: `Welcome to our guessing game!
-              <br><br>
-              Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
-              <br><br>
-              Press <strong>Next</strong> to continue.`,
-      },
-      {
-        text: `You're watching someone play the treasure game shown to the left.
-              <br><br>
-              The player controls a character <img class="caption-image" src="images/human.png">,
-              and their goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
-              The player is currently too weak to fight the monster and must collect potions <img class="caption-image" src="images/potion.png">
-              to become strong enough to fight the monster. However, there are also poisons <img class="caption-image" src="images/potion.png"> on
-              the map that look identical to the potions. You, the player must identify which flasks contain potions and which contain poisons.
+      // {
+      //   text: `Welcome to our guessing game!
+      //         <br><br>
+      //         Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
+      //         <br><br>
+      //         Press <strong>Next</strong> to continue.`,
+      // },
+      // {
+      //   text: `You're watching someone play the treasure game shown to the left.
+      //         <br><br>
+      //         The player controls a character <img class="caption-image" src="images/human.png">,
+      //         and their goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
+      //         The player is currently too weak to fight the monster and must collect potions <img class="caption-image" src="images/potion.png">
+      //         to become strong enough to fight the monster. However, there are also poisons <img class="caption-image" src="images/potion.png"> on
+      //         the map that look identical to the potions. You, the player must identify which flasks contain potions and which contain poisons.
 
-              <br><br>
-              <u>Note: The map designer placed the flasks in a helpful and logical manner</u>
+      //         <br><br>
+      //         <u>Note: The map designer placed the flasks in a helpful and logical manner</u>
 
-              <br><br>
-              The rules of the game are as follows:
-              <br>
-              <ul>
-              <li> The player has a full view of the map at all time.</li>
-              <li> The player's goal is to collect <strong>only</strong> the potions.</li>
-              <li> Each flask <img class="caption-image" src="images/potion.png">
-                 contains <strong>either</strong> a <strong>potion or poison</strong>
-              </li>
-              <li>Flasks can <strong>only</strong> exist in orange slot squares</li>
-              <li>Some orange slot squares <strong>may not</strong> have flasks in them</li>
-              <li> The player <strong>does not</strong> know what's in each flask.</li>
-              </ul>
-              Your task is to discern the <strong>location</strong> of the potions to collect and <strong>avoid</strong> the poison,
-              based on them being placed by a rational designer.<br>
-              <br>
-              Press the <strong>Next</strong> button to continue.
-              `,
-        image: "stimuli/segments/tutorial.png"
-      }, 
-      {
-        text: `At each step in this game, you will watch the player take several actions.<br>
-              <br>
-              We will then ask you questions about the <strong>type</strong> of liquid in the flask.<br>
-              <br>
-              Press <strong>Next</strong> to watch what happens.
-              `,
-        image: "stimuli/segments/tutorial.png"
-      }, 
-      {
-        text: `Please read each of the following statements about what the player currently believes and answer them.<br>
-              <br>
-              Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
-              Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
-              Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.`,
-        tutorial: true,
-        show_questions: true,
-        question_types: ["beliefs"],
-        statements: ["Flask <strong>A</strong> is: ",
-                    "Flask <strong>B</strong> is:"],
-        image: "stimuli/segments/tutorial.png",
-      },
-      {
-        text: `You've now finished the practice round and the player can fight the monster using the potions and poisons you've collected!`
-      },
-      {
-        text: `<strong>Comprehension Questions</strong> <br>
-               <br>
-               For the last part of the tutorial, we will ask 5 quick questions to check your understanding of the task.<br>
-               <br>
-               Answer <strong>all questions correctly</strong> in order to proceed to the main experiment.
-               You can retake the quiz as many times as necessary.
-              `
-      },
-      {
-        text: `<strong>Question 1/5:</strong> What is the player investigating?`,
-        options: ["The map",
-                  "The flasks",
-                  "The monster"],
-        answer: 1,
-        exam: true
-      },
-      {
-        text: `<strong>Question 1/5:</strong>  What is the player investigating?`,
-        options: ["The map",
-                  "The flasks",
-                  "The monster"],
-        answer: 1,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Run away from the monster",
-                  "Explore the map",
-                  "Guess the identity of the liquid in each flask"],
-        answer: 2,
-        exam: true
-      },
-      {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Run away from the monster",
-                  "Explore the map",
-                  "Guess the identity of the liquid in each flask"],
-        answer: 2,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
-                  "The player <strong> knows perfectly </strong> what's inside each flask.",
-                  "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
-        answer: 0,
-        exam: true
-      },
-      {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
-                  "The player <strong> knows perfectly </strong> what's inside each flask.",
-                  "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
-        answer: 0,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 4/5:</strong> Which of the following is true?`,
-        options: ["The map designer placed the flasks logically and helpfully.",
-                  "The map designer placed the flasks randomly.",
-                  "The flasks are all potions."],
-        answer: 0,
-        exam: true
-      },
-      {
-        text: `<strong>Question 4/5:</strong> Which of the following is true?`,
-        options: ["The map designer placed the flasks logically and helpfully.",
-                  "The map designer placed the flasks randomly.",
-                  "The flasks are all potions."],
-        answer: 0,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
-        options: ["Guess <strong>either potion or poison</strong> and hope for the best",
-                  "The liquid type is explicitly stated somewhere on the map",
-                  "Try your best to infer the liquid type knwoing the designer placed them logically"],
-        answer: 2,
-        exam: true
-      },
-      {
-        text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
-        options: ["Guess <strong>either potion or poison</strong> and hope for the best",
-                  "The liquid type is explicitly stated somewhere on the map",
-                  "Try your best to infer the liquid type knwoing the designer placed them logically"],
-        answer: 2,
-        feedback: true
-      },
-      {
-        exam_end: true,
-        exam_start_id: 11
-      },
+      //         <br><br>
+      //         The rules of the game are as follows:
+      //         <br>
+      //         <ul>
+      //         <li> The player has a full view of the map at all time.</li>
+      //         <li> The player's goal is to collect <strong>only</strong> the potions.</li>
+      //         <li> Each flask <img class="caption-image" src="images/potion.png">
+      //            contains <strong>either</strong> a <strong>potion or poison</strong>
+      //         </li>
+      //         <li>Flasks can <strong>only</strong> exist in orange slot squares</li>
+      //         <li>Some orange slot squares <strong>may not</strong> have flasks in them</li>
+      //         <li> The player <strong>does not</strong> know what's in each flask.</li>
+      //         </ul>
+      //         Your task is to discern the <strong>location</strong> of the potions to collect and <strong>avoid</strong> the poison,
+      //         based on them being placed by a rational designer.<br>
+      //         <br>
+      //         Press the <strong>Next</strong> button to continue.
+      //         `,
+      //   image: "stimuli/segments/tutorial.png"
+      // }, 
+      // {
+      //   text: `At each step in this game, you will watch the player take several actions.<br>
+      //         <br>
+      //         We will then ask you questions about the <strong>type</strong> of liquid in the flask.<br>
+      //         <br>
+      //         Press <strong>Next</strong> to watch what happens.
+      //         `,
+      //   image: "stimuli/segments/tutorial.png"
+      // }, 
+      // {
+      //   text: `Please read each of the following statements about what the player currently believes and answer them.<br>
+      //         <br>
+      //         Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
+      //         Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
+      //         Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.`,
+      //   tutorial: true,
+      //   show_questions: true,
+      //   question_types: ["beliefs"],
+      //   statements: ["Flask <strong>A</strong> is: ",
+      //               "Flask <strong>B</strong> is:"],
+      //   image: "stimuli/segments/tutorial.png",
+      // },
+      // {
+      //   text: `You've now finished the practice round and the player can fight the monster using the potions and poisons you've collected!`
+      // },
+      // {
+      //   text: `<strong>Comprehension Questions</strong> <br>
+      //          <br>
+      //          For the last part of the tutorial, we will ask 5 quick questions to check your understanding of the task.<br>
+      //          <br>
+      //          Answer <strong>all questions correctly</strong> in order to proceed to the main experiment.
+      //          You can retake the quiz as many times as necessary.
+      //         `
+      // },
+      // {
+      //   text: `<strong>Question 1/5:</strong> What is the player investigating?`,
+      //   options: ["The map",
+      //             "The flasks",
+      //             "The monster"],
+      //   answer: 1,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 1/5:</strong>  What is the player investigating?`,
+      //   options: ["The map",
+      //             "The flasks",
+      //             "The monster"],
+      //   answer: 1,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 2/5:</strong> What is your task in this game?`,
+      //   options: ["Run away from the monster",
+      //             "Explore the map",
+      //             "Guess the identity of the liquid in each flask"],
+      //   answer: 2,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 2/5:</strong> What is your task in this game?`,
+      //   options: ["Run away from the monster",
+      //             "Explore the map",
+      //             "Guess the identity of the liquid in each flask"],
+      //   answer: 2,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 3/5:</strong> Which of the following is true?`,
+      //   options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
+      //             "The player <strong> knows perfectly </strong> what's inside each flask.",
+      //             "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
+      //   answer: 0,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 3/5:</strong> Which of the following is true?`,
+      //   options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
+      //             "The player <strong> knows perfectly </strong> what's inside each flask.",
+      //             "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
+      //   answer: 0,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 4/5:</strong> Which of the following is true?`,
+      //   options: ["The map designer placed the flasks logically and helpfully.",
+      //             "The map designer placed the flasks randomly.",
+      //             "The flasks are all potions."],
+      //   answer: 0,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 4/5:</strong> Which of the following is true?`,
+      //   options: ["The map designer placed the flasks logically and helpfully.",
+      //             "The map designer placed the flasks randomly.",
+      //             "The flasks are all potions."],
+      //   answer: 0,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
+      //   options: ["Guess <strong>either potion or poison</strong> and hope for the best",
+      //             "The liquid type is explicitly stated somewhere on the map",
+      //             "Try your best to infer the liquid type knwoing the designer placed them logically"],
+      //   answer: 2,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
+      //   options: ["Guess <strong>either potion or poison</strong> and hope for the best",
+      //             "The liquid type is explicitly stated somewhere on the map",
+      //             "Try your best to infer the liquid type knwoing the designer placed them logically"],
+      //   answer: 2,
+      //   feedback: true
+      // },
+      // {
+      //   exam_end: true,
+      //   exam_start_id: 11
+      // },
       {
         text: `Congratulations! You've finished the tutorial.
                <br><br>
