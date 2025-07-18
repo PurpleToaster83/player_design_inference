@@ -244,7 +244,7 @@ experimentApp.controller('ExperimentController',
         $scope.part_id = $scope.part_id + 1;
         if ($scope.part_id == $scope.stimuli_set[$scope.stim_id].length) {
           // Store ratings
-          $scope.store_to_db($scope.user_id + "/" + $scope.stimuli_set[$scope.stim_id].name, $scope.ratings); //TODO: I think the issue is here
+          $scope.store_to_db($scope.user_id + "/" + $scope.stimuli_set[$scope.stim_id].name, $scope.ratings);
           // Advance to next problem.
           $scope.part_id = -1;
           $scope.stim_id = $scope.stim_id + 1;
