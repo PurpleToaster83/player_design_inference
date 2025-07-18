@@ -3,6 +3,7 @@ const root = firebase.database().ref();
 const resultsRef = root.child("results");
 const counterRef = root.child("counter");
 const counterKey = "count";
+let count = 0;
 
 var experimentApp = angular.module(
   'experimentApp', ['ngSanitize', 'preloader'],
@@ -60,28 +61,17 @@ experimentApp.controller('ExperimentController',
 
     $scope.store_to_db = function(key, val) {
       $scope.log("Storing " + key + " with " + JSON.stringify(val));
-      if ($location.search().local != "true") {
-        resultsRef.child(key).set(val);
-      }
+      resultsRef.child(key).set(val);
     }
 
     $scope.get_counter = async function () {
-      if ($location.search().local == "true") {
-        let max = $scope.stimuli_sets.length
-        return Math.floor(Math.random() * max);
-      } else {
-        return counterRef.child(counterKey).once("value", function (snapshot) {
-          $scope.user_count = snapshot.val();
-        }).then(() => { return $scope.user_count; });
-      }
+      return counterRef.child(counterKey).once("value", function (snapshot) {
+        $scope.user_count = snapshot.val();
+      }).then(() => { return $scope.user_count; });
     }
     
     $scope.increment_counter = function() {
-      if ($location.search().local == "true") {
-        return;
-      } else {
-        counterRef.child(counterKey).set($scope.user_count + 1);
-      }
+      counterRef.child(counterKey).set($scope.user_count + 1);
     }
 
     $scope.get_statement_counts = async function (stim_id) {
