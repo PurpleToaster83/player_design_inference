@@ -361,7 +361,7 @@ experimentApp.controller('ExperimentController',
 
     $scope.array_shuffle = function (arr) {
         return arr.map(a => [a, Math.random()])
-          .sort((a,b) => {return a[1] < b[1] ? -1 : 1;}).map(a => a[0]);
+          .sort((a, b) => { return a[1] < b[1] ? -1 : 1; }).map(a => a[0]);
     }
 
     $scope.array_sample = function(arr, n) {
@@ -384,6 +384,7 @@ experimentApp.controller('ExperimentController',
       for (i = 0; i < stim_idx.length; i++) {
         $scope.stimuli_set.push($scope.stimuli[stim_idx[i] - 1]);
       }
+      $scope.stimuli_set = $scope.array_shuffle($scope.stimuli_set);
       $scope.log("stimuli ", $scope.stimuli_set);
 
       // Store stimuli set and user ID
@@ -404,9 +405,9 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.stimuli_sets = [
-      [1, 4, 7, 10, 13, 16, 19, 22, 25, 28],
-      [2, 5, 8, 11, 14, 17, 20, 23, 26, 29],
-      [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+      [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
+      [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
+      [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
