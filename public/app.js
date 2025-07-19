@@ -617,7 +617,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>C</strong> is: ",
           "Flask <strong>D</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 2
       },
@@ -636,7 +636,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -655,7 +655,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 2
       },
@@ -674,7 +674,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 1
       },
@@ -693,7 +693,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -712,7 +712,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 1
       },
@@ -732,7 +732,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 1
       },
@@ -751,7 +751,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -770,7 +770,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-          "length": 3,
+          "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -791,7 +791,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>C</strong> is: ",
           "Flask <strong>D</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 2
       },
@@ -810,7 +810,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -829,7 +829,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -848,7 +848,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -866,7 +866,7 @@ experimentApp.controller('ExperimentController',
         "statements": [
           "Flask <strong>A</strong> is: ",
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -884,7 +884,7 @@ experimentApp.controller('ExperimentController',
         "statements": [
           "Flask <strong>A</strong> is: ",
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 0
       },
@@ -904,7 +904,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 1
       },
@@ -923,7 +923,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -942,7 +942,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 2
       },
@@ -962,7 +962,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 1
       },
@@ -981,7 +981,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -1000,7 +1000,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -1019,7 +1019,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -1037,7 +1037,7 @@ experimentApp.controller('ExperimentController',
         "statements": [
           "Flask <strong>A</strong> is: ",
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 0,
         numPoisons: 1
       },
@@ -1055,7 +1055,7 @@ experimentApp.controller('ExperimentController',
         "statements": [
           "Flask <strong>A</strong> is: ",
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 0
       },
@@ -1075,7 +1075,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 1
       },
@@ -1094,7 +1094,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -1113,7 +1113,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -1134,7 +1134,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>C</strong> is: ",
           "Flask <strong>D</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 2,
         numPoisons: 2
       },
@@ -1153,7 +1153,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1
       },
@@ -1172,7 +1172,7 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 3,
+        "length": 2,
         numPotion: 1,
         numPoisons: 1
       }
