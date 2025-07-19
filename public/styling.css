@@ -236,3 +236,19 @@ input[type=radio] {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.truth_container {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    padding: 10px;
+    background-color: rgb(221, 221, 221);
+
+    text-align: center;
+
+    border-radius: 50px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #272727;
+}

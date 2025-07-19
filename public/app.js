@@ -411,163 +411,175 @@ experimentApp.controller('ExperimentController',
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
     $scope.instructions = [
-      {
-        text: `Welcome to our guessing game!
-              <br><br>
-              Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
-              <br><br>
-              Press <strong>Next</strong> to continue.`,
-      },
-      {
-        text: `You're watching someone play the treasure game shown to the left.
-              <br><br>
-              The player controls a character <img class="caption-image" src="images/human.png">,
-              and their goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
-              The player is currently too weak to fight the monster and must collect potions <img class="caption-image" src="images/potion.png">
-              to become strong enough to fight the monster. However, there are also poisons <img class="caption-image" src="images/potion.png"> on
-              the map that look identical to the potions. You, the player must identify which flasks contain potions and which contain poisons.
+      // {
+      //   text: `Welcome to our guessing game!
+      //         <br><br>
+      //         Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
+      //         <br><br>
+      //         Press <strong>Next</strong> to continue.`,
+      // },
+      // {
+      //   text: `You're watching someone play the treasure game shown to the left.
+      //         <br><br>
+      //         You are currently looking at an empty map with empty item slots.
+      //         You control a character <img class="caption-image" src="images/human.png">,
+      //         whose goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
+      //         However, the character is currently too weak to fight the monster and must first collect items to become stronger.
+      //         <br><br>
+      //         Press the <strong>Next</strong> button to continue.`,
+      //         image: "stimuli/segments/tutorial_b.png"
+      // },
+      // {
+      //   text: `
+      //         Working alongside you, a designer has placed items <img class="caption-image" src="images/potion.png"> in the empty map slots. These items
+      //         can either be potions <img class="caption-image" src="images/potion.png"> or poisons <img class="caption-image" src="images/potion.png">. However, the two items look the same. The player can collect potions 
+      //         to become strong enough to fight the monster. However, the identical poisons will make the player weaker.
+      //         You, the player, must identify which flasks contain potions and which contain poisons.
 
-              <br><br>
-              <u>Note: The map designer placed the flasks in a helpful and logical manner</u>
+      //         <br><br>
+      //         <u>Note: The map designer placed the flasks in a helpful and logical manner</u>
 
-              <br><br>
-              The rules of the game are as follows:
-              <br>
-              <ul>
-              <li> The player has a full view of the map at all time.</li>
-              <li> The player's goal is to collect <strong>only</strong> the potions.</li>
-              <li> Each flask <img class="caption-image" src="images/potion.png">
-                 contains <strong>either</strong> a <strong>potion or poison</strong>
-              </li>
-              <li>Flasks can <strong>only</strong> exist in orange slot squares</li>
-              <li>Some orange slot squares <strong>may not</strong> have flasks in them</li>
-              <li> The player <strong>does not</strong> know what's in each flask.</li>
-              </ul>
-              Your task is to discern the <strong>location</strong> of the potions to collect and <strong>avoid</strong> the poison,
-              based on them being placed by a rational designer.<br>
-              <br>
-              Press the <strong>Next</strong> button to continue.
-              `,
-        image: "stimuli/segments/tutorial.png"
-      }, 
-      {
-        text: `At each step in this game, you will watch the player take several actions.<br>
-              <br>
-              We will then ask you questions about the <strong>type</strong> of liquid in the flask.<br>
-              <br>
-              Press <strong>Next</strong> to watch what happens.
-              `,
-        image: "stimuli/segments/tutorial.png"
-      }, 
-      {
-        text: `Please read each of the following statements about what the player currently believes and answer them.<br>
-              <br>
-              Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
-              Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
-              Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.`,
-        tutorial: true,
-        show_questions: true,
-        question_types: ["beliefs"],
-        statements: ["Flask <strong>A</strong> is: ",
-                    "Flask <strong>B</strong> is:"],
-        image: "stimuli/segments/tutorial.png",
-      },
-      {
-        text: `You've now finished the practice round and the player can fight the monster using the potions and poisons you've collected!`
-      },
-      {
-        text: `<strong>Comprehension Questions</strong> <br>
-               <br>
-               For the last part of the tutorial, we will ask 5 quick questions to check your understanding of the task.<br>
-               <br>
-               Answer <strong>all questions correctly</strong> in order to proceed to the main experiment.
-               You can retake the quiz as many times as necessary.
-              `
-      },
-      {
-        text: `<strong>Question 1/5:</strong> What is the player investigating?`,
-        options: ["The map",
-                  "The flasks",
-                  "The monster"],
-        answer: 1,
-        exam: true
-      },
-      {
-        text: `<strong>Question 1/5:</strong>  What is the player investigating?`,
-        options: ["The map",
-                  "The flasks",
-                  "The monster"],
-        answer: 1,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Run away from the monster",
-                  "Explore the map",
-                  "Guess the identity of the liquid in each flask"],
-        answer: 2,
-        exam: true
-      },
-      {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Run away from the monster",
-                  "Explore the map",
-                  "Guess the identity of the liquid in each flask"],
-        answer: 2,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
-                  "The player <strong> knows perfectly </strong> what's inside each flask.",
-                  "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
-        answer: 0,
-        exam: true
-      },
-      {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
-                  "The player <strong> knows perfectly </strong> what's inside each flask.",
-                  "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
-        answer: 0,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 4/5:</strong> Which of the following is true?`,
-        options: ["The map designer placed the flasks logically and helpfully.",
-                  "The map designer placed the flasks randomly.",
-                  "The flasks are all potions."],
-        answer: 0,
-        exam: true
-      },
-      {
-        text: `<strong>Question 4/5:</strong> Which of the following is true?`,
-        options: ["The map designer placed the flasks logically and helpfully.",
-                  "The map designer placed the flasks randomly.",
-                  "The flasks are all potions."],
-        answer: 0,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
-        options: ["Guess <strong>either potion or poison</strong> and hope for the best",
-                  "The liquid type is explicitly stated somewhere on the map",
-                  "Try your best to infer the liquid type knwoing the designer placed them logically"],
-        answer: 2,
-        exam: true
-      },
-      {
-        text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
-        options: ["Guess <strong>either potion or poison</strong> and hope for the best",
-                  "The liquid type is explicitly stated somewhere on the map",
-                  "Try your best to infer the liquid type knwoing the designer placed them logically"],
-        answer: 2,
-        feedback: true
-      },
-      {
-        exam_end: true,
-        exam_start_id: 11
-      },
+      //         <br><br>
+      //         The rules of the game are as follows:
+      //         <br>
+      //         <ul>
+      //         <li> The player has a full view of the map at all time.</li>
+      //         <li> The player can see the number of potions and poisons on the map.</li>
+      //         <li> The player's goal is to collect <strong>only</strong> the potions.</li>
+      //         <li> Each flask <img class="caption-image" src="images/potion.png">
+      //            contains <strong>either</strong> a <strong>potion or poison</strong>
+      //         </li>
+      //         <li>Flasks can <strong>only</strong> exist in orange slot squares</li>
+      //         <li>Some orange slot squares <strong>may not</strong> have flasks in them</li>
+      //         <li> The player <strong>does not</strong> know what's in each flask.</li>
+      //         </ul>
+      //         Your task is to discern the <strong>location</strong> of the potions to collect and <strong>avoid</strong> the poison,
+      //         based on them being placed by a rational designer.<br>
+      //         <br>
+      //         Press the <strong>Next</strong> button to continue.
+      //         `,
+      //   image: "stimuli/segments/tutorial.png",
+      //   numPotion: 1,
+      //   numPoisons: 1
+      // }, 
+      // {
+      //   text: `At each step in this game, you will watch the player take several actions.<br>
+      //         <br>
+      //         We will then ask you questions about the <strong>type</strong> of liquid in the flask.<br>
+      //         <br>
+      //         Press <strong>Next</strong> to watch what happens.
+      //         `,
+      //   image: "stimuli/segments/tutorial.png"
+      // }, 
+      // {
+      //   text: `Please read each of the following statements about what the player currently believes and answer them.<br>
+      //         <br>
+      //         Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
+      //         Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
+      //         Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.`,
+      //   tutorial: true,
+      //   show_questions: true,
+      //   question_types: ["beliefs"],
+      //   statements: ["Flask <strong>A</strong> is: ",
+      //               "Flask <strong>B</strong> is:"],
+      //   image: "stimuli/segments/tutorial.png",
+      // },
+      // {
+      //   text: `You've now finished the practice round and the player can fight the monster using the potions and poisons you've collected!`
+      // },
+      // {
+      //   text: `<strong>Comprehension Questions</strong> <br>
+      //          <br>
+      //          For the last part of the tutorial, we will ask 5 quick questions to check your understanding of the task.<br>
+      //          <br>
+      //          Answer <strong>all questions correctly</strong> in order to proceed to the main experiment.
+      //          You can retake the quiz as many times as necessary.
+      //         `
+      // },
+      // {
+      //   text: `<strong>Question 1/5:</strong> What is the player investigating?`,
+      //   options: ["The map",
+      //             "The flasks",
+      //             "The monster"],
+      //   answer: 1,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 1/5:</strong>  What is the player investigating?`,
+      //   options: ["The map",
+      //             "The flasks",
+      //             "The monster"],
+      //   answer: 1,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 2/5:</strong> What is your task in this game?`,
+      //   options: ["Run away from the monster",
+      //             "Explore the map",
+      //             "Guess the identity of the liquid in each flask"],
+      //   answer: 2,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 2/5:</strong> What is your task in this game?`,
+      //   options: ["Run away from the monster",
+      //             "Explore the map",
+      //             "Guess the identity of the liquid in each flask"],
+      //   answer: 2,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 3/5:</strong> Which of the following is true?`,
+      //   options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
+      //             "The player <strong> knows perfectly </strong> what's inside each flask.",
+      //             "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
+      //   answer: 0,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 3/5:</strong> Which of the following is true?`,
+      //   options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
+      //             "The player <strong> knows perfectly </strong> what's inside each flask.",
+      //             "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
+      //   answer: 0,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 4/5:</strong> Which of the following is true?`,
+      //   options: ["The map designer placed the flasks logically and helpfully.",
+      //             "The map designer placed the flasks randomly.",
+      //             "The flasks are all potions."],
+      //   answer: 0,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 4/5:</strong> Which of the following is true?`,
+      //   options: ["The map designer placed the flasks logically and helpfully.",
+      //             "The map designer placed the flasks randomly.",
+      //             "The flasks are all potions."],
+      //   answer: 0,
+      //   feedback: true
+      // },
+      // {
+      //   text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
+      //   options: ["Guess <strong>either potion or poison</strong> and hope for the best",
+      //             "The liquid type is explicitly stated somewhere on the map",
+      //             "Try your best to infer the liquid type knwoing the designer placed them logically"],
+      //   answer: 2,
+      //   exam: true
+      // },
+      // {
+      //   text: `<strong>Question 5/5:</strong> How can you tell what liquid is in the flask?`,
+      //   options: ["Guess <strong>either potion or poison</strong> and hope for the best",
+      //             "The liquid type is explicitly stated somewhere on the map",
+      //             "Try your best to infer the liquid type knwoing the designer placed them logically"],
+      //   answer: 2,
+      //   feedback: true
+      // },
+      // {
+      //   exam_end: true,
+      //   exam_start_id: 11
+      // },
       {
         text: `Congratulations! You've finished the tutorial.
                <br><br>
@@ -591,10 +603,12 @@ experimentApp.controller('ExperimentController',
       {
         "name": "1_1",
         "images": [
+          "stimuli/segments/M1L1_b.png",
           "stimuli/segments/M1L1P1.png"
         ],
         "times": [
           1,
+          1,
           1
         ],
         "statements": [
@@ -603,29 +617,37 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>C</strong> is: ",
           "Flask <strong>D</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 2
       },
       {
         "name": "1_2",
         "images": [
+          "stimuli/segments/M1L1_b.png",
           "stimuli/segments/M1L1P2.png",
         ],
         "times": [
           1,
+          1,
           1
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "1_3",
         "images": [
-          "stimuli/segments/M1L1P3.png",
+          "stimuli/segments/M1L1_b.png",
+          "stimuli/segments/M1L1P3.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -633,14 +655,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 2
       },
       {
         "name": "1_4",
         "images": [
-          "stimuli/segments/M1L2P1.png",
+          "stimuli/segments/M1L2_b.png",
+          "stimuli/segments/M1L2P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -648,44 +674,56 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 1
       },
       {
         "name": "1_5",
         "images": [
+          "stimuli/segments/M1L2_b.png",
           "stimuli/segments/M1L2P2.png",
         ],
         "times": [
           1,
+          1,
           1
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "1_6",
         "images": [
+          "stimuli/segments/M1L2_b.png",
           "stimuli/segments/M1L2P3.png",
         ],
         "times": [
           1,
+          1,
           1
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 1
       },
       {
         "name": "2_1",
         "images": [
-          "stimuli/segments/M2L1P1.png",
+          "stimuli/segments/M2L1_b.png",
+          "stimuli/segments/M2L1P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -694,14 +732,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 1
       },
       {
         "name": "2_2",
         "images": [
-          "stimuli/segments/M2L1P2.png",
+          "stimuli/segments/M2L1_b.png",
+          "stimuli/segments/M2L1P2.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -709,14 +751,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
         {
         "name": "2_3",
-        "images": [
-          "stimuli/segments/M2L1P3.png",
+          "images": [
+          "stimuli/segments/M2L1_b.png",
+          "stimuli/segments/M2L1P3.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -724,14 +770,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+          "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "2_4",
         "images": [
-          "stimuli/segments/M2L2P1.png",
+          "stimuli/segments/M2L2_b.png",
+          "stimuli/segments/M2L2P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -741,14 +791,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>C</strong> is: ",
           "Flask <strong>D</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 2
       },
       {
         "name": "2_5",
         "images": [
-          "stimuli/segments/M2L2P2.png",
+          "stimuli/segments/M2L2_b.png",
+          "stimuli/segments/M2L2P2.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -756,14 +810,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "2_6",
         "images": [
-          "stimuli/segments/M2L2P3.png",
+          "stimuli/segments/M2L2_b.png",
+          "stimuli/segments/M2L2P3.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -771,14 +829,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "3_1",
         "images": [
-          "stimuli/segments/M3L1P1.png",
+          "stimuli/segments/M3L1_b.png",
+          "stimuli/segments/M3L1P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -786,42 +848,54 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "3_2",
         "images": [
-          "stimuli/segments/M3L1P2.png",
+          "stimuli/segments/M3L1_b.png",
+          "stimuli/segments/M3L1P2.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "3_3",
         "images": [
-          "stimuli/segments/M3L1P3.png",
+          "stimuli/segments/M3L1_b.png",
+          "stimuli/segments/M3L1P3.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 0
       },
       {
         "name": "3_4",
         "images": [
-          "stimuli/segments/M3L2P1.png",
+          "stimuli/segments/M3L2_b.png",
+          "stimuli/segments/M3L2P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -830,14 +904,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 1
       },
       {
         "name": "3_5",
         "images": [
-          "stimuli/segments/M3L2P2.png",
+          "stimuli/segments/M3L2_b.png",
+          "stimuli/segments/M3L2P2.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -845,14 +923,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "3_6",
         "images": [
-          "stimuli/segments/M3L2P3.png",
+          "stimuli/segments/M3L2_b.png",
+          "stimuli/segments/M3L2P3.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -860,14 +942,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 2
       },
       {
         "name": "4_1",
         "images": [
-          "stimuli/segments/M4L1P1.png",
+          "stimuli/segments/M4L1_b.png",
+          "stimuli/segments/M4L1P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -876,14 +962,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 1
       },
       {
         "name": "4_2",
         "images": [
-          "stimuli/segments/M4L1P2.png",
+          "stimuli/segments/M4L1_b.png",
+          "stimuli/segments/M4L1P2.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -891,14 +981,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "4_3",
         "images": [
-          "stimuli/segments/M4L1P3.png",
+          "stimuli/segments/M4L1_b.png",
+          "stimuli/segments/M4L1P3.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -906,14 +1000,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "4_4",
         "images": [
-          "stimuli/segments/M4L2P1.png",
+          "stimuli/segments/M4L2_b.png",
+          "stimuli/segments/M4L2P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -921,42 +1019,54 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "4_5",
         "images": [
+          "stimuli/segments/M4L2_b.png",
           "stimuli/segments/M4L2P2.png",
         ],
         "times": [
           1,
-          1
-        ],
-        "statements": [
-          "Flask <strong>A</strong> is: ",
-        ],
-        "length": 2
-      },
-      {
-        "name": "4_6",
-        "images": [
-          "stimuli/segments/M4L2P3.png",
-        ],
-        "times": [
           1,
           1
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 0,
+        numPoisons: 1
+      },
+      {
+        "name": "4_6",
+        "images": [
+          "stimuli/segments/M4L2_b.png",
+          "stimuli/segments/M4L2P3.png"
+        ],
+        "times": [
+          1,
+          1,
+          1
+        ],
+        "statements": [
+          "Flask <strong>A</strong> is: ",
+        ],
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 0
       },
       {
         "name": "5_1",
         "images": [
-          "stimuli/segments/M5L1P1.png",
+          "stimuli/segments/M5L1_b.png",
+          "stimuli/segments/M5L1P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -965,14 +1075,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>B</strong> is: ",
           "Flask <strong>C</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 1
       },
       {
         "name": "5_2",
         "images": [
-          "stimuli/segments/M5L1P2.png",
+          "stimuli/segments/M5L1_b.png",
+          "stimuli/segments/M5L1P2.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -980,14 +1094,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "5_3",
         "images": [
-          "stimuli/segments/M5L1P3.png",
+          "stimuli/segments/M5L1_b.png",
+          "stimuli/segments/M5L1P3.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -995,14 +1113,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "5_4",
         "images": [
-          "stimuli/segments/M5L2P1.png",
+          "stimuli/segments/M5L2_b.png",
+          "stimuli/segments/M5L2P1.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -1012,14 +1134,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>C</strong> is: ",
           "Flask <strong>D</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 2,
+        numPoisons: 2
       },
       {
         "name": "5_5",
         "images": [
-          "stimuli/segments/M5L2P2.png",
+          "stimuli/segments/M5L2_b.png",
+          "stimuli/segments/M5L2P2.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -1027,14 +1153,18 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotions: 1,
+        numPoisons: 1
       },
       {
         "name": "5_6",
         "images": [
-          "stimuli/segments/M5L2P3.png",
+          "stimuli/segments/M5L2_b.png",
+          "stimuli/segments/M5L2P3.png"
         ],
         "times": [
+          1,
           1,
           1
         ],
@@ -1042,7 +1172,9 @@ experimentApp.controller('ExperimentController',
           "Flask <strong>A</strong> is: ",
           "Flask <strong>B</strong> is: "
         ],
-        "length": 2
+        "length": 3,
+        numPotion: 1,
+        numPoisons: 1
       }
     ]
   }

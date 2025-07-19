@@ -118,14 +118,20 @@
 
       <!-- Scenario Start -->
       <div ng-show="(section == 'stimuli' && part_id == 0)" class="captions" ng-cloak>
-        <p>Please take a moment to look over this scenario.<br><br>
+        <p>Please take a moment to look over this empty map.<br><br>
            Press <strong>Next</strong> to continue.
         </p>
       </div>
 
       <!-- Belief Question -->
       <div ng-show="!hide_questions() && has_belief_question()" id="question" class="captions" ng-cloak>
-        <p>Please answer the following questions:</strong></p>
+        <p>The game designer has placed the flasks on the map. Please answer the following questions based on where you think the designer placed the potions and poisons:</strong></p>
+        <br>
+        <div class="truth_container">
+          <p class="ground_truth">Number of Potions: {{stimuli_set[stim_id].numPotions}}</p>
+          <p class="ground_truth">Number of Poisons: {{stimuli_set[stim_id].numPoisons}}</p>
+        </div>
+        <br>
         <ul class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
           <span class="statement"><strong>Statement:</strong> <span ng-bind-html="style_statement(stmt)"></span></span>
           <div class="rating-scale">
