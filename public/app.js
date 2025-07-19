@@ -700,7 +700,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "1_6",
         "images": [
-          "stimuli/segments/M1L2_b.png",
+          "stimuli/segments/M1L1_b.png",
           "stimuli/segments/M1L2P3.png",
         ],
         "times": [
@@ -855,7 +855,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "3_2",
         "images": [
-          "stimuli/segments/M3L1_b.png",
+          "stimuli/segments/3_2_b.png",
           "stimuli/segments/M3L1P2.png"
         ],
         "times": [
@@ -873,7 +873,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "3_3",
         "images": [
-          "stimuli/segments/M3L1_b.png",
+          "stimuli/segments/3_3_b.png",
           "stimuli/segments/M3L1P3.png"
         ],
         "times": [
@@ -1026,7 +1026,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "4_5",
         "images": [
-          "stimuli/segments/M4L2_b.png",
+          "stimuli/segments/4_5_b.png",
           "stimuli/segments/M4L2P2.png",
         ],
         "times": [
@@ -1044,7 +1044,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "4_6",
         "images": [
-          "stimuli/segments/M4L2_b.png",
+          "stimuli/segments/4_5_b.png",
           "stimuli/segments/M4L2P3.png"
         ],
         "times": [
