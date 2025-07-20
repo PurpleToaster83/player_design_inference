@@ -430,61 +430,73 @@ experimentApp.controller('ExperimentController',
       //         Press the <strong>Next</strong> button to continue.`,
       //         image: "stimuli/segments/tutorial_b.png"
       // },
-      // {
-      //   text: `
-      //         Working alongside you, a designer has placed items <img class="caption-image" src="images/potion.png"> in the empty map slots. These items
-      //         can either be potions <img class="caption-image" src="images/potion.png"> or poisons <img class="caption-image" src="images/potion.png">. However, the two items look the same. The player can collect potions 
-      //         to become strong enough to fight the monster. However, the identical poisons will make the player weaker.
-      //         You, the player, must identify which flasks contain potions and which contain poisons.
+      {
+        text: `Welcome to the Potion or Poison game!
+              <br><br>
+              Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
+              <br><br>
+              Press <strong>Next</strong> to continue.`,
+      },
+      {
+        text: `You're playing an adventure game shown to the left. 
+              <br><br>
+              There is one knight <img class="caption-image" src="images/human.png"> whose goal goal is to defeat the a monster <img class="caption-image" src="images/monster.png">. There are two kinds of flasks in the game: an HP potion or a poison. The flasks containing the two all look identical and the flasks can only be placed in the yellow titles.
+ <br> <br>
+              The chance of defeating the monster is improved by consuming a potion, and diminishes by consuming a poison.
+ <br> <br>
+              The adventure game requires participation of two human agents and each level has two stages - there is a design stage and a play stage. In the design stage, one of the agents (Designer) is asked to place the flasks in the yellow . Then in the play stage, the other agent (Player) controls the character to defeat the monster.
+ <br> <br>
+              The Designer and the Player do not know each other and cannot communicate. They both receive rewards if the monster is defeated at the end. Therefore, it is in the interest of both the Designer and the Player to optimally place and use the flasks.
+ <br> <br>
+              In this experiment, you are playing the role of the Player. We will show you the map after the Designer has placed the flasks, and ask you to rate which flasks are potions and which ones are poison.
 
-      //         <br><br>
-      //         <u>Note: The map designer placed the flasks in a helpful and logical manner</u>
+ <br> <br>
 
-      //         <br><br>
-      //         The rules of the game are as follows:
-      //         <br>
-      //         <ul>
-      //         <li> The player has a full view of the map at all time.</li>
-      //         <li> The player can see the number of potions and poisons on the map.</li>
-      //         <li> The player's goal is to collect <strong>only</strong> the potions.</li>
-      //         <li> Each flask <img class="caption-image" src="images/potion.png">
-      //            contains <strong>either</strong> a <strong>potion or poison</strong>
-      //         </li>
-      //         <li>Flasks can <strong>only</strong> exist in orange slot squares</li>
-      //         <li>Some orange slot squares <strong>may not</strong> have flasks in them</li>
-      //         <li> The player <strong>does not</strong> know what's in each flask.</li>
-      //         </ul>
-      //         Your task is to discern the <strong>location</strong> of the potions to collect and <strong>avoid</strong> the poison,
-      //         based on them being placed by a rational designer.<br>
-      //         <br>
-      //         Press the <strong>Next</strong> button to continue.
-      //         `,
-      //   image: "stimuli/segments/tutorial.png",
-      //   numPotion: 1,
-      //   numPoisons: 1
-      // }, 
-      // {
-      //   text: `At each step in this game, you will watch the player take several actions.<br>
-      //         <br>
-      //         We will then ask you questions about the <strong>type</strong> of liquid in the flask.<br>
-      //         <br>
-      //         Press <strong>Next</strong> to watch what happens.
-      //         `,
-      //   image: "stimuli/segments/tutorial.png"
-      // }, 
-      // {
-      //   text: `Please read each of the following statements about what the player currently believes and answer them.<br>
-      //         <br>
-      //         Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
-      //         Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
-      //         Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.`,
-      //   tutorial: true,
-      //   show_questions: true,
-      //   question_types: ["beliefs"],
-      //   statements: ["Flask <strong>A</strong> is: ",
-      //               "Flask <strong>B</strong> is:"],
-      //   image: "stimuli/segments/tutorial.png",
-      // },
+ Press the <strong>Next</strong> button to continue.
+
+
+              `,
+        image: "stimuli/segments/tutorial.png",
+        numPotion: 1,
+        numPoisons: 1
+      }, 
+      {
+        text: `At each trial, we will show you the flask placement and ask you questions about the <strong>type</strong> of liquid in the flask.<br>
+              <br>
+              Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
+              Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.             <br>
+              Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
+              Press <strong>Next</strong> to watch what happens.
+              `,
+        image: "stimuli/segments/tutorial.png"
+      }, 
+      {
+        text: `<br>`
+              ,
+        tutorial: true,
+        show_questions: true,
+        question_types: ["beliefs"],
+        statements: ["Flask <strong>A</strong> is: ",
+                    "Flask <strong>B</strong> is:"],
+        image: "stimuli/segments/tutorial.png",
+      },
+                {
+        text: `As mentioned, you should assume that the Designer wants you to succeed as both of you will receive a reward if you guess correctly. The reward scheme is as follows:
+
+<br><br>
+For each question, Your rating will be compared to the ground truth, calibrated at the midpoint (4).
+
+<br><br>
+
+If the flask contains a poison and you answer 7, you receive -3 points. If you answer 1, you receive 3 points. If you answer 4, you receive 0 points.
+<br><br>
+Similarly, if the flask contains a potion and you answer 7, you receive 3 points. If you answer 1, you receive -3 points. If you answer 4, you receive 0 points.
+
+<br><br>
+You accumulate the points you receive and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 100 points.
+ `
+      },
+
       // {
       //   text: `You've now finished the practice round and the player can fight the monster using the potions and poisons you've collected!`
       // },
