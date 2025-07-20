@@ -225,6 +225,32 @@ experimentApp.controller('ExperimentController',
           $scope.belief_statement_ids = Array.from(Array(n).keys());
         }
       }
+
+      $scope.div = document.getElementById('ground_truth')
+      if ($scope.inst_id == 3) {
+        $scope.div.innerHTML = "<br>Number of Potions: " + $scope.instructions[$scope.inst_id].numPotions + "<br><br>Number of Poisons: " + $scope.instructions[$scope.inst_id].numPoisons + "<br><br>";
+      }
+      else if ($scope.inst_id == 4) {
+          $scope.div.innerHTML = "";
+          $scope.div.innerHTML += "<u>Here are the types of liquid in each flask:</u>" + "<br><br>";
+          $scope.instructions[$scope.inst_id].ground_truth.forEach((element) => {
+              $scope.div.innerHTML += element + "<br>";
+          });
+      
+        $scope.stim_reward = 0;
+
+        $scope.response.beliefs.forEach((belief, index) => {
+          const liquid_type = $scope.instructions[$scope.inst_id].ground_truth[index].substring(7);
+          if (liquid_type == "Potion") {
+            $scope.diff = 7 - belief;
+          }
+          else {
+            $scope.diff = belief - 1;
+          }
+          $scope.stim_reward += (-1 * $scope.diff) + 3;
+        });
+        
+      }
       $scope.reset_response();
       $scope.valid_belief = false;
       $scope.comprehension_response = "";
@@ -519,6 +545,16 @@ experimentApp.controller('ExperimentController',
         statements: ["Is flask <strong>A</strong> a Potion or a Poison? ",
                     "Is flask <strong>B</strong> a Potion or a Poison?"],
         image: "stimuli/segments/tutorial.png",
+        numPotions: 1,
+        numPoisons: 1
+      },
+      {
+        image: "stimuli/segments/tutorial.png",
+        ground_truth: [
+           "A is a Poison",
+          "B is a Potion"
+        ]
+
       },
                 {
         text: `As mentioned, you should assume that the Designer wants you to succeed as both of you will receive a reward if you guess correctly. The reward scheme is as follows:
