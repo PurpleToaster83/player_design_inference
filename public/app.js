@@ -217,8 +217,6 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.advance_stimuli = async function () {
-      $scope.div.innerHTML = "";
-      $scope.div.innerHTML += "<br>Number of Potions: " + $scope.stimuli_set[$scope.stim_id].numPotions + "<br><br>Number of Poisons: " + $scope.stimuli_set[$scope.stim_id].numPoisons + "<br><br>";
       if ($scope.stim_id == $scope.stimuli_set.length) {
         // Advance to endscreen
         $scope.section = "endscreen"
@@ -241,6 +239,10 @@ experimentApp.controller('ExperimentController',
               $scope.div.innerHTML += element + "<br>";
           });
         }
+        if ($scope.part_id == 0) {
+          $scope.div.innerHTML = "";
+          $scope.div.innerHTML += "<br>Number of Potions: " + $scope.stimuli_set[$scope.stim_id].numPotions + "<br><br>Number of Poisons: " + $scope.stimuli_set[$scope.stim_id].numPoisons + "<br><br>";
+        }
         $scope.part_id = $scope.part_id + 1;
         if ($scope.part_id == $scope.stimuli_set[$scope.stim_id].length) {
           // Store ratings
@@ -250,7 +252,7 @@ experimentApp.controller('ExperimentController',
           $scope.stim_id = $scope.stim_id + 1;
           if ($scope.stim_id < $scope.stimuli_set.length) {
             preloader.preloadImages($scope.stimuli_set[$scope.stim_id].images).then(
-              function handleResolve(imglocs) {console.info("Preloaded next stimulus.");});
+              function handleResolve(imglocs) { console.info("Preloaded next stimulus."); });
           }
         }
       }
@@ -405,7 +407,6 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.stimuli_sets = [
-      // [3, 4]
       [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
       [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
       [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
