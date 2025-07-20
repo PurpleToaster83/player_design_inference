@@ -87,9 +87,12 @@
 
       <!-- Endscreen -->
       <p ng-show="section == 'endscreen'" class="full-row" ng-cloak>
-        You're all done!
+        You're all done! You scored <strong>{{total_reward}}</strong> points in total, equal to <strong>${{total_payment}}</strong> bonus payment.
         <br><br>
         Thank you for your time :)
+        <br><br>
+        Your completion code is: <strong>{{user_id}}</strong>
+        <br><br>
       </p>
 
       <!-- Controls -->
