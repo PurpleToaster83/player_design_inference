@@ -237,7 +237,7 @@ input[type=radio] {
   text-decoration: underline;
 }
 
-.truth_container {
+#ground_truth {
     margin: auto;
     justify-content: center;
     align-items: center;

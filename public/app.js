@@ -52,6 +52,7 @@ experimentApp.controller('ExperimentController',
     $scope.replay_id = 0;
 
     $scope.user_count = 0;
+    $scope.div = document.getElementById('ground_truth');
 
     $scope.log = function(...args) {
       if ($location.search().debug == "true") {
@@ -225,6 +226,8 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.advance_stimuli = async function () {
+      $scope.div.innerHTML = "";
+      $scope.div.innerHTML += "<br>Number of Potions: " + $scope.stimuli_set[$scope.stim_id].numPotions + "<br><br>Number of Poisons: " + $scope.stimuli_set[$scope.stim_id].numPoisons + "<br><br>";
       if ($scope.stim_id == $scope.stimuli_set.length) {
         // Advance to endscreen
         $scope.section = "endscreen"
@@ -234,12 +237,20 @@ experimentApp.controller('ExperimentController',
         $scope.ratings = [];
         await $scope.set_belief_statements($scope.stim_id);
         start_time = (new Date()).getTime();
+        $scope.div.innerHTML = "";
+        $scope.div.innerHTML += "Number of Potions: " + $scope.stimuli_set[$scope.stim_id].numPotions + "<br>";
+        $scope.div.innerHTML += "Number of Poisons: " + $scope.stimuli_set[$scope.stim_id].numPoisons + "<br>";
       } else if ($scope.part_id < $scope.stimuli_set[$scope.stim_id].length) {
         // Advance to next part
         if ($scope.part_id > 0) {
           var step_ratings = $scope.compute_ratings($scope.response);
           $scope.ratings.push(step_ratings);
           $scope.log(step_ratings);
+
+          $scope.div.innerHTML = "";
+          $scope.stimuli_set[$scope.stim_id].ground_truth.forEach((element) => {
+              $scope.div.innerHTML += element + "<br>";
+          });
         }
         $scope.part_id = $scope.part_id + 1;
         if ($scope.part_id == $scope.stimuli_set[$scope.stim_id].length) {
@@ -620,7 +631,13 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 2
+        numPoisons: 2,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion",
+          "C is a Potion",
+          "D is a Poison"
+        ]
       },
       {
         "name": "1_2",
@@ -639,7 +656,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion",
+        ]
       },
       {
         "name": "1_3",
@@ -654,11 +675,17 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: "
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 2
+        numPoisons: 2,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion",
+          "C is a Poison"
+        ]
       },
       {
         "name": "1_4",
@@ -677,7 +704,12 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Poison",
+          "C is a Potion"
+        ]
       },
       {
         "name": "1_5",
@@ -696,7 +728,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion",
+        ]
       },
       {
         "name": "1_6",
@@ -711,11 +747,17 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: "
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Poison",
+          "C is a Potion"
+        ]
       },
       {
         "name": "2_1",
@@ -735,7 +777,12 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion",
+          "C is a Potion"
+        ]
       },
       {
         "name": "2_2",
@@ -754,7 +801,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Poison"
+        ]
       },
         {
         "name": "2_3",
@@ -773,7 +824,11 @@ experimentApp.controller('ExperimentController',
         ],
           "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Poison",
+        ]
       },
       {
         "name": "2_4",
@@ -794,7 +849,13 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 2
+        numPoisons: 2,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion",
+          "C is a Poison",
+          "D is a Potion"
+        ]
       },
       {
         "name": "2_5",
@@ -813,7 +874,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Poison",
+        ]
       },
       {
         "name": "2_6",
@@ -832,7 +897,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion",
+        ]
       },
       {
         "name": "3_1",
@@ -851,7 +920,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Poison"
+        ]
       },
       {
         "name": "3_2",
@@ -869,7 +942,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Poison",
+        ]
       },
       {
         "name": "3_3",
@@ -884,10 +961,15 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 0
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion"
+        ]
       },
       {
         "name": "3_4",
@@ -907,7 +989,12 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Potion",
+          "C is a Poison"
+        ]
       },
       {
         "name": "3_5",
@@ -926,7 +1013,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Poison"
+        ]
       },
       {
         "name": "3_6",
@@ -945,7 +1036,12 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 2
+        numPoisons: 2,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Poison",
+          "C is a Potion"
+        ]
       },
       {
         "name": "4_1",
@@ -965,7 +1061,12 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion",
+          "C is a Potion"
+        ]
       },
       {
         "name": "4_2",
@@ -984,7 +1085,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion"
+        ]
       },
       {
         "name": "4_3",
@@ -1003,7 +1108,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion"
+        ]
       },
       {
         "name": "4_4",
@@ -1022,7 +1131,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion"
+        ]
       },
       {
         "name": "4_5",
@@ -1037,10 +1150,17 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: ",
+          "Flask <strong>C</strong> is: "
         ],
         "length": 2,
-        numPotions: 0,
-        numPoisons: 1
+        numPotions: 2,
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Posion",
+          "C is a Potion"
+        ]
       },
       {
         "name": "4_6",
@@ -1055,10 +1175,15 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           "Flask <strong>A</strong> is: ",
+          "Flask <strong>B</strong> is: "
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 0
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Posion",
+        ]
       },
       {
         "name": "5_1",
@@ -1078,7 +1203,12 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Potion",
+          "C is a Poison"
+        ]
       },
       {
         "name": "5_2",
@@ -1097,7 +1227,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Posion"
+        ]
       },
       {
         "name": "5_3",
@@ -1116,7 +1250,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "C is a Poison"
+        ]
       },
       {
         "name": "5_4",
@@ -1137,7 +1275,13 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 2,
-        numPoisons: 2
+        numPoisons: 2,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Posion",
+          "C is a Potion",
+          "D is a Poison"
+        ]
       },
       {
         "name": "5_5",
@@ -1156,7 +1300,11 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         numPotions: 1,
-        numPoisons: 1
+        numPoisons: 1,
+        ground_truth: [
+          "A is a Potion",
+          "B is a Posion"
+        ]
       },
       {
         "name": "5_6",
@@ -1176,6 +1324,11 @@ experimentApp.controller('ExperimentController',
         "length": 2,
         numPotion: 1,
         numPoisons: 1
+        ,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion"
+        ]
       }
     ]
   }
