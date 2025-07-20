@@ -248,6 +248,7 @@ experimentApp.controller('ExperimentController',
           $scope.log(step_ratings);
 
           $scope.div.innerHTML = "";
+          $scope.div.innerHTML += "<u>Here are the types of liquid in each flask:</u>" + "<br><br>";
           $scope.stimuli_set[$scope.stim_id].ground_truth.forEach((element) => {
               $scope.div.innerHTML += element + "<br>";
           });
@@ -487,8 +488,8 @@ experimentApp.controller('ExperimentController',
         tutorial: true,
         show_questions: true,
         question_types: ["beliefs"],
-        statements: ["Flask <strong>A</strong> is: ",
-                    "Flask <strong>B</strong> is:"],
+        statements: ["Is flask <strong>A</strong> a Potion or a Poison? ",
+                    "Is flask <strong>B</strong> a Potion or a Poison?"],
         image: "stimuli/segments/tutorial.png",
       },
                 {
@@ -636,10 +637,10 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: ",
-          "Flask <strong>D</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? ",
+          "Is flask <strong>D</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -663,8 +664,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -686,9 +687,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -711,8 +712,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -735,8 +737,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -758,9 +760,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -783,9 +785,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -808,8 +810,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -831,8 +833,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
           "length": 2,
         numPotions: 1,
@@ -854,10 +856,10 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: ",
-          "Flask <strong>D</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? ",
+          "Is flask <strong>D</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -881,8 +883,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -904,8 +906,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -927,8 +929,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -950,7 +952,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison?"
         ],
         "length": 2,
         numPotions: 1,
@@ -972,8 +975,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -995,9 +998,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -1020,8 +1023,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -1043,8 +1046,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison?"
         ],
         "length": 2,
         numPotions: 1,
@@ -1067,9 +1071,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -1092,8 +1096,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -1115,8 +1119,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -1138,8 +1142,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -1161,9 +1165,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -1186,8 +1190,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -1209,9 +1213,9 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -1234,8 +1238,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -1257,15 +1261,15 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
         numPoisons: 1,
         ground_truth: [
           "A is a Potion",
-          "C is a Poison"
+          "B is a Poison"
         ]
       },
       {
@@ -1280,10 +1284,10 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: ",
-          "Flask <strong>C</strong> is: ",
-          "Flask <strong>D</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>C</strong> a Potion or a Poison? ",
+          "Is flask <strong>D</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 2,
@@ -1307,8 +1311,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotions: 1,
@@ -1330,8 +1334,8 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           1
         ],
         "statements": [
-          "Flask <strong>A</strong> is: ",
-          "Flask <strong>B</strong> is: "
+          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
         numPotion: 1,

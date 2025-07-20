@@ -124,12 +124,15 @@
       </div>
 
       <!-- Belief Question -->
-      <div ng-show="!hide_questions() && has_belief_question()" id="question" class="captions" ng-cloak>
-        <p>The game designer has placed the flasks on the map. Please answer the following questions based on where you think the designer placed the potions and poisons:</strong></p>
-        
+      <div id="question" class="captions" ng-cloak>
+        <p ng-show="!hide_questions() && has_belief_question()">The game designer has placed the flasks on the map. Please answer the following questions based on where you think the designer placed the potions and poisons:</strong></p>
         <br>
-        <ul class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
-          <span class="statement"><strong>Statement:</strong> <span ng-bind-html="style_statement(stmt)"></span></span>
+        <div id="ground_truth" ng-show="section == 'stimuli" ng-hide="section != 'stimuli' || part_id == 0">
+        </div>
+        <br>
+        <br>
+        <ul ng-show="!hide_questions() && has_belief_question()" class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
+          <span class="statement"><span ng-bind-html="style_statement(stmt)"></span></span>
           <div class="rating-scale">
               <!-- Definitely False -->
               <div class="rating-button" ng-repeat="n in [1, 2, 3, 4, 5, 6, 7]">
@@ -145,15 +148,8 @@
 
       <!-- Post-Stimulus Feedback -->
       <p ng-show="section == 'stimuli' && part_id < 0" class="feedback" ng-cloak>
-        You have competed the map and all of the <img class="caption-image" src="images/potion.png"> have been investigated!
-        <br><br>
         Press <strong>Next</strong> to continue to the next map.
       </p>
-
-      <br>
-      <div id="ground_truth" ng-show="section == 'stimuli" ng-hide="section != 'stimuli' || part_id == 0">
-      </div>
-      <br>
 
       <!-- Comprehension Questions -->
       <div ng-show="section == 'instructions' && instruction_has_question()" class="comprehension_question" ng-cloak>
