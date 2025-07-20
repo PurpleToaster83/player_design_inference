@@ -225,6 +225,9 @@ experimentApp.controller('ExperimentController',
       if ($scope.stim_id == $scope.stimuli_set.length) {
         // Advance to endscreen
         $scope.section = "endscreen"
+        $scope.total_payment = $scope.total_reward / 100;
+        store_to_db($scope.user_id + "/total_reward", $scope.total_reward);
+        store_to_db($scope.user_id + "/total_payment", $scope.total_payment);
       }  else if ($scope.part_id < 0) {
         // Advance to first part
         $scope.part_id = $scope.part_id + 1;
