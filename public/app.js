@@ -152,7 +152,19 @@ experimentApp.controller('ExperimentController',
       } else if ($scope.section == "stimuli") {
         await $scope.advance_stimuli()
       } else if ($scope.section == "endscreen") {
-        // Do nothing
+        $scope.end_id += 1;
+        if ($scope.end_id == 2) {
+          $scope.blah = 1;
+          $scope.age = document.getElementById('age').value;
+          $scope.gender = document.getElementById('gender').value;
+          $scope.id = document.getElementById('mturk').value;
+          $scope.survey = {
+            "Age": $scope.age,
+            "Gender": $scope.gender,
+            "Mturk_ID": $scope.id
+          }
+          $scope.store_to_db($scope.user_id + "/demographic_survey", $scope.survey);
+        }
       }
     };
     
@@ -225,9 +237,10 @@ experimentApp.controller('ExperimentController',
       if ($scope.stim_id == $scope.stimuli_set.length) {
         // Advance to endscreen
         $scope.section = "endscreen"
-        $scope.total_payment = $scope.total_reward / 100;
-        store_to_db($scope.user_id + "/total_reward", $scope.total_reward);
-        store_to_db($scope.user_id + "/total_payment", $scope.total_payment);
+        $scope.end_id = 0; 
+        $scope.total_payment = ($scope.total_reward > 0) ? $scope.total_reward / 100 : 0;
+        $scope.store_to_db($scope.user_id + "/total_reward", $scope.total_reward);
+        $scope.store_to_db($scope.user_id + "/total_payment", $scope.total_payment);
       }  else if ($scope.part_id < 0) {
         // Advance to first part
         $scope.part_id = $scope.part_id + 1;
@@ -431,9 +444,10 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.stimuli_sets = [
-      [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
-      [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
-      [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
+      [1]
+      // [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
+      // [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
+      // [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;

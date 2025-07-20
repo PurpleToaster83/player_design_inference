@@ -86,14 +86,28 @@
       </div>
 
       <!-- Endscreen -->
-      <p ng-show="section == 'endscreen'" class="full-row" ng-cloak>
-        You're all done! You scored <strong>{{total_reward}}</strong> points in total, equal to <strong>${{total_payment}}</strong> bonus payment.
-        <br><br>
+      <div id="end" ng-show="section == 'endscreen'" class="full-row" ng-if="section == 'endscreen' && end_id == 0" ng-cloak>
+              You're all done! You scored {{total_reward}} points in total, equal to {{total_payment}} bonus payment.
+              <br>
+              <br>
+              Your completion code is: {{user_id}}
+              <br><br><br>
+      </div>
+      <div id="end" ng-show="section == 'endscreen'" class="full-row" ng-if="section == 'endscreen' && end_id == 1" ng-cloak>
+          Please answer the following demographic questions:
+          <br><br>
+          <strong>What is Your Age?   </strong> <input id="age" type="number">
+          <br><br>
+          <strong>What is your gender?   </strong> <input id="gender" type="text">
+          <br><br>
+          <strong>What is your Prolific/Mturk ID?   </strong> <input id="mturkID" type="number">
+      </div>
+      <div id="end" ng-show="section == 'endscreen'" class="full-row" ng-if="section == 'endscreen' && end_id == 2" ng-cloak>
         Thank you for your time :)
-        <br><br>
-        Your completion code is: <strong>{{user_id}}</strong>
-        <br><br>
-      </p>
+      </div>
+
+      <h1>{{age}}</h1>
+
 
       <!-- Controls -->
       <div class="controls" ng-cloak>
@@ -101,8 +115,8 @@
           ng-disabled="(stimuli_set.length == 0)">
           Next&ensp;▶
         </button>
-        <button class="button" ng-click="advance()" ng-hide="section == 'stimuli' && part_id <= 0 || section == 'endscreen'"
-          ng-disabled="section == 'endscreen' ||
+        <button class="button" ng-click="advance()" ng-hide="section == 'stimuli' && part_id <= 0 || (section == 'endscreen' && end_id == 2)"
+          ng-disabled="(section == 'endscreen' && end_id == 2) ||
             (stimuli_set.length == 0) && !hide_questions() || (valid_belief == false && has_belief_question()) && !hide_questions() ||
             (valid_exam == false && section == 'instructions' && is_exam()) ||
             (valid_comprehension == false && section == 'instructions' && instruction_has_question())">
@@ -175,7 +189,6 @@
       <div ng-show="section == 'instructions'" class="comprehension_question">
         <p ng-bind-html="instructions[inst_id].footnote"></p>
       </div>
-    </div>
 </body>
 
 </html>
