@@ -480,11 +480,11 @@ experimentApp.controller('ExperimentController',
       {
         text: `You're playing an adventure game shown to the left. 
               <br><br>
-              There is one knight <img class="caption-image" src="images/human.png"> whose goal goal is to defeat the a monster <img class="caption-image" src="images/monster.png">. There are two kinds of flasks in the game: an HP potion or a poison. The flasks containing the two all look identical and the flasks can only be placed in the yellow titles.
+              There is one knight <img class="caption-image" src="images/human.png"> whose goal goal is to defeat the monster <img class="caption-image" src="images/monster.png">. There are two kinds of flasks in the game: a health potion or a poison. The flasks containing potions look identical to the flasks containing poisons and the flasks can only be placed in the yellow tiles.
  <br> <br>
               The chance of defeating the monster is improved by consuming a potion, and diminishes by consuming a poison.
  <br> <br>
-              The adventure game requires participation of two human agents and each level has two stages - there is a design stage and a play stage. In the design stage, one of the agents (Designer) is asked to place the flasks in the yellow . Then in the play stage, the other agent (Player) controls the character to defeat the monster.
+              The adventure game requires participation of two human agents and each level has two stages - there is a design stage and a play stage. In the design stage, one of the agents (Designer) is asked to place the flasks in the yellow tiles. Then in the play stage, the other agent (Player) controls the character to defeat the monster.
  <br> <br>
               The Designer and the Player do not know each other and cannot communicate. They both receive rewards if the monster is defeated at the end. Therefore, it is in the interest of both the Designer and the Player to optimally place and use the flasks.
  <br> <br>
@@ -524,7 +524,7 @@ experimentApp.controller('ExperimentController',
         text: `As mentioned, you should assume that the Designer wants you to succeed as both of you will receive a reward if you guess correctly. The reward scheme is as follows:
 
 <br><br>
-For each question, Your rating will be compared to the ground truth, calibrated at the midpoint (4).
+For each question, Your rating will be compared to the answer key and rewards will be calibrated by considering the difference.
 
 <br><br>
 
@@ -533,7 +533,7 @@ If the flask contains a poison and you answer 7, you receive -3 points. If you a
 Similarly, if the flask contains a potion and you answer 7, you receive 3 points. If you answer 1, you receive -3 points. If you answer 4, you receive 0 points.
 
 <br><br>
-You accumulate the points you receive and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 100 points.
+You accumulate the points you receive over all the maps you play and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 100 points.
  `
       },
 
