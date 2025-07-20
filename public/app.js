@@ -121,22 +121,13 @@ experimentApp.controller('ExperimentController',
     
     $scope.set_belief_statements = async function (stim_id) {
       let cur_stim = $scope.stimuli_set[stim_id];
-      $scope.n_displayed_statements = cur_stim.statements.length
-      if ($location.search().local == "true") {
-        let n = cur_stim.statements.length;
-        let ids = Array.from(Array(n).keys());
-        $scope.belief_statement_ids =
-        $scope.array_sample(ids, $scope.n_displayed_statements);
-      } else {
-        var counts = await $scope.get_statement_counts(stim_id);
-        $scope.log("Belief statement counts: " + counts);
-        var count_idxs = counts.map((c, i) => [i, c, i]);
-        $scope.belief_statement_ids =
-          count_idxs.map(c => c[0]).slice(0, $scope.n_displayed_statements);
-        $scope.belief_statement_ids.forEach(id => {counts[id] += 1;});
-        $scope.set_statement_counts(stim_id, counts);
-        $scope.log("Updated statement counts: " + counts);
-      }
+      $scope.n_displayed_statements = cur_stim.statements.length;
+
+      let n = cur_stim.statements.length;
+      let ids = Array.from(Array(n).keys());
+      $scope.belief_statement_ids =
+      $scope.array_sample(ids, $scope.n_displayed_statements);
+      
       $scope.belief_statements =
         $scope.belief_statement_ids.map(id => cur_stim.statements[id]);
       $scope.log("Belief statement IDs: " + $scope.belief_statement_ids);
@@ -237,9 +228,6 @@ experimentApp.controller('ExperimentController',
         $scope.ratings = [];
         await $scope.set_belief_statements($scope.stim_id);
         start_time = (new Date()).getTime();
-        $scope.div.innerHTML = "";
-        $scope.div.innerHTML += "Number of Potions: " + $scope.stimuli_set[$scope.stim_id].numPotions + "<br>";
-        $scope.div.innerHTML += "Number of Poisons: " + $scope.stimuli_set[$scope.stim_id].numPoisons + "<br>";
       } else if ($scope.part_id < $scope.stimuli_set[$scope.stim_id].length) {
         // Advance to next part
         if ($scope.part_id > 0) {
@@ -377,7 +365,7 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.array_sample = function(arr, n) {
-      return $scope.arr.slice(0, n); 
+      return arr.slice(0, n); 
     }
 
     $scope.stimuli_set = [];
@@ -417,6 +405,7 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.stimuli_sets = [
+      // [3, 4]
       [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
       [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
       [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
@@ -469,7 +458,7 @@ experimentApp.controller('ExperimentController',
 
               `,
         image: "stimuli/segments/tutorial.png",
-        numPotion: 1,
+        numPotions: 1,
         numPoisons: 1
       }, 
       {
@@ -836,7 +825,7 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           "Is flask <strong>A</strong> a Potion or a Poison? ",
           "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
-          "length": 2,
+        "length": 2,
         numPotions: 1,
         numPoisons: 1,
         ground_truth: [
@@ -1338,7 +1327,7 @@ You accumulate the points you receive and will be paid a bonus at the end of the
           "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
-        numPotion: 1,
+        numPotions: 1,
         numPoisons: 1
         ,
         ground_truth: [
