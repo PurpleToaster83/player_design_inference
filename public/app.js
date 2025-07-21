@@ -792,8 +792,8 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPotions: 1,
         numPoisons: 1,
         ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
+          "A is a Potion",
+          "B is a Poison",
         ]
       },
       {
