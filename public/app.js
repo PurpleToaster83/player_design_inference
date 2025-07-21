@@ -236,21 +236,8 @@ experimentApp.controller('ExperimentController',
           $scope.instructions[$scope.inst_id].ground_truth.forEach((element) => {
               $scope.div.innerHTML += element + "<br>";
           });
-      
-        $scope.stim_reward = 0;
-
-        $scope.response.beliefs.forEach((belief, index) => {
-          const liquid_type = $scope.instructions[$scope.inst_id].ground_truth[index].substring(7);
-          if (liquid_type == "Potion") {
-            $scope.diff = 7 - belief;
-          }
-          else {
-            $scope.diff = belief - 1;
-          }
-          $scope.stim_reward += (-1 * $scope.diff) + 3;
-        });
-        
       }
+      
       $scope.reset_response();
       $scope.valid_belief = false;
       $scope.comprehension_response = "";
@@ -521,7 +508,7 @@ experimentApp.controller('ExperimentController',
 
 
               `,
-        image: "stimuli/segments/tutorial.png",
+        image: "stimuli/segments/tutorial_b.png",
         numPotions: 1,
         numPoisons: 1
       }, 
@@ -533,7 +520,7 @@ experimentApp.controller('ExperimentController',
               Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
               Press <strong>Next</strong> to watch what happens.
               `,
-        image: "stimuli/segments/tutorial.png"
+        image: "stimuli/segments/tutorial_b.png"
       }, 
       {
         text: `<br>`
@@ -553,7 +540,6 @@ experimentApp.controller('ExperimentController',
            "A is a Poison",
           "B is a Potion"
         ]
-
       },
                 {
         text: `As mentioned, you should assume that the Designer wants you to succeed as both of you will receive a reward if you guess correctly. The reward scheme is as follows:
