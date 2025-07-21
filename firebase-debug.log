@@ -1,0 +1,44 @@
+[debug] [2025-07-21T18:07:38.793Z] ----------------------------------------------------------------------
+[debug] [2025-07-21T18:07:38.798Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2025-07-21T18:07:38.798Z] CLI Version:   14.9.0
+[debug] [2025-07-21T18:07:38.798Z] Platform:      darwin
+[debug] [2025-07-21T18:07:38.798Z] Node Version:  v22.16.0
+[debug] [2025-07-21T18:07:38.799Z] Time:          Mon Jul 21 2025 14:07:38 GMT-0400 (Eastern Daylight Time)
+[debug] [2025-07-21T18:07:38.799Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-21T18:07:38.800Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-07-21T18:07:38.956Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-21T18:07:38.956Z] > authorizing via signed-in user (william.vanuitert@gmail.com)
+[debug] [2025-07-21T18:07:38.956Z] [iam] checking project player-app-fbf4c for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-07-21T18:07:38.957Z] Checked if tokens are valid: false, expires at: 1753075624284
+[debug] [2025-07-21T18:07:38.957Z] Checked if tokens are valid: false, expires at: 1753075624284
+[debug] [2025-07-21T18:07:38.957Z] > refreshing access token with scopes: []
+[debug] [2025-07-21T18:07:38.957Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-07-21T18:07:38.957Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-07-21T18:07:39.156Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-07-21T18:07:39.156Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2025-07-21T18:07:39.181Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-07-21T18:07:39.181Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-07-21T18:07:39.194Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/player-app-fbf4c:testIamPermissions [none]
+[debug] [2025-07-21T18:07:39.194Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/player-app-fbf4c:testIamPermissions x-goog-quota-user=projects/player-app-fbf4c
+[debug] [2025-07-21T18:07:39.194Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/player-app-fbf4c:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-07-21T18:07:39.493Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/player-app-fbf4c:testIamPermissions 200
+[debug] [2025-07-21T18:07:39.494Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/player-app-fbf4c:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-07-21T18:07:39.495Z] Checked if tokens are valid: true, expires at: 1753124858181
+[debug] [2025-07-21T18:07:39.495Z] Checked if tokens are valid: true, expires at: 1753124858181
+[debug] [2025-07-21T18:07:39.495Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/player-app-fbf4c [none]
+[debug] [2025-07-21T18:07:39.805Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/player-app-fbf4c 200
+[debug] [2025-07-21T18:07:39.805Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/player-app-fbf4c {"projectId":"player-app-fbf4c","projectNumber":"294179545322","displayName":"Player App","name":"projects/player-app-fbf4c","resources":{"hostingSite":"player-app-fbf4c","realtimeDatabaseInstance":"player-app-fbf4c-default-rtdb"},"state":"ACTIVE","etag":"1_a2676bba-1664-4621-a963-425f63a2187f"}
+[info] 
+[info] === Deploying to 'player-app-fbf4c'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-07-21T18:07:39.811Z] Checked if tokens are valid: true, expires at: 1753124858181
+[debug] [2025-07-21T18:07:39.811Z] Checked if tokens are valid: true, expires at: 1753124858181
+[debug] [2025-07-21T18:07:39.812Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/player-app-fbf4c/versions [none]
+[debug] [2025-07-21T18:07:39.812Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/player-app-fbf4c/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-07-21T18:07:40.577Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/player-app-fbf4c/versions 200
+[debug] [2025-07-21T18:07:40.578Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/player-app-fbf4c/versions {"name":"projects/294179545322/sites/player-app-fbf4c/versions/f680922cbdd8354d","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[player-app-fbf4c]: beginning deploy... 
+[info] i  hosting[player-app-fbf4c]: found 54 files in public 
+[debug] [2025-07-21T18:07:40.607Z] [hosting] uploading with 200 concurrency

@@ -155,11 +155,13 @@ experimentApp.controller('ExperimentController',
           $scope.age_q = document.getElementById("age");
           $scope.gender_q = document.getElementById("gender");
           $scope.id_q = document.getElementById("mturkID");
+          $scope.feedback_q = document.getElementById("feedback");
 
           $scope.survey = {
             age: $scope.age_q.value,
             gender: $scope.gender_q.value,
-            mturk_id: $scope.id_q.value
+            mturk_id: $scope.id_q.value,
+            feedback: $scope.feedback_q.value
           }
           $scope.store_to_db($scope.user_id + "/demographic_survey", $scope.survey);
         }
@@ -455,10 +457,9 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.stimuli_sets = [
-      [1]
-      // [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
-      // [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
-      // [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
+      [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
+      [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
+      [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
@@ -536,8 +537,8 @@ experimentApp.controller('ExperimentController',
       {
         image: "stimuli/segments/tutorial.png",
         ground_truth: [
-           "A is a Poison",
-          "B is a Potion"
+           "A is a Potion",
+          "B is a Poison"
         ]
       },
                 {
@@ -744,8 +745,8 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPoisons: 2,
         ground_truth: [
           "A is a Poison",
-          "B is a Potion",
-          "C is a Poison"
+          "B is a Poison",
+          "C is a Potion"
         ]
       },
       {
@@ -817,8 +818,8 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPoisons: 1,
         ground_truth: [
           "A is a Poison",
-          "B is a Poison",
-          "C is a Potion"
+          "B is a Potion",
+          "C is a Poison"
         ]
       },
       {
@@ -915,8 +916,8 @@ You accumulate the points you receive over all the maps you play and will be pai
         ground_truth: [
           "A is a Poison",
           "B is a Potion",
-          "C is a Poison",
-          "D is a Potion"
+          "C is a Potion",
+          "D is a Poison"
         ]
       },
       {
@@ -1007,8 +1008,8 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPotions: 1,
         numPoisons: 1,
         ground_truth: [
-          "A is a Potion",
-          "B is a Poison",
+          "A is a Poison",
+          "B is a Potion",
         ]
       },
       {
@@ -1030,8 +1031,8 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPotions: 1,
         numPoisons: 1,
         ground_truth: [
-          "A is a Poison",
-          "B is a Potion"
+          "A is a Potion",
+          "B is a Poison"
         ]
       },
       {
@@ -1102,9 +1103,9 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPotions: 1,
         numPoisons: 2,
         ground_truth: [
-          "A is a Poison",
+          "A is a Potion",
           "B is a Poison",
-          "C is a Potion"
+          "C is a Poison"
         ]
       },
       {
@@ -1221,8 +1222,8 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPotions: 2,
         numPoisons: 1,
         ground_truth: [
-          "A is a Potion",
-          "B is a Posion",
+          "A is a Poison",
+          "B is a Potion",
           "C is a Potion"
         ]
       },
@@ -1342,8 +1343,8 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPoisons: 2,
         ground_truth: [
           "A is a Potion",
-          "B is a Posion",
-          "C is a Potion",
+          "B is a Potion",
+          "C is a Poison",
           "D is a Poison"
         ]
       },
@@ -1367,7 +1368,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         numPoisons: 1,
         ground_truth: [
           "A is a Potion",
-          "B is a Posion"
+          "B is a Poison"
         ]
       },
       {
