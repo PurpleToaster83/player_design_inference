@@ -57,8 +57,6 @@ experimentApp.controller('ExperimentController',
     $scope.total_payment = 0;
     $scope.stim_reward = 0;
 
-    $scope.blah = 0;
-
     $scope.log = function(...args) {
       if ($location.search().debug == "true") {
         console.log(...args);
@@ -154,14 +152,14 @@ experimentApp.controller('ExperimentController',
       } else if ($scope.section == "endscreen") {
         $scope.end_id += 1;
         if ($scope.end_id == 2) {
-          $scope.blah = 1;
-          $scope.age = document.getElementById('age').value;
-          $scope.gender = document.getElementById('gender').value;
-          $scope.id = document.getElementById('mturk').value;
+          $scope.age_q = document.getElementById("age");
+          $scope.gender_q = document.getElementById("gender");
+          $scope.id_q = document.getElementById("mturkID");
+
           $scope.survey = {
-            "Age": $scope.age,
-            "Gender": $scope.gender,
-            "Mturk_ID": $scope.id
+            age: $scope.age_q.value,
+            gender: $scope.gender_q.value,
+            mturk_id: $scope.id_q.value
           }
           $scope.store_to_db($scope.user_id + "/demographic_survey", $scope.survey);
         }
@@ -457,9 +455,10 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.stimuli_sets = [
-      [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
-      [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
-      [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
+      [1]
+      // [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
+      // [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
+      // [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
