@@ -470,10 +470,9 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.stimuli_sets = [
-      [1]
-      // [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
-      // [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
-      // [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
+      [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
+      [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
+      [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
