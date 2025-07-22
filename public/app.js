@@ -154,12 +154,14 @@ experimentApp.controller('ExperimentController',
         if ($scope.end_id == 2) {
           $scope.age_q = document.getElementById("age");
           $scope.gender_q = document.getElementById("gender");
+          $scope.ethnicity_q = document.getElementById("ethnicity");
           $scope.id_q = document.getElementById("mturkID");
           $scope.feedback_q = document.getElementById("feedback");
 
           $scope.survey = {
             age: $scope.age_q.value,
             gender: $scope.gender_q.value,
+            ethnicity: $scope.ethnicity_q.value,
             mturk_id: $scope.id_q.value,
             feedback: $scope.feedback_q.value
           }
@@ -492,11 +494,11 @@ experimentApp.controller('ExperimentController',
       {
         text: `You're playing an adventure game shown to the left. 
               <br><br>
-              There is one knight <img class="caption-image" src="images/human.png"> whose goal goal is to defeat the monster <img class="caption-image" src="images/monster.png">. There are two kinds of flasks in the game: a health potion or a poison. The flasks containing potions look identical to the flasks containing poisons and the flasks can only be placed in the yellow tiles.
+              There is one knight <img class="caption-image" src="images/human.png"> whose goal goal is to defeat the monster <img class="caption-image" src="images/monster.png">. The map is divided by black wall tiles and there are two kinds of flasks in the game: a health potion or a poison. The flasks containing potions look identical to the flasks containing poisons and the flasks can only be placed in the orange tiles.
  <br> <br>
               The chance of defeating the monster is improved by consuming a potion, and diminishes by consuming a poison.
  <br> <br>
-              The adventure game requires participation of two human agents and each level has two stages - there is a design stage and a play stage. In the design stage, one of the agents (Designer) is asked to place the flasks in the yellow tiles. Then in the play stage, the other agent (Player) controls the character to defeat the monster.
+              The adventure game requires participation of two human agents and each level has two stages - there is a design stage and a play stage. In the design stage, one of the agents (Designer) place the flasks in the orange tiles. Then in the play stage, the other agent (Player) controls the character to defeat the monster.
  <br> <br>
               The Designer and the Player do not know each other and cannot communicate. They both receive rewards if the monster is defeated at the end. Therefore, it is in the interest of both the Designer and the Player to optimally place and use the flasks.
  <br> <br>
