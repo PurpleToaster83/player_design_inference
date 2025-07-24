@@ -566,14 +566,14 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         text: `<strong>Comprehension Questions</strong> <br>
                <br>
-               For the last part of the tutorial, we will ask 5 quick questions to check your understanding of the task.<br>
+               For the last part of the tutorial, we will ask 3 quick questions to check your understanding of the task.<br>
                <br>
                Answer <strong>all questions correctly</strong> in order to proceed to the main experiment.
                You can retake the quiz as many times as necessary.
               `
       },
       {
-        text: `<strong>Question 1/4:</strong> What is the Knight's goal?`,
+        text: `<strong>Question 1/3:</strong> What is the Knight's goal?`,
         options: ["Collect all Flasks",
                   "Defeat the Monster",
                   "Collect all the potions"],
@@ -581,7 +581,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         exam: true
       },
       {
-        text: `<strong>Question 1/4:</strong> What is the Knight's goal?`,
+        text: `<strong>Question 1/3:</strong> What is the Knight's goal?`,
         options: ["Collect all Flasks",
                   "Defeat the Monster",
                   "Collect all the potions"],
@@ -589,7 +589,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         feedback: true
       },
       {
-        text: `<strong>Question 2/4:</strong> What is your task in this game?`,
+        text: `<strong>Question 2/3:</strong> What is your task in this game?`,
         options: ["Control the Knight to defeat the Monster",
                   "Explore the map",
                   "Guess whether each flask contains potion or poison"],
@@ -597,7 +597,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         exam: true
       },
       {
-        text: `<strong>Question 2/4:</strong> What is your task in this game?`,
+        text: `<strong>Question 2/3:</strong> What is your task in this game?`,
         options: ["Control the Knight to defeat the Monster",
                   "Explore the map",
                   "Guess whether each flask contains potion or poison"],
@@ -605,23 +605,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         feedback: true
       },
       {
-        text: `<strong>Question 3/4:</strong> Which of the following is true?`,
-        options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
-                  "The player <strong> knows perfectly </strong> what's inside each flask.",
-                  "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
-        answer: 0,
-        exam: true
-      },
-      {
-        text: `<strong>Question 3/4:</strong> Which of the following is true?`,
-        options: ["The player has <strong> no definite knowledge </strong> about the contents of each flask.",
-                  "The player <strong> knows perfectly </strong> what's inside each flask.",
-                  "The player <strong> might know exactly </strong> what's in each flask, but <strong> might also be unsure. </strong>"],
-        answer: 0,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 4/4:</strong> Which of the following is true?`,
+        text: `<strong>Question 3/3:</strong> Which of the following is true?`,
         options: ["The Wizard strategically placed the flasks for the Knight.",
                   "The Wizard placed the flasks randomly.",
                   "The flasks are all randomly assigned."],
@@ -629,7 +613,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         exam: true
       },
       {
-        text: `<strong>Question 4/4:</strong> Which of the following is true?`,
+        text: `<strong>Question 3/3:</strong> Which of the following is true?`,
         options: ["The Wizard strategically placed the flasks for the Knight.",
                   "The Wizard placed the flasks randomly.",
                   "The flasks are all randomly assigned."],
