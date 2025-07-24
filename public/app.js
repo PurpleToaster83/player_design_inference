@@ -494,13 +494,13 @@ experimentApp.controller('ExperimentController',
       {
         text: `You're playing an adventure game shown to the left. 
               <br><br>
-              There is one knight <img class="caption-image" src="images/human.png"> whose goal goal is to defeat the monster <img class="caption-image" src="images/monster.png">. The black tiles on the map represent walls which cannot be passed through. there are two kinds of flasks in the game: a health potion or a poison. The flasks containing potions look identical to the flasks containing poisons and the flasks can only be placed in the orange tiles.
+              There is one Knight <img class="caption-image" src="images/human.png"> whose goal is to defeat the Monster <img class="caption-image" src="images/monster.png">. The black tiles on the map represent walls which cannot be passed through. there are two kinds of flasks in the game: a health potion or a poison. The flasks containing potions look identical to the flasks containing poisons and the flasks can only be placed in the orange tiles.
  <br> <br>
-              The chance of defeating the monster is improved by consuming a potion, and diminishes by consuming a poison. To help the Knight defeat the monster, a Wizard has secretly re-arranged the placements of the flasks. The Wizard cannot remove poison flasks from the map.
+              The chance of defeating the Monster is improved by consuming a potion, and diminishes by consuming a poison. To help the Knight defeat the Monster, a Wizard has secretly re-arranged the placements of the flasks. The Wizard cannot remove poison flasks from the map.
  <br> <br>
-              The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage. In the design stage, the Wizard arranges a set of flasks among the orange tiles. Then in the play stage, the Knight decides which flasks to obtain to defeat the monster. The Knight <strong> knows </strong> that the flasks have been arranged by a helpful Wizard.
+              The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage. In the design stage, the Wizard arranges a set of flasks among the orange tiles. Then in the play stage, the Knight decides which flasks to obtain to defeat the Monster. The Knight <strong> knows </strong> that the flasks have been arranged by a helpful Wizard.
  <br> <br>
-              The Wizard and the Knight do not know each other and cannot communicate. They both receive rewards if the monster is defeated at the end. Therefore, it is in the interest of both the Wizard and the Knight to optimally place and use the flasks.
+              The Wizard and the Knight do not know each other and cannot communicate. They both receive rewards if the Monster is defeated at the end. Therefore, it is in the interest of both the Wizard and the Knight to optimally place and use the flasks.
  <br> <br>
               In this experiment, you are playing the role of the Knight. We will show you the map after the Wizard has rearranged the flasks, and ask you to rate which flasks are potions and which ones are poison.
 
@@ -544,7 +544,7 @@ experimentApp.controller('ExperimentController',
         ]
       },
                 {
-        text: `As mentioned, you should assume that the Wizard wants you to succeed as both of you will benefit if you guess correctly (monster defeated!). The reward scheme is as follows:
+        text: `As mentioned, you should assume that the Wizard wants you to succeed as both of you will benefit if you guess correctly (Monster defeated!). The reward scheme is as follows:
 
 <br><br>
 For each question, Your rating will be compared to the answer key and rewards will be calibrated by considering the difference.
@@ -561,7 +561,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       },
 
       {
-        text: `You've now finished the practice round and the player can fight the monster using the potions and poisons you've collected!`
+        text: `You've now finished the practice round and the player can fight the Monster using the potions and poisons you've collected!`
       },
       {
         text: `<strong>Comprehension Questions</strong> <br>
@@ -575,7 +575,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         text: `<strong>Question 1/4:</strong> What is the Knight's goal?`,
         options: ["Collect all Flasks",
-                  "Defeat the monster",
+                  "Defeat the Monster",
                   "Collect all the potions"],
         answer: 1,
         exam: true
@@ -583,14 +583,14 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         text: `<strong>Question 1/4:</strong> What is the Knight's goal?`,
         options: ["Collect all Flasks",
-                  "Defeat the monster",
+                  "Defeat the Monster",
                   "Collect all the potions"],
         answer: 1,
         feedback: true
       },
       {
         text: `<strong>Question 2/4:</strong> What is your task in this game?`,
-        options: ["Control the knight to defeat the monster",
+        options: ["Control the Knight to defeat the Monster",
                   "Explore the map",
                   "Guess whether each flask contains potion or poison"],
         answer: 2,
@@ -598,7 +598,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       },
       {
         text: `<strong>Question 2/4:</strong> What is your task in this game?`,
-        options: ["Control the knight to defeat the monster",
+        options: ["Control the Knight to defeat the Monster",
                   "Explore the map",
                   "Guess whether each flask contains potion or poison"],
         answer: 2,
