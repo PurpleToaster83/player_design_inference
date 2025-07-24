@@ -496,9 +496,9 @@ experimentApp.controller('ExperimentController',
               <br><br>
               There is one knight <img class="caption-image" src="images/human.png"> whose goal goal is to defeat the monster <img class="caption-image" src="images/monster.png">. The black tiles on the map represent walls which cannot be passed through. there are two kinds of flasks in the game: a health potion or a poison. The flasks containing potions look identical to the flasks containing poisons and the flasks can only be placed in the orange tiles.
  <br> <br>
-              The chance of defeating the monster is improved by consuming a potion, and diminishes by consuming a poison. To help the Knight defeat the monster, a Wizard has secretly re-arranged the placements of the flasks.
+              The chance of defeating the monster is improved by consuming a potion, and diminishes by consuming a poison. To help the Knight defeat the monster, a Wizard has secretly re-arranged the placements of the flasks. The Wizard cannot remove poison flasks from the map.
  <br> <br>
-              The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage. In the design stage, the Wizard arranges a set of flasks among the orange tiles. Then in the play stage, the Knight decides which flasks to obtain to defeat the monster. The Wizard cannot remove poison flasks from the map.
+              The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage. In the design stage, the Wizard arranges a set of flasks among the orange tiles. Then in the play stage, the Knight decides which flasks to obtain to defeat the monster. The Knight <strong> knows </strong> that the flasks have been arranged by a helpful Wizard.
  <br> <br>
               The Wizard and the Knight do not know each other and cannot communicate. They both receive rewards if the monster is defeated at the end. Therefore, it is in the interest of both the Wizard and the Knight to optimally place and use the flasks.
  <br> <br>
