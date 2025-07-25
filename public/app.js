@@ -229,10 +229,10 @@ experimentApp.controller('ExperimentController',
       }
 
       $scope.div = document.getElementById('ground_truth')
-      if ($scope.inst_id == 3) {
-        $scope.div.innerHTML = "<br>Number of Potions: " + $scope.instructions[$scope.inst_id].numPotions + "<br><br>Number of Poisons: " + $scope.instructions[$scope.inst_id].numPoisons + "<br><br>";
-      }
-      else if ($scope.inst_id == 4) {
+      // if ($scope.inst_id == 3) {
+      //   $scope.div.innerHTML = "<br>Number of Potions: " + $scope.instructions[$scope.inst_id].numPotions + "<br><br>Number of Poisons: " + $scope.instructions[$scope.inst_id].numPoisons + "<br><br>";
+      // }
+      if ($scope.inst_id == 4) {
           $scope.div.innerHTML = "";
           $scope.div.innerHTML += "<u>Here are the types of liquid in each flask:</u>" + "<br><br>";
           $scope.instructions[$scope.inst_id].ground_truth.forEach((element) => {
@@ -276,10 +276,10 @@ experimentApp.controller('ExperimentController',
               $scope.div.innerHTML += element + "<br>";
           });
         }
-        if ($scope.part_id == 0) {
-          $scope.div.innerHTML = "";
-          $scope.div.innerHTML += "<br>Number of Potions: " + $scope.stimuli_set[$scope.stim_id].numPotions + "<br><br>Number of Poisons: " + $scope.stimuli_set[$scope.stim_id].numPoisons + "<br><br>";
-        }
+        // if ($scope.part_id == 0) {
+        //   $scope.div.innerHTML = "";
+        //   $scope.div.innerHTML += "<br>Number of Potions: " + $scope.stimuli_set[$scope.stim_id].numPotions + "<br><br>Number of Poisons: " + $scope.stimuli_set[$scope.stim_id].numPoisons + "<br><br>";
+        // }
         $scope.part_id = $scope.part_id + 1;
         if ($scope.part_id == $scope.stimuli_set[$scope.stim_id].length) {
           // Store ratings

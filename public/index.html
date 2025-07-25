@@ -146,7 +146,7 @@
         <p ng-show="!hide_questions() && has_belief_question()">The Wizard agent has arranged the flasks on the map. Please answer the following questions based on where you think the Wizard placed the potions and poisons:</strong></p>
         <p ng-hide="inst_id != 4">After you have answered what you think the contents of each potion is, you will be able to see what the correct answer is and how many points you scored.</p>
         <br>
-        <div id="ground_truth" ng-show="section == 'stimuli && (part_id == 1 || part_id == -1) || inst_id == 4 || inst_id == 3" ng-hide="(section != 'stimuli' && (inst_id != 4 && inst_id != 3)) || part_id == 0">
+        <div id="ground_truth" ng-show="section == 'stimuli && (part_id == -1) || inst_id == 4 || inst_id == 3" ng-hide="(section != 'stimuli' && (inst_id != 4)) || part_id == 0 || part_id == 1">
         </div>
         <br>
         <p ng-show="inst_id == 4">Press <strong>Next</strong> to continue.</p>
