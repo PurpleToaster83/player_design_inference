@@ -3,7 +3,6 @@ const root = firebase.database().ref();
 const resultsRef = root.child("results");
 const counterRef = root.child("counter");
 const counterKey = "count";
-let count = 0;
 
 var experimentApp = angular.module(
   'experimentApp', ['ngSanitize', 'preloader'],
@@ -24,6 +23,7 @@ experimentApp.controller('ExperimentController',
 
     $scope.valid_comprehension = false;
     $scope.comprehension_response = "";
+
 
     $scope.response = {
       "beliefs": [NaN, NaN],
@@ -56,6 +56,15 @@ experimentApp.controller('ExperimentController',
     $scope.total_reward = 0;
     $scope.total_payment = 0;
     $scope.stim_reward = 0;
+
+    $scope.data = {
+      "user_id": NaN,
+      "total_payment": 0,
+      "total_reward": 0,
+      "exam": NaN,
+      "demographic_survey": NaN,
+      "stimuli_set": {}
+      }
 
     $scope.log = function(...args) {
       if ($location.search().debug == "true") {
@@ -131,8 +140,7 @@ experimentApp.controller('ExperimentController',
       $scope.belief_statement_ids =
       $scope.array_sample(ids, $scope.n_displayed_statements);
       
-      $scope.belief_statements =
-        $scope.belief_statement_ids.map(id => cur_stim.statements[id]);
+      $scope.belief_statements = $scope.belief_statement_ids.map(id => cur_stim.statements[id]);
       $scope.log("Belief statement IDs: " + $scope.belief_statement_ids);
       $scope.log("Belief statements: " + $scope.belief_statements);
     }
@@ -165,7 +173,8 @@ experimentApp.controller('ExperimentController',
             mturk_id: $scope.id_q.value,
             feedback: $scope.feedback_q.value
           }
-          $scope.store_to_db($scope.user_id + "/demographic_survey", $scope.survey);
+          $scope.data.demographic_survey = $scope.survey;
+          $scope.store_to_db($scope.user_id, $scope.data);
         }
       }
     };
@@ -191,7 +200,7 @@ experimentApp.controller('ExperimentController',
           }
           $scope.log("Exam Results: " + exam_data.results);
           $scope.log("Exam Score: " + exam_data.score);
-          $scope.store_to_db($scope.user_id + "/exam", exam_data);
+          $scope.data.exam = exam_data;
           $scope.exam_done = true;
         }
         // Loop back to start of exam if not all questions are correct
@@ -254,8 +263,8 @@ experimentApp.controller('ExperimentController',
         $scope.section = "endscreen"
         $scope.end_id = 0; 
         $scope.total_payment = ($scope.total_reward > 0) ? $scope.total_reward / 100 : 0;
-        $scope.store_to_db($scope.user_id + "/total_reward", $scope.total_reward);
-        $scope.store_to_db($scope.user_id + "/total_payment", $scope.total_payment);
+        $scope.data.total_payment = $scope.total_payment;
+        $scope.data.total_reward = $scope.total_reward;
       }  else if ($scope.part_id < 0) {
         // Advance to first part
         $scope.part_id = $scope.part_id + 1;
@@ -266,7 +275,7 @@ experimentApp.controller('ExperimentController',
         // Advance to next part
         if ($scope.part_id > 0) {
           var step_ratings = $scope.compute_ratings($scope.response);
-          $scope.ratings.push(step_ratings);
+          $scope.ratings = step_ratings;
           $scope.log(step_ratings);
           $scope.calc_stim_reward($scope.response);
           $scope.total_reward += $scope.stim_reward;
@@ -283,7 +292,7 @@ experimentApp.controller('ExperimentController',
         $scope.part_id = $scope.part_id + 1;
         if ($scope.part_id == $scope.stimuli_set[$scope.stim_id].length) {
           // Store ratings
-          $scope.store_to_db($scope.user_id + "/" + $scope.stimuli_set[$scope.stim_id].name, $scope.ratings);
+          $scope.data.stimuli_set[$scope.stimuli_set[$scope.stim_id].name] = $scope.ratings;
           // Advance to next problem.
           $scope.part_id = -1;
           $scope.stim_id = $scope.stim_id + 1;
@@ -298,28 +307,14 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.compute_ratings = function (response) {
-      let cur_stim = $scope.stimuli_set[$scope.stim_id];
-      // Create array of belief ratings for every statement
-      let n_ratings = cur_stim.statements.length;
-      let statement_ratings = Array(n_ratings).fill(-1);
-      response.beliefs.forEach((rating, index) => {
-        statement_ratings[$scope.belief_statement_ids[index]] = rating;
+      rating = {
+        "time_spent": ((new Date()).getTime() - start_time) / 1000.,
+      }
+
+      response.beliefs.forEach((act_rating, index) => {
+        rating[$scope.belief_statement_ids[index]] = act_rating;
       });
 
-      // Normalize belief ratings
-      let min_rating = 1;
-      let max_rating = 7;
-      let statement_probs = statement_ratings.map(
-        (x) => x > 0 ? (x-min_rating)/(max_rating-min_rating) : x
-      );
-
-      rating = {
-        "timestep": cur_stim.times[$scope.part_id],
-        "time_spent": ((new Date()).getTime() - start_time) / 1000.,
-        "statement_ratings": statement_ratings,
-        "statement_probs": statement_probs,
-        "statement_ids": response.belief_ids.map(v => v+1),
-      }
       return rating;
     };
 
@@ -412,8 +407,7 @@ experimentApp.controller('ExperimentController',
       // Uncomment for testing stimuli
       let stim_idx = [];
       if ($location.search().test_all == "true") {
-        stim_idx = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-                    11, 12, 13, 14, 15, 16, 17, 18];
+        stim_idx = [1, 2, 3];
       } else {
         let count = await $scope.get_counter();
         stim_idx = $scope.stimuli_sets[count % $scope.stimuli_sets.length];  
@@ -427,8 +421,7 @@ experimentApp.controller('ExperimentController',
       $scope.log("stimuli ", $scope.stimuli_set);
 
       // Store stimuli set and user ID
-      $scope.store_to_db($scope.user_id + "/stimuli_set", stim_idx);
-      $scope.store_to_db($scope.user_id + "/user_id", $scope.user_id);
+      $scope.data.user_id = $scope.user_id;
 
       // Increment participant counter
       if ($location.search().test_all != "true") {
