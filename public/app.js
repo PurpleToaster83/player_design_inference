@@ -406,12 +406,8 @@ experimentApp.controller('ExperimentController',
     $scope.set_stimuli = async function () {
       // Uncomment for testing stimuli
       let stim_idx = [];
-      if ($location.search().test_all == "true") {
-        stim_idx = [1, 2, 3];
-      } else {
-        let count = await $scope.get_counter();
-        stim_idx = $scope.stimuli_sets[count % $scope.stimuli_sets.length];  
-      }
+      let count = await $scope.get_counter();
+      stim_idx = $scope.stimuli_sets[count % $scope.stimuli_sets.length];  
 
       $scope.log("stimuli idx = " , stim_idx);
       for (i = 0; i < stim_idx.length; i++) {
@@ -1122,7 +1118,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "4_3",
         "images": [
-          "stimuli/segments/M4L1_b.png",
+          "stimuli/segments/4_3_b.png",
           "stimuli/segments/M4L1P3.png"
         ],
         "times": [
