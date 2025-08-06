@@ -242,7 +242,7 @@ experimentApp.controller('ExperimentController',
       // if ($scope.inst_id == 3) {
       //   $scope.div.innerHTML = "<br>Number of Potions: " + $scope.instructions[$scope.inst_id].numPotions + "<br><br>Number of Poisons: " + $scope.instructions[$scope.inst_id].numPoisons + "<br><br>";
       // }
-      if ($scope.inst_id == 4) {
+      if ($scope.inst_id == 4 || $scope.inst_id == 7) {
           $scope.div.innerHTML = "";
           $scope.div.innerHTML += "<u>Here are the types of liquid in each flask:</u>" + "<br><br>";
           $scope.instructions[$scope.inst_id].ground_truth.forEach((element) => {
@@ -494,8 +494,6 @@ experimentApp.controller('ExperimentController',
 
               `,
         image: "stimuli/segments/tutorial_b.png",
-        numPotions: 1,
-        numPoisons: 1
       }, 
       {
         text: `At each trial, we will show you the flask placement and ask you questions about the <strong>type</strong> of liquid in the flask.<br>
@@ -516,8 +514,6 @@ experimentApp.controller('ExperimentController',
         statements: ["Is flask <strong>A</strong> a Potion or a Poison? ",
                     "Is flask <strong>B</strong> a Potion or a Poison?"],
         image: "stimuli/segments/tutorial.png",
-        numPotions: 1,
-        numPoisons: 1
       },
       {
         image: "stimuli/segments/tutorial.png",
@@ -526,7 +522,31 @@ experimentApp.controller('ExperimentController',
           "B is a Poison"
         ]
       },
-                {
+      {
+        text: `Now look at this map which has been slightly altered from the previous one.
+        <br><br><br>
+        Press <strong>Next</strong> to continue.`,
+        tutorial: true,
+        image: "stimuli/segments/tutorial2_b.png",
+
+      },
+      {
+        text: `<br>`,
+        tutorial: true,
+        show_questions: true,
+        question_types: ["beliefs"],
+        statements: ["Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>B</strong> a Potion or a Poison?"],
+        image: "stimuli/segments/tutorial2.png"
+      },
+      {
+        image: "stimuli/segments/tutorial2.png",
+        ground_truth: [
+           "A is a Potion",
+          "B is a Poison"
+        ]
+      },
+      {
         text: `As mentioned, you should assume that the Wizard wants you to succeed as both of you will benefit if you guess correctly (Monster defeated!). The reward scheme is as follows:
 
 <br><br>
@@ -542,7 +562,6 @@ Similarly, if the flask contains a potion and you answer 7, you receive 3 points
 You accumulate the points you receive over all the maps you play and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 100 points.
  `
       },
-
       {
         text: `You've now finished the practice round and the player can fight the Monster using the potions and poisons you've collected!`
       },
