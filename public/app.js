@@ -175,6 +175,7 @@ experimentApp.controller('ExperimentController',
           }
           $scope.data.demographic_survey = $scope.survey;
           $scope.store_to_db($scope.user_id, $scope.data);
+          $scope.increment_counter;
         }
       }
     };
@@ -419,11 +420,6 @@ experimentApp.controller('ExperimentController',
       // Store stimuli set and user ID
       $scope.data.user_id = $scope.user_id;
 
-      // Increment participant counter
-      if ($location.search().test_all != "true") {
-        $scope.increment_counter();
-      }
-
       // Preload first stimulus
       preloader.preloadImages($scope.stimuli_set[0].images).then(
         function handleResolve(imglocs) {
@@ -614,7 +610,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         text: `Congratulations! You've finished the tutorial.
                <br><br>
-               You will now play the game for 10 different rounds.
+               You will now play the game for 12 different rounds.
                <br><br>
                Ready to start? Press <strong>Next</strong> to continue!`
       }
