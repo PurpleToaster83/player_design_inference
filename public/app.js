@@ -543,7 +543,7 @@ experimentApp.controller('ExperimentController',
         image: "stimuli/segments/tutorial2.png",
         ground_truth: [
            "A is a Potion",
-          "B is a Poison"
+          "B is a Potion"
         ]
       },
       {
@@ -761,7 +761,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         "length": 2,
         ground_truth: [
           "A is a Poison",
-          "B is a Potion"
+          "B is a Poison"
         ]
       },
       {
@@ -803,7 +803,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         "length": 2,
         ground_truth: [
           "A is a Potion",
-          "B is a Poison"
+          "B is a Potion"
         ]
       },
       {
@@ -845,7 +845,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         "length": 2,
         ground_truth: [
           "A is a Poison",
-          "B is a Potion"
+          "B is a Poison"
         ]
       },
       {
