@@ -485,7 +485,7 @@ experimentApp.controller('ExperimentController',
  <br> <br>
               The Wizard and the Knight do not know each other and cannot communicate. They both receive rewards if the Monster is defeated at the end. Therefore, it is in the interest of both the Wizard and the Knight to optimally place and use the flasks.
  <br> <br>
-              In this experiment, you are playing the role of the Knight. We will show you the map after the Wizard has rearranged the flasks, and ask you to rate which flasks are potions and which ones are poison.
+              In this experiment, you are playing the role of the Knight. We will show you the map after the Wizard has rearranged the flasks, and ask you to rate which flasks are potions and which ones are poison. You don't know how many potions/poisons there are. It's possible to have posion or potion in all the flasks.
 
  <br> <br>
 
@@ -523,7 +523,7 @@ experimentApp.controller('ExperimentController',
         ]
       },
       {
-        text: `Now look at this map which has been slightly altered from the previous one.
+        text: `Now look at this map which has been slightly altered from the previous one. Think about how does removing the empty slot in the middle change your judgment.
         <br><br><br>
         Press <strong>Next</strong> to continue.`,
         tutorial: true,
