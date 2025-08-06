@@ -448,9 +448,7 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.stimuli_sets = [
-      [1, 4, 7, 12, 14, 18, 19, 22, 27, 30],
-      [2, 6, 8, 11, 13, 17, 20, 23, 25, 29],
-      [3, 5, 9, 10, 15, 16, 21, 24, 26, 28]
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
@@ -636,8 +634,8 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "1_1",
         "images": [
-          "stimuli/segments/M1L1_b.png",
-          "stimuli/segments/M1L1P1.png"
+          "stimuli/segments/1_1_b.png",
+          "stimuli/segments/1_1.png"
         ],
         "times": [
           1,
@@ -645,26 +643,18 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? ",
-          "Is flask <strong>D</strong> a Potion or a Poison? "
+          "Is flask <strong>A</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 2,
-        numPoisons: 2,
         ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
-          "C is a Potion",
-          "D is a Poison"
+          "A is a Poison"
         ]
       },
       {
         "name": "1_2",
         "images": [
-          "stimuli/segments/M1L1_b.png",
-          "stimuli/segments/M1L1P2.png",
+          "stimuli/segments/1_1_b.png",
+          "stimuli/segments/1_2.png"
         ],
         "times": [
           1,
@@ -673,21 +663,17 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "statements": [
           "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
         ],
         "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
         ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
+          "A is a Potion"
         ]
       },
       {
         "name": "1_3",
         "images": [
-          "stimuli/segments/M1L1_b.png",
-          "stimuli/segments/M1L1P3.png"
+          "stimuli/segments/1_3_b.png",
+          "stimuli/segments/1_3.png"
         ],
         "times": [
           1,
@@ -695,24 +681,18 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? "
+          "Is flask <strong>A</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 1,
-        numPoisons: 2,
         ground_truth: [
-          "A is a Poison",
-          "B is a Poison",
-          "C is a Potion"
+          "A is a Potion"
         ]
       },
       {
         "name": "1_4",
         "images": [
-          "stimuli/segments/M1L2_b.png",
-          "stimuli/segments/M1L2P1.png"
+          "stimuli/segments/1_4_b.png",
+          "stimuli/segments/1_4.png"
         ],
         "times": [
           1,
@@ -720,72 +700,18 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? "
+          "Is flask <strong>A</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 2,
-        numPoisons: 1,
         ground_truth: [
-          "A is a Potion",
-          "B is a Poison",
-          "C is a Potion"
-        ]
-      },
-      {
-        "name": "1_5",
-        "images": [
-          "stimuli/segments/M1L2_b.png",
-          "stimuli/segments/M1L2P2.png",
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Poison",
-        ]
-      },
-      {
-        "name": "1_6",
-        "images": [
-          "stimuli/segments/M1L1_b.png",
-          "stimuli/segments/M1L2P3.png",
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 2,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
-          "C is a Poison"
+          "A is a Poison"
         ]
       },
       {
         "name": "2_1",
         "images": [
-          "stimuli/segments/M2L1_b.png",
-          "stimuli/segments/M2L1P1.png"
+          "stimuli/segments/2_1_b.png",
+          "stimuli/segments/2_1.png"
         ],
         "times": [
           1,
@@ -793,24 +719,20 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? "
+          "Is flask <strong>A</strong> a Potion or a Poison?",
+          "Is flask <strong>B</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 2,
-        numPoisons: 1,
         ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
-          "C is a Potion"
+          "A is a Potion",
+          "B is a Poison"
         ]
       },
       {
         "name": "2_2",
         "images": [
-          "stimuli/segments/M2L1_b.png",
-          "stimuli/segments/M2L1P2.png"
+          "stimuli/segments/2_1_b.png",
+          "stimuli/segments/2_2.png"
         ],
         "times": [
           1,
@@ -818,45 +740,41 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
+          "Is flask <strong>A</strong> a Potion or a Poison?",
+          "Is flask <strong>B</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Poison"
-        ]
-      },
-        {
-        "name": "2_3",
-          "images": [
-          "stimuli/segments/M2L1_b.png",
-          "stimuli/segments/M2L1P3.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
         ground_truth: [
           "A is a Poison",
-          "B is a Potion",
+          "B is a Potion"
+        ]
+      },
+      {
+        "name": "2_3",
+        "images": [
+          "stimuli/segments/2_3_b.png",
+          "stimuli/segments/2_3.png"
+        ],
+        "times": [
+          1,
+          1,
+          1
+        ],
+        "statements": [
+          "Is flask <strong>A</strong> a Potion or a Poison?",
+          "Is flask <strong>B</strong> a Potion or a Poison?"
+        ],
+        "length": 2,
+        ground_truth: [
+          "A is a Poison",
+          "B is a Potion"
         ]
       },
       {
         "name": "2_4",
         "images": [
-          "stimuli/segments/M2L2_b.png",
-          "stimuli/segments/M2L2P1.png"
+          "stimuli/segments/2_4_b.png",
+          "stimuli/segments/2_4.png"
         ],
         "times": [
           1,
@@ -864,72 +782,20 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? ",
-          "Is flask <strong>D</strong> a Potion or a Poison? "
+          "Is flask <strong>A</strong> a Potion or a Poison?",
+          "Is flask <strong>B</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 2,
-        numPoisons: 2,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
-          "C is a Potion",
-          "D is a Poison"
-        ]
-      },
-      {
-        "name": "2_5",
-        "images": [
-          "stimuli/segments/M2L2_b.png",
-          "stimuli/segments/M2L2P2.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
         ground_truth: [
           "A is a Potion",
-          "B is a Poison",
-        ]
-      },
-      {
-        "name": "2_6",
-        "images": [
-          "stimuli/segments/M2L2_b.png",
-          "stimuli/segments/M2L2P3.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
+          "B is a Poison"
         ]
       },
       {
         "name": "3_1",
         "images": [
-          "stimuli/segments/M3L1_b.png",
-          "stimuli/segments/M3L1P1.png"
+          "stimuli/segments/3_1_b.png",
+          "stimuli/segments/3_1.png"
         ],
         "times": [
           1,
@@ -937,22 +803,20 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
+          "Is flask <strong>A</strong> a Potion or a Poison?",
+          "Is flask <strong>B</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
         ground_truth: [
-          "A is a Potion",
-          "B is a Poison"
+          "A is a Poison",
+          "B is a Potion"
         ]
       },
       {
         "name": "3_2",
         "images": [
           "stimuli/segments/3_2_b.png",
-          "stimuli/segments/M3L1P2.png"
+          "stimuli/segments/3_2.png"
         ],
         "times": [
           1,
@@ -960,22 +824,20 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "Is flask <strong>A</strong> a Potion or a Poison?",
           "Is flask <strong>B</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
         ground_truth: [
           "A is a Poison",
-          "B is a Potion",
+          "B is a Potion"
         ]
       },
       {
         "name": "3_3",
         "images": [
-          "stimuli/segments/3_3_b.png",
-          "stimuli/segments/M3L1P3.png"
+          "stimuli/segments/3_2_b.png",
+          "stimuli/segments/3_3.png"
         ],
         "times": [
           1,
@@ -983,22 +845,22 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
+          "Is flask <strong>A</strong> a Potion or a Poison?",
+          "Is flask <strong>B</strong> a Potion or a Poison?",
+          "Is flask <strong>C</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
         ground_truth: [
           "A is a Potion",
-          "B is a Poison"
+          "B is a Poison",
+          "C is a Potion"
         ]
       },
       {
         "name": "3_4",
         "images": [
-          "stimuli/segments/M3L2_b.png",
-          "stimuli/segments/M3L2P1.png"
+          "stimuli/segments/3_4_b.png",
+          "stimuli/segments/3_4.png"
         ],
         "times": [
           1,
@@ -1006,354 +868,17 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 2,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Potion",
-          "C is a Poison"
-        ]
-      },
-      {
-        "name": "3_5",
-        "images": [
-          "stimuli/segments/M3L2_b.png",
-          "stimuli/segments/M3L2P2.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Poison"
-        ]
-      },
-      {
-        "name": "3_6",
-        "images": [
-          "stimuli/segments/M3L2_b.png",
-          "stimuli/segments/M3L2P3.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
+          "Is flask <strong>A</strong> a Potion or a Poison?",
+          "Is flask <strong>B</strong> a Potion or a Poison?",
           "Is flask <strong>C</strong> a Potion or a Poison?"
         ],
         "length": 2,
-        numPotions: 1,
-        numPoisons: 2,
         ground_truth: [
           "A is a Potion",
           "B is a Poison",
-          "C is a Poison"
-        ]
-      },
-      {
-        "name": "4_1",
-        "images": [
-          "stimuli/segments/M4L1_b.png",
-          "stimuli/segments/M4L1P1.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 2,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
           "C is a Potion"
         ]
       },
-      {
-        "name": "4_2",
-        "images": [
-          "stimuli/segments/M4L1_b.png",
-          "stimuli/segments/M4L1P2.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion"
-        ]
-      },
-      {
-        "name": "4_3",
-        "images": [
-          "stimuli/segments/4_3_b.png",
-          "stimuli/segments/M4L1P3.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion"
-        ]
-      },
-      {
-        "name": "4_4",
-        "images": [
-          "stimuli/segments/M4L2_b.png",
-          "stimuli/segments/M4L2P1.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion"
-        ]
-      },
-      {
-        "name": "4_5",
-        "images": [
-          "stimuli/segments/4_5_b.png",
-          "stimuli/segments/M4L2P2.png",
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 2,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
-          "C is a Potion"
-        ]
-      },
-      {
-        "name": "4_6",
-        "images": [
-          "stimuli/segments/4_5_b.png",
-          "stimuli/segments/M4L2P3.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion",
-        ]
-      },
-      {
-        "name": "5_1",
-        "images": [
-          "stimuli/segments/M5L1_b.png",
-          "stimuli/segments/M5L1P1.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 2,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Potion",
-          "C is a Poison"
-        ]
-      },
-      {
-        "name": "5_2",
-        "images": [
-          "stimuli/segments/M5L1_b.png",
-          "stimuli/segments/M5L1P2.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Posion"
-        ]
-      },
-      {
-        "name": "5_3",
-        "images": [
-          "stimuli/segments/M5L1_b.png",
-          "stimuli/segments/M5L1P3.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Poison"
-        ]
-      },
-      {
-        "name": "5_4",
-        "images": [
-          "stimuli/segments/M5L2_b.png",
-          "stimuli/segments/M5L2P1.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? ",
-          "Is flask <strong>C</strong> a Potion or a Poison? ",
-          "Is flask <strong>D</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 2,
-        numPoisons: 2,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Potion",
-          "C is a Poison",
-          "D is a Poison"
-        ]
-      },
-      {
-        "name": "5_5",
-        "images": [
-          "stimuli/segments/M5L2_b.png",
-          "stimuli/segments/M5L2P2.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1,
-        ground_truth: [
-          "A is a Potion",
-          "B is a Poison"
-        ]
-      },
-      {
-        "name": "5_6",
-        "images": [
-          "stimuli/segments/M5L2_b.png",
-          "stimuli/segments/M5L2P3.png"
-        ],
-        "times": [
-          1,
-          1,
-          1
-        ],
-        "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison? "
-        ],
-        "length": 2,
-        numPotions: 1,
-        numPoisons: 1
-        ,
-        ground_truth: [
-          "A is a Poison",
-          "B is a Potion"
-        ]
-      }
     ]
   }
 )
