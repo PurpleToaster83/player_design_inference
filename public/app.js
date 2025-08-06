@@ -175,7 +175,7 @@ experimentApp.controller('ExperimentController',
           }
           $scope.data.demographic_survey = $scope.survey;
           $scope.store_to_db($scope.user_id, $scope.data);
-          $scope.increment_counter;
+          $scope.increment_counter();
         }
       }
     };
