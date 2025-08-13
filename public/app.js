@@ -517,10 +517,7 @@ experimentApp.controller('ExperimentController',
       },
       {
         image: "stimuli/segments/tutorial.png",
-        ground_truth: [
-           "A is a Potion",
-          "B is a Poison"
-        ]
+        text: "In this case, flask A contains a potion and flask B contains a poison. This is because the wizard chooses to place flask B in the far away slot when they had a choice of placing it closer."
       },
       {
         text: `Now look at this map which has been slightly altered from the previous one. Think about how does removing the empty slot in the middle change your judgment.
@@ -541,10 +538,7 @@ experimentApp.controller('ExperimentController',
       },
       {
         image: "stimuli/segments/tutorial2.png",
-        ground_truth: [
-           "A is a Potion",
-          "B is a Potion"
-        ]
+        text: "In this case both flasks contain potions! In this case, the wizard intentionally placed Flask B (a potion) far away from the agent, because there is no other spare orange slots left."
       },
       {
         text: `As mentioned, you should assume that the Wizard wants you to succeed as both of you will benefit if you guess correctly (Monster defeated!). The reward scheme is as follows:
