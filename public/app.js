@@ -562,14 +562,14 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         text: `<strong>Comprehension Questions</strong> <br>
                <br>
-               For the last part of the tutorial, we will ask 3 quick questions to check your understanding of the task.<br>
+               For the last part of the tutorial, we will ask 5 quick questions to check your understanding of the task.<br>
                <br>
                Answer <strong>all questions correctly</strong> in order to proceed to the main experiment.
                You can retake the quiz as many times as necessary.
               `
       },
       {
-        text: `<strong>Question 1/3:</strong> What is the Knight's goal?`,
+        text: `<strong>Question 1/5:</strong> What is the Knight's goal?`,
         options: ["Collect all Flasks",
                   "Defeat the Monster",
                   "Collect all the potions"],
@@ -577,7 +577,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         exam: true
       },
       {
-        text: `<strong>Question 1/3:</strong> What is the Knight's goal?`,
+        text: `<strong>Question 1/5:</strong> What is the Knight's goal?`,
         options: ["Collect all Flasks",
                   "Defeat the Monster",
                   "Collect all the potions"],
@@ -585,7 +585,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         feedback: true
       },
       {
-        text: `<strong>Question 2/3:</strong> What is your task in this game?`,
+        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
         options: ["Control the Knight to defeat the Monster",
                   "Explore the map",
                   "Guess whether each flask contains potion or poison"],
@@ -593,7 +593,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         exam: true
       },
       {
-        text: `<strong>Question 2/3:</strong> What is your task in this game?`,
+        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
         options: ["Control the Knight to defeat the Monster",
                   "Explore the map",
                   "Guess whether each flask contains potion or poison"],
@@ -601,7 +601,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         feedback: true
       },
       {
-        text: `<strong>Question 3/3:</strong> Which of the following is true?`,
+        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
         options: ["The Wizard strategically placed the flasks for the Knight.",
                   "The Wizard placed the flasks randomly.",
                   "The flasks are all randomly assigned."],
@@ -609,11 +609,43 @@ You accumulate the points you receive over all the maps you play and will be pai
         exam: true
       },
       {
-        text: `<strong>Question 3/3:</strong> Which of the following is true?`,
+        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
         options: ["The Wizard strategically placed the flasks for the Knight.",
                   "The Wizard placed the flasks randomly.",
                   "The flasks are all randomly assigned."],
         answer: 0,
+        feedback: true
+      },
+      {
+        text: `<strong>Question 4/5:</strong> Where can the wizard place the potions?`,
+        options: ["Anywhere on the map.",
+                  "ONLY in the orange slots.",
+                  "ONLY next to a wall, the knight, or the monster."],
+        answer: 1,
+        exam: true
+      },
+      {
+        text: `<strong>Question 4/5:</strong> Which of the following is true?`,
+        options: ["Anywhere on the map.",
+                  "ONLY in the orange slots.",
+                  "ONLY next to a wall, the knight, or the monster."],
+        answer: 1,
+        feedback: true
+      },
+      {
+        text: `<strong>Question 5/5:</strong> If the wizard arranged two flasks and there are two orange slots. How many potions or poisons are there?`,
+        options: ["Both are poisons",
+                  "Both are potions",
+                  "They can be all potion, all poison, or one of each."],
+        answer: 2,
+        exam: true
+      },
+      {
+        text: `<strong>Question 5/5:</strong> Which of the following is true?`,
+        options: ["Both are poisons",
+                  "Both are potions",
+                  "They can be all potion, all poison, or one of each."],
+        answer: 2,
         feedback: true
       },
       {
