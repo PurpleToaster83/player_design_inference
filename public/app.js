@@ -52,6 +52,7 @@ experimentApp.controller('ExperimentController',
     $scope.replay_id = 0;
 
     $scope.user_count = 0;
+
     $scope.div = document.getElementById('ground_truth');
     $scope.total_reward = 0;
     $scope.total_payment = 0;
@@ -123,8 +124,10 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.validate_belief = function () {
-      $scope.valid_belief = $scope.response.beliefs.every(rating => !isNaN(rating));
-    }
+      $scope.valid_belief = $scope.response.beliefs.every(rating => 
+        !isNaN(rating) && rating >= 1 && rating <= 100
+      );
+}
 
     $scope.validate_exam = function (ans) {
       $scope.exam_response = ans;
@@ -146,17 +149,27 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.reset_response = function () {
+      // Ensure the beliefs array is properly sized
+      const numStatements = $scope.belief_statements.length;
       $scope.response = {
-        "beliefs": Array($scope.belief_statements.length).fill(NaN),
+        "beliefs": Array(numStatements).fill(50), // Initialize with 50 instead of NaN
         "belief_ids": $scope.belief_statement_ids
       };
     }
 
     $scope.advance = async function () {
+      // Remove this block that was resetting sliders:
+      /*
+      document.querySelectorAll('.wrapper input[type="range"]').forEach((slider) => {
+        slider.value = 50;
+        slider.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+      */
+
       if ($scope.section == "instructions") {
         await $scope.advance_instructions()
       } else if ($scope.section == "stimuli") {
-        await $scope.advance_stimuli()
+          await $scope.advance_stimuli()
       } else if ($scope.section == "endscreen") {
         $scope.end_id += 1;
         if ($scope.end_id == 2) {
@@ -434,12 +447,12 @@ experimentApp.controller('ExperimentController',
       response.beliefs.forEach((belief, index) => {
         const liquid_type = $scope.stimuli_set[$scope.stim_id].ground_truth[index].substring(7);
         if (liquid_type == "Potion") {
-          $scope.diff = 7 - belief;
+          $scope.diff = 100 - belief;
         }
         else {
           $scope.diff = belief - 1;
         }
-        $scope.stim_reward += (-1 * $scope.diff) + 3;
+        $scope.stim_reward += ((-1 / 5) * $scope.diff) + 10;
       });
     }
 
@@ -449,24 +462,24 @@ experimentApp.controller('ExperimentController',
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
     $scope.instructions = [
-      // {
-      //   text: `Welcome to our guessing game!
-      //         <br><br>
-      //         Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
-      //         <br><br>
-      //         Press <strong>Next</strong> to continue.`,
-      // },
-      // {
-      //   text: `You're watching someone play the treasure game shown to the left.
-      //         <br><br>
-      //         You are currently looking at an empty map with empty item slots.
-      //         You control a character <img class="caption-image" src="images/human.png">,
-      //         whose goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
-      //         However, the character is currently too weak to fight the monster and must first collect items to become stronger.
-      //         <br><br>
-      //         Press the <strong>Next</strong> button to continue.`,
-      //         image: "stimuli/segments/tutorial_b.png"
-      // },
+      {
+        text: `Welcome to our guessing game!
+              <br><br>
+              Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
+              <br><br>
+              Press <strong>Next</strong> to continue.`,
+      },
+      {
+        text: `You're watching someone play the treasure game shown to the left.
+              <br><br>
+              You are currently looking at an empty map with empty item slots.
+              You control a character <img class="caption-image" src="images/human.png">,
+              whose goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
+              However, the character is currently too weak to fight the monster and must first collect items to become stronger.
+              <br><br>
+              Press the <strong>Next</strong> button to continue.`,
+              image: "stimuli/segments/tutorial_b.png"
+      },
       {
         text: `Welcome to the Potion or Poison game!
               <br><br>
@@ -498,8 +511,8 @@ experimentApp.controller('ExperimentController',
       {
         text: `At each trial, we will show you the flask placement and ask you questions about the <strong>type</strong> of liquid in the flask.<br>
               <br>
-              Rate <strong>7</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
-              Rate <strong>4</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.             <br>
+              Rate <strong>100</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
+              Rate <strong>50</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.             <br>
               Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
               Press <strong>Next</strong> to watch what happens.
               `,
@@ -680,7 +693,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -699,7 +712,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -718,7 +731,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -737,7 +750,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -756,7 +769,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -777,7 +790,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -798,7 +811,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -819,7 +832,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -840,7 +853,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -861,7 +874,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -882,7 +895,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [
@@ -905,7 +918,7 @@ You accumulate the points you receive over all the maps you play and will be pai
         ],
         "times": [
           1,
-          1,
+          30,
           1
         ],
         "statements": [

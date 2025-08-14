@@ -254,3 +254,40 @@ input[type=radio] {
 .survey {
   background-color: red;
 }
+
+.wrapper {  
+    width: 600px;
+    text-align: center;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background-image: url('images/empty.png');
+  background-size: contain;
+  background-repeat: no;
+}
+
+.slider {
+    appearance: none;
+    width: 500px;
+    opacity: 0.8;
+    height: 25px;
+    background-image: linear-gradient(to right, rgb(0, 255, 0), rgb(179, 0, 255));
+    width: calc(100% + 25px);
+    margin-left: -12.5px;
+}
+
+.slider:hover {
+  transform: translateY(-2px);
+  transition: 0.2s;
+    opacity: 1;
+}
+
+.display {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
