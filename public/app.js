@@ -13,7 +13,7 @@ var experimentApp = angular.module(
 var start_time;
 
 experimentApp.controller('ExperimentController',
-  function ExperimentController($scope, $timeout, $location, preloader) {
+  function ExperimentController($scope, $timeout, $location, $interval, preloader) {
     $scope.user_id = Date.now();
 
     $scope.section = "instructions";
@@ -23,7 +23,6 @@ experimentApp.controller('ExperimentController',
 
     $scope.valid_comprehension = false;
     $scope.comprehension_response = "";
-
 
     $scope.response = {
       "beliefs": [NaN, NaN],
@@ -57,6 +56,10 @@ experimentApp.controller('ExperimentController',
     $scope.total_reward = 0;
     $scope.total_payment = 0;
     $scope.stim_reward = 0;
+
+    $scope.button_disabled = false;
+    $scope.countdown_time = 0;
+    $scope.timer_active = false;
 
     $scope.data = {
       "user_id": NaN,
@@ -262,6 +265,10 @@ experimentApp.controller('ExperimentController',
               $scope.div.innerHTML += element + "<br>";
           });
       }
+
+      if ($scope.inst_id == 22) {
+        $scope.disable_button_for_seconds(10);
+      }
       
       $scope.reset_response();
       $scope.valid_belief = false;
@@ -271,12 +278,34 @@ experimentApp.controller('ExperimentController',
       $scope.valid_exam = false;
     };
 
+    $scope.disable_button_for_seconds = function (seconds) {
+      if ($scope.countdownTimer) {
+        $interval.cancel($scope.countdownTimer);
+      }
+      
+      $scope.button_disabled = true;
+      $scope.countdown_time = seconds;
+      $scope.timer_active = true;
+      
+      $scope.countdownTimer = $interval(function() {
+        $scope.countdown_time--;
+        
+        if ($scope.countdown_time <= 0) {
+          $scope.countdown_time = 0;
+          $scope.button_disabled = false;
+          $scope.timer_active = false;
+          $interval.cancel($scope.countdownTimer);
+          $scope.countdownTimer = null;
+        }
+      }, 1000);
+    };
+
     $scope.advance_stimuli = async function () {
       if ($scope.stim_id == $scope.stimuli_set.length) {
         // Advance to endscreen
         $scope.section = "endscreen"
         $scope.end_id = 0; 
-        $scope.total_payment = ($scope.total_reward > 0) ? $scope.total_reward / 100 : 0;
+        $scope.total_payment = ($scope.total_reward > 0) ? Math.round($scope.total_reward / 10) / 100 : 0;
         $scope.data.total_payment = $scope.total_payment;
         $scope.data.total_reward = $scope.total_reward;
       }  else if ($scope.part_id < 0) {
@@ -285,6 +314,9 @@ experimentApp.controller('ExperimentController',
         $scope.ratings = [];
         await $scope.set_belief_statements($scope.stim_id);
         start_time = (new Date()).getTime();
+        if ($scope.part_id == 0) {
+          $scope.disable_button_for_seconds(10);
+        }
       } else if ($scope.part_id < $scope.stimuli_set[$scope.stim_id].length) {
         // Advance to next part
         if ($scope.part_id > 0) {
@@ -450,9 +482,9 @@ experimentApp.controller('ExperimentController',
           $scope.diff = 100 - belief;
         }
         else {
-          $scope.diff = belief - 1;
+          $scope.diff = belief;
         }
-        $scope.stim_reward += ((-1 / 5) * $scope.diff) + 10;
+        $scope.stim_reward += (-1 * $scope.diff) + 3;
       });
     }
 
@@ -462,24 +494,24 @@ experimentApp.controller('ExperimentController',
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
     $scope.instructions = [
-      {
-        text: `Welcome to our guessing game!
-              <br><br>
-              Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
-              <br><br>
-              Press <strong>Next</strong> to continue.`,
-      },
-      {
-        text: `You're watching someone play the treasure game shown to the left.
-              <br><br>
-              You are currently looking at an empty map with empty item slots.
-              You control a character <img class="caption-image" src="images/human.png">,
-              whose goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
-              However, the character is currently too weak to fight the monster and must first collect items to become stronger.
-              <br><br>
-              Press the <strong>Next</strong> button to continue.`,
-              image: "stimuli/segments/tutorial_b.png"
-      },
+      // {
+      //   text: `Welcome to our guessing game!
+      //         <br><br>
+      //         Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
+      //         <br><br>
+      //         Press <strong>Next</strong> to continue.`,
+      // },
+      // {
+      //   text: `You're watching someone play the treasure game shown to the left.
+      //         <br><br>
+      //         You are currently looking at an empty map with empty item slots.
+      //         You control a character <img class="caption-image" src="images/human.png">,
+      //         whose goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
+      //         However, the character is currently too weak to fight the monster and must first collect items to become stronger.
+      //         <br><br>
+      //         Press the <strong>Next</strong> button to continue.`,
+      //         image: "stimuli/segments/tutorial_b.png"
+      // },
       {
         text: `Welcome to the Potion or Poison game!
               <br><br>
@@ -566,7 +598,7 @@ If the flask contains a poison and you answer 7, you receive -3 points. If you a
 Similarly, if the flask contains a potion and you answer 7, you receive 3 points. If you answer 1, you receive -3 points. If you answer 4, you receive 0 points.
 
 <br><br>
-You accumulate the points you receive over all the maps you play and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 100 points.
+You accumulate the points you receive over all the maps you play and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 1000 points.
  `
       },
       {
