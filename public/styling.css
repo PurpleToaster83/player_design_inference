@@ -259,6 +259,7 @@ input[type=radio] {
     width: 750px;
     text-align: center;
     position: relative;
+    transform: translateX(-70px);
 }
 
 .slider_value {
