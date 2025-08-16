@@ -258,32 +258,56 @@ input[type=radio] {
 .wrapper {  
     width: 600px;
     text-align: center;
+    position: relative;
+}
+
+.slider_value {
+  position: absolute;
+  top: -35px;
+  left: 0; /* Will be set by JavaScript */
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  pointer-events: none;
+  transition: left 0.1s ease;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.slider_value::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
   width: 25px;
   height: 25px;
-  background-image: url('images/empty.png');
   background-size: contain;
-  background-repeat: no;
+  background-repeat: no-repeat;
 }
 
 .slider {
-    appearance: none;
-    width: 500px;
-    opacity: 0.8;
-    height: 25px;
-    background-image: linear-gradient(to right, rgb(0, 255, 0), rgb(179, 0, 255));
-    width: calc(100% + 25px);
-    margin-left: -12.5px;
+  position: relative;
+  width: 500px;
+  opacity: 0.8;
+  height: 25px;
 }
 
 .slider:hover {
   transform: translateY(-2px);
   transition: 0.2s;
-    opacity: 1;
+  opacity: 1;
 }
 
 .display {

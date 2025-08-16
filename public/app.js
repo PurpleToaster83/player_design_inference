@@ -68,7 +68,7 @@ experimentApp.controller('ExperimentController',
       "exam": NaN,
       "demographic_survey": NaN,
       "stimuli_set": {}
-      }
+    }
 
     $scope.log = function(...args) {
       if ($location.search().debug == "true") {
@@ -158,6 +158,12 @@ experimentApp.controller('ExperimentController',
         "beliefs": Array(numStatements).fill(50), // Initialize with 50 instead of NaN
         "belief_ids": $scope.belief_statement_ids
       };
+
+      $timeout(function() {
+          for (let i = 0; i < numStatements; i++) {
+              $scope.updateSliderValuePosition(i, 50);
+          }
+      }, 100);
     }
 
     $scope.advance = async function () {
@@ -487,6 +493,38 @@ experimentApp.controller('ExperimentController',
         $scope.stim_reward += (-1 * $scope.diff) + 3;
       });
     }
+
+    $scope.updateSliderValuePosition = function(index, value) {
+        $timeout(function() {
+            const sliderElement = document.querySelector(`#belief_rating_${index}`);
+            const sliderValueElement = document.querySelector(`label[for="belief_rating_${index}"]`);
+            
+            if (sliderElement && sliderValueElement) {
+                const sliderRect = sliderElement.getBoundingClientRect();
+                const sliderWidth = sliderRect.width;
+                
+                const min = parseFloat(sliderElement.min) || 0;
+                const max = parseFloat(sliderElement.max) || 100;
+                const val = parseFloat(value);
+                
+                if (val === 0) {
+                    sliderValueElement.style.left = '12.5px';
+                    sliderValueElement.style.transform = 'translateX(-50%)';
+                    return;
+                }
+                
+                const thumbWidth = 25;
+                const percentage = (val - min) / (max - min);
+                
+                const minPosition = thumbWidth / 2;
+                const maxPosition = sliderWidth - thumbWidth / 2;
+                const pixelPosition = minPosition + (percentage * (maxPosition - minPosition));
+                
+                sliderValueElement.style.left = `${pixelPosition}px`;
+                sliderValueElement.style.transform = 'translateX(-50%)';
+            }
+        });
+    };
 
     $scope.stimuli_sets = [
       [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]

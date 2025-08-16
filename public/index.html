@@ -158,21 +158,20 @@
           <span class="statement"><span ng-bind-html="style_statement(stmt)"></span></span>
           <div class="rating-scale">
             <div class="wrapper">
-                <label for="belief_rating_{{$index}}">{{$index + 1}}</label>
+                <label for="belief_rating_{{$index}}" class="slider_value">{{response.beliefs[$index]}}</label>
                 <input type="range" 
                       ng-model="response.beliefs[$index]" 
                       id="belief_rating_{{$index}}" 
                       min="0" 
                       max="100" 
                       class="slider"
-                      ng-init="response.beliefs[$index] = response.beliefs[$index] || 50">
+                      ng-init="response.beliefs[$index] = response.beliefs[$index] || 50"
+                      ng-change="updateSliderValuePosition($index, response.beliefs[$index])">
                 <div class="display">
                     <div>Definetly a Poison</div>
                     <div>Even Chance</div>
                     <div>Definetly a Potion</div>
                 </div>
-                <br>
-                <div id="val_{{$index}}">Value: {{response.beliefs[$index]}}</div>
             </div>
           </div>
         </ul>
