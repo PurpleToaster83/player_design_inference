@@ -167,11 +167,17 @@
                       class="slider"
                       ng-init="response.beliefs[$index] = response.beliefs[$index] || 50"
                       ng-change="updateSliderValuePosition($index, response.beliefs[$index])">
+                <div class="label_nums">
+                    <p>0</p>
+                    <p>100</p>
+                </div>
+
                 <div class="display">
                     <div>Definetly a Poison</div>
                     <div>Even Chance</div>
                     <div>Definetly a Potion</div>
                 </div>
+                <br>
             </div>
           </div>
         </ul>

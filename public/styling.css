@@ -299,7 +299,7 @@ input[type=radio] {
 
 .slider {
   position: relative;
-  width: 500px;
+  width: 600px;
   opacity: 0.8;
   height: 25px;
 }
@@ -323,4 +323,11 @@ input[type=radio] {
 
 .button_timer button {
   margin-left: 20px;
+}
+
+.label_nums {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -4%;
+  margin-bottom: -4%;
 }
