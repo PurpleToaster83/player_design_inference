@@ -197,6 +197,7 @@ experimentApp.controller('ExperimentController',
           }
           $scope.data.demographic_survey = $scope.survey;
           $scope.store_to_db($scope.user_id, $scope.data);
+          $scope.get_counter();
           $scope.increment_counter();
         }
       }
@@ -490,7 +491,7 @@ experimentApp.controller('ExperimentController',
         else {
           $scope.diff = belief;
         }
-        $scope.stim_reward += (-1 * $scope.diff) + 3;
+        $scope.stim_reward += (-1 * $scope.diff) + 50;
       });
     }
 
@@ -631,9 +632,9 @@ For each question, Your rating will be compared to the answer key and rewards wi
 
 <br><br>
 
-If the flask contains a poison and you answer 7, you receive -3 points. If you answer 1, you receive 3 points. If you answer 4, you receive 0 points.
+If the flask contains a poison and you answer 100, you receive -50 points. If you answer 0, you receive 50 points. If you answer 50, you receive 0 points.
 <br><br>
-Similarly, if the flask contains a potion and you answer 7, you receive 3 points. If you answer 1, you receive -3 points. If you answer 4, you receive 0 points.
+Similarly, if the flask contains a potion and you answer 100, you receive 50 points. If you answer 0, you receive -50 points. If you answer 50, you receive 0 points.
 
 <br><br>
 You accumulate the points you receive over all the maps you play and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 1000 points.
