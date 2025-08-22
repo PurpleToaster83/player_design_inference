@@ -77,7 +77,6 @@ experimentApp.controller('ExperimentController',
     }
 
     $scope.store_to_db = function(key, val) {
-      $scope.log("Storing " + key + " with " + JSON.stringify(val));
       resultsRef.child(key).set(val);
     }
 
@@ -196,9 +195,8 @@ experimentApp.controller('ExperimentController',
             feedback: $scope.feedback_q.value
           }
           $scope.data.demographic_survey = $scope.survey;
-          $scope.store_to_db($scope.user_id, $scope.data);
-          $scope.get_counter();
           $scope.increment_counter();
+          $scope.store_to_db($scope.user_id, $scope.data);
         }
       }
     };
