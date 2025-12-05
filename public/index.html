@@ -1,252 +1,13 @@
-<!doctype html>
+<!Doctype html>
 <html ng-app="experimentApp">
 
 <head>
-  <title>Boxes and Keys</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <title>Player Pragmatic Design Inferance</title>
+  <link rel="icon" type="image/x-icon" href="images/icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <style>
-    body {
-      background-color: #FFFFFF;
-      font-family: 'Lato', sans-serif;
-    }
+  <link rel="stylesheet" href="styling.css"
 
-    .main {
-      width: 82.5%;
-      margin: auto;
-      padding-top: 50px;
-      font-size: 11pt;
-    }
-
-    .full-row {
-      width: 200%;
-      padding: 15vh 2.5vw 2vh 2.5vw;
-      font-size: 15pt;
-      font-weight: 400;
-      text-align: justify;
-    }
-
-    .full-row strong {
-      font-weight: 700;
-    }
-
-    .feedback-full-row {
-      width: 200%;
-      padding: 10pt 0pt;
-      font-size: 14pt;
-      font-weight: 400;
-      text-align: justify;
-    }
-
-    .feedback-full-row strong {
-      font-weight: 700;
-    }
-
-    .captions {
-      font-size: 12pt;
-      font-weight: 400;
-      text-align: left;
-    }
-
-    .captions strong {
-      font-weight: 700;
-    }
-
-    .caption-image {
-      display: inline;
-      height: 14pt;
-      width: 14pt;
-      vertical-align: text-bottom;
-    }
-
-    .underline {
-      text-decoration: underline;
-    }
-
-    .feedback {
-      font-size: 12pt;
-      text-align: left;
-    }
-
-    .feedback-score-small {
-      font-size: 9pt;
-      color: #666666;
-    }
-
-    .stimulus {
-      float: right;
-      width: 80%;
-    }
-
-    ul.no-bullets {
-      list-style-type: none;
-      margin-top: 0pt;
-      padding-inline-start: 0pt;
-      margin-bottom: 0pt;
-    }
-
-    ul.no-bullets-horizontal {
-      list-style-type: none;
-      display: flex;
-      margin: 0pt;
-      padding-inline-start: 0pt;
-      justify-content: space-evenly;
-    }
-
-    ul.no-bullets-full-row {
-      width: 200%;
-      list-style-type: none;
-    }
-
-    .statement {
-      font-size: 13pt;
-    }
-
-    .rating-scale{
-      display: flex;
-      margin: 7.5pt 15% 7.5pt 15%;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-
-    .rating-button {
-      display: inline-block;
-      text-align: center;
-      flex-basis: 100%;
-    }
-
-    .rating-button label {
-      display: block;
-      line-height: 1.25;
-    }
-
-    .rating-number {
-      font-size: 11pt;
-    }
-
-    .rating-text {
-      font-size: 9pt;
-    }
-
-    input[type=checkbox],
-    input[type=radio] {
-      /* Double-sized Checkboxes */
-      -ms-transform: scale(2);
-      /* IE */
-      -moz-transform: scale(2);
-      /* FF */
-      -webkit-transform: scale(2);
-      /* Safari and Chrome */
-      -o-transform: scale(2);
-      /* Opera */
-      transform: scale(2);
-      /* padding: 20px; */
-      margin: 10px;
-    }
-
-    /* Might want to wrap a span around your checkbox text */
-    .checkboxtext {
-      /* Checkbox text */
-      display: inline;
-      font-size: 13pt;
-    }
-
-    .checkboximage {
-      /* Checkbox image */
-      display: inline;
-      height: 20pt;
-      width: 20pt;
-      vertical-align: bottom;
-      margin-bottom: 2pt;
-    }
-
-    .check-all {
-      margin-left: 40px;
-      background-color: #0f6bd4;
-      border-radius: 6px;
-      border: 1px solid #0f6bd4;
-      display: inline-block;
-      cursor: pointer;
-      color: white;
-      font-family: "Lato";
-      font-size: 14px;
-      padding: 4px 10px;
-      text-decoration: none;
-      text-shadow: 0px 1px 0px black;
-      margin-right: 10px;
-    }
-
-    .controls {
-      float: right;
-      padding: 10px;
-      clear: both;
-    }
-
-    .comprehension_question {
-      font-size: 12pt;
-      float: left;
-      padding: 10px;
-    }
-
-    .section_title {
-      float: right;
-      font-family: "Lato";
-      font-size: 20px;
-      font-weight: bold
-    }
-
-    .button {
-      background-color: #02a342;
-      border-radius: 6px;
-      border: 1px solid #02a342;
-      display: inline-block;
-      cursor: pointer;
-      color: #ffffff;
-      font-family: "Lato";
-      font-size: 14px;
-      padding: 4px 10px;
-      text-decoration: none;
-      text-shadow: 0px 1px 0px black;
-      margin-right: 10px;
-    }
-
-    .button:hover {
-      background-color: #2cb04f;
-    }
-
-    .button:disabled {
-      cursor: not-allowed;
-      background-color: #aaaaaa;
-      border: 1px solid #ffffff;
-    }
-
-    .button:active {
-      position: relative;
-      top: 1px;
-    }
-
-    .key-red {
-      font-weight: bold;
-      color: #d41159;
-    }
-
-    .key-blue {
-      font-weight: bold;
-      color: #0072b2;
-    }
-
-    .key-none {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    .modal {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-</style>
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-sanitize.js"></script>
@@ -254,7 +15,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <!-- Initialize Firebase -->
-  <script src="https://dkgbelief.firebaseapp.com/__/firebase/init.js"></script>
+  <script src="https://player-app-fbf4c.firebaseapp.com/__/firebase/init.js"></script>
   <!-- Experiment App -->
   <script src="lib/preloader.js"></script>
   <script src="app.js"></script>
@@ -262,7 +23,6 @@
 
 <body ng-controller="ExperimentController" ng-init="set_stimuli()">
   <div class="main w3-row">
-
     <!-- Left Side -->
     <div class="w3-col m5">
 
@@ -325,45 +85,48 @@
       </div>
 
       <!-- Endscreen -->
-      <p ng-show="section == 'endscreen'" class="full-row" ng-cloak>
-        You're all done! You scored <strong>{{total_reward}}</strong> points in total, equal to <strong>${{total_payment}}</strong> bonus payment.
-        <br><br>
+      <div id="end" ng-show="section == 'endscreen'" class="full-row" ng-if="section == 'endscreen' && end_id == 0" ng-cloak>
+              You're all done! You scored {{total_reward}} points in total, equal to {{total_payment}} bonus payment.
+      </div>
+      <div id="end" ng-show="section == 'endscreen'" class="full-row" ng-if="section == 'endscreen' && end_id == 1" ng-cloak>
+          Please answer the following demographic questions:
+          <br><br>
+          <strong>What is Your Age?   </strong> <input id="age" type="number">
+          <br><br>
+          <strong>What is your gender?   </strong> <input id="gender" type="text">
+          <br><br>
+          <strong>What is your ethnicity?   </strong> <input id="ethnicity" type="text">
+          <br><br>
+          <strong>What is your Prolific/Mturk ID?   </strong> <input id="mturkID" type="text">
+          <br><br>
+          <strong>Do you have any feedback?   </strong> <input id="feedback" type="text">
+      </div>
+      <div id="end" ng-show="section == 'endscreen'" class="full-row" ng-if="section == 'endscreen' && end_id == 2" ng-cloak>
         Thank you for your time :)
-        <br><br>
-        Your completion code is: <strong>{{user_id}}</strong>
-        <br><br>
-        Please paste this code into the survey that you came from.
-      </p>
+        <br>
+        <br>
+        <br>
+        Your completion code: <strong>CGRCJR10</strong>
+      </div>
 
       <!-- Controls -->
       <div class="controls" ng-cloak>
-        <button class="button" ng-click="replay_all()"
-          ng-show="section == 'stimuli' && part_id >= 0" ng-disabled="part_id <= 0">
-          Replay All ⟲
-        </button>
-        <button class="button" ng-click="reload_gif()"
-          ng-show="section == 'stimuli' && part_id >= 0" ng-disabled="part_id <= 0 || replaying">
-          Replay ↶
-        </button>
-        <button class="button" ng-click="reload_gif()"
-          ng-show="section == 'instructions' && instruction_has_image()">
-          Replay ↶
-        </button>
-        <button class="button" ng-click="advance()" ng-show="section == 'stimuli' && part_id <= 0"
-          ng-disabled="(stimuli_set.length == 0)">
-          Next&ensp;▶
-        </button>
-        <button class="button" ng-click="advance()" ng-hide="section == 'stimuli' && part_id <= 0"
-          ng-disabled="section == 'endscreen' ||
-            (stimuli_set.length == 0) ||
-            (valid_goal == false && has_goal_question()) && !hide_questions() ||
-            (valid_belief == false && has_belief_question()) && !hide_questions() ||
+        <div class="button_timer">
+          <div ng-show="part_id == 0">Button will activate in {{countdown_time}} seconds.</div>
+          <button class="button" ng-click="advance()" ng-show="section == 'stimuli' && part_id <= 0"
+            ng-disabled="(stimuli_set.length == 0) || (section == 'stimuli' && part_id == 0 && button_disabled)">
+            Next&ensp;▶
+          </button>
+        </div>
+
+        <button class="button" ng-click="advance()" ng-hide="section == 'stimuli' && part_id <= 0 || (section == 'endscreen' && end_id == 2)"
+          ng-disabled="(section == 'endscreen' && end_id == 2) ||
+            (stimuli_set.length == 0) && !hide_questions() ||
             (valid_exam == false && section == 'instructions' && is_exam()) ||
             (valid_comprehension == false && section == 'instructions' && instruction_has_question())">
           Next&ensp;▶
         </button>
       </div>
-
     </div>
 
     <!-- Right Side -->
@@ -373,81 +136,57 @@
       <div ng-show="section == 'instructions' && instruction_has_image()" class="captions"
         ng-bind-html="instructions[inst_id].text" ng-cloak>
       </div>
-      
+
       <!-- Scenario Start -->
       <div ng-show="(section == 'stimuli' && part_id == 0)" class="captions" ng-cloak>
-        <p>Please take a moment to look over this scenario.<br><br>
+        <p>Please take a moment to look over this empty map.<br><br>
            Press <strong>Next</strong> to continue.
         </p>
       </div>
 
-      <!-- Goal Question -->
-      <div ng-show="!hide_questions() && has_goal_question()" id="question" class="captions" ng-cloak>
-        <p><strong>Which gem(s) are most likely to be the player's goal?</strong></p>
-        <ul class="no-bullets-horizontal">
-          <li><input type="checkbox" ng-model="response.goals[0]" ng-change="validate_goal()"
-              ng-disabled="disable_questions()" id="goal0">
-            <label for="goal0">
-              <img src="images/gem_triangle.png" class="checkboximage"> <span class='checkboxtext'>Triangle</span>
-            </label>
-          </li>
-          <li><input type="checkbox" ng-model="response.goals[1]" ng-change="validate_goal()"
-              ng-disabled="disable_questions()" id="goal1">
-            <label for="goal1">
-              <img src="images/gem_square.png" class="checkboximage"> <span class='checkboxtext'>Square</span>
-            </label>
-          </li>
-          <li><input type="checkbox" ng-model="response.goals[2]" ng-change="validate_goal()"
-              ng-disabled="disable_questions()" id="goal2">
-            <label for="goal2">
-              <img src="images/gem_hexagon.png" class="checkboximage"> <span class='checkboxtext'>Hexagon</span>
-            </label>
-          </li>
-          <li><input type="checkbox" ng-model="response.goals[3]" ng-change="validate_goal()"
-              ng-disabled="disable_questions()" id="goal3">
-            <label for="goal3">
-              <img src="images/gem_circle.png" class="checkboximage"> <span class='checkboxtext'>Circle</span>
-            </label>
-          </li>
-          <!-- <br>
-          <li><input type="checkbox" ng-model="response.dontKnow" ng-change="toggle_dontknow()"
-              ng-disabled="disable_questions()">
-            <i class='checkboxtext'>All Equally Likely</i>
-          </li> -->
-        </ul>
-        <br>
-      </div>
-
       <!-- Belief Question -->
-      <div ng-show="!hide_questions() && has_belief_question()" id="question" class="captions" ng-cloak>
-        <p><strong>Please rate the following statements about the agent's <span class="underline">current beliefs</span>:</strong></p>
-        <ul class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
-            <span class="statement"><strong>Statement:</strong> <span ng-bind-html="style_statement(stmt)"></span></span>
-            <div class="rating-scale">
-              <!-- Definitely False -->
-              <div class="rating-button" ng-repeat="n in [1, 2, 3, 4, 5, 6, 7]">
-                <label for="belief_rating_{{$parent.$index}}_{{n}}" class="rating-number">{{n}}</label>
-                <input type="radio" name="belief_rating_{{$parent.$index}}" id="belief_rating_{{$parent.$index}}_{{n}}"
-                  ng-model="response.beliefs[$parent.$index]" ng-value="n" ng-change="validate_belief()"
-                  ng-disabled="disable_questions()"/>
-                <label for="belief_rating_{{$parent.$index}}_{{n}}" class="rating-text" ng-bind-html="rating_text[n-1]"></label>
+      <div id="question" class="captions" ng-cloak>
+        <p ng-show="!hide_questions() && has_belief_question()">The Wizard agent has arranged the flasks on the map. Please answer the following questions based on where you think the Wizard placed the potions and poisons: <br><br> <strong> Please note that the wizard can ONLY place flasks in the <span style="color:orange">orange</span> tile! </strong></p>
+        <br>
+        <br>
+        <div id="ground_truth" ng-show="section == 'stimuli && (part_id == -1) || inst_id == 3" ng-hide="section != 'stimuli' || part_id == 0 || part_id == 1">
+        </div>
+        <br>
+        <p ng-show="inst_id == 4 || inst_id == 7">Press <strong>Next</strong> to continue.</p>
+        <br>
+        <ul ng-show="!hide_questions() && has_belief_question()" class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
+          <span class="statement"><span ng-bind-html="style_statement(stmt)"></span></span>
+          <div class="rating-scale">
+            <div class="wrapper">
+                <label for="belief_rating_{{$index}}" class="slider_value">{{response.beliefs[$index]}}</label>
+                <input type="range" 
+                      ng-model="response.beliefs[$index]" 
+                      id="belief_rating_{{$index}}" 
+                      min="0" 
+                      max="100" 
+                      class="slider"
+                      ng-init="response.beliefs[$index] = response.beliefs[$index] || 50"
+                      ng-change="updateSliderValuePosition($index, response.beliefs[$index])">
+                <div class="label_nums">
+                    <p>0</p>
+                    <p>100</p>
                 </div>
-              <!-- Definitely True -->
-            </div>
-        </ul>
-      </div>
 
-      <!-- Replay Hint -->
-      <div ng-show="!hide_questions() && (section == 'stimuli' && part_id > 0)" class="captions" ng-cloak>
-        <p>You may <strong>replay</strong> this scenario at any time.</p>
+                <div class="display">
+                    <div>Definetly a Poison</div>
+                    <div>Even Chance</div>
+                    <div>Definetly a Potion</div>
+                </div>
+                <br>
+            </div>
+          </div>
+        </ul>
       </div>
 
       <!-- Post-Stimulus Feedback -->
       <p ng-show="section == 'stimuli' && part_id < 0" class="feedback" ng-cloak>
-       The player's true goal was the <span ng-bind-html="goal_feedback()"></span> gem.<br>
-       <br>
-       <span ng-bind-html="belief_feedback()"></span>
-       You earned <strong>{{stim_reward.toFixed(2)}}</strong> bonus point(s) this round, for a total of <strong>{{total_reward.toFixed(2)}}</strong> points.<br><br>
+        You earned <strong>{{stim_reward}}</strong> bonus point(s) this round, for a total of <strong>{{total_reward}}</strong> points.<br><br>
+        Press <strong>Next</strong> to continue to the next map.
       </p>
 
       <!-- Comprehension Questions -->
@@ -470,9 +209,6 @@
       <div ng-show="section == 'instructions'" class="comprehension_question">
         <p ng-bind-html="instructions[inst_id].footnote"></p>
       </div>
-
-    </div>
-
 </body>
 
 </html>
