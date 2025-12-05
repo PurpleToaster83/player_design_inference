@@ -617,7 +617,7 @@ experimentApp.controller('ExperimentController',
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
     $scope.instructions = [
       {
-        text: `Welcome to our guessing game!
+        text: `Welcome to the Doors and Keys game!
               <br><br>
               Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
               <br><br>
@@ -626,37 +626,26 @@ experimentApp.controller('ExperimentController',
       {
         text: `You're watching someone play the treasure game shown to the left.
               <br><br>
-              The player controls a character <img class="caption-image" src="images/human.png">,
-              and their goal is collect one of the four gems
-              (triangle <img class="caption-image" src="images/gem_triangle.png">,
-               square <img class="caption-image" src="images/gem_square.png">,
-               hexagon <img class="caption-image" src="images/gem_hexagon.png">, or 
-               circle <img class="caption-image" src="images/gem_circle.png">).
-              <br><br>
-              The rules of the game are as follows:
-              <br>
-              <ul>
-              <li> The player can move on the white squares.</li>
-              <li> The player has a full view of the map at all time.</li>
-              <li> The player's goal is to collect <strong>exactly one</strong> target gem.</li>
-              <li> Keys unlock doors of the same color
-                (e.g. red keys <img class="caption-image" src="images/key_red.png"> 
-                 unlock red doors <img class="caption-image" src="images/door_red.png">).
-              </li>
-              <li> Each key can only be used <strong>once</strong>. Keys disappear after use.</li>
-              <li> Each box <img class="caption-image" src="images/box.png">
-                  may be empty <img class="caption-image" src="images/box_empty.png">
-                  or contain exactly one key <img class="caption-image" src="images/box_with_key.png">.
-              </li>
-              <li> The player <strong>may or may not know</strong> what's in each box.</li>
-              <li> Neither you nor the player can see what's hidden in each box. But both of you can see all other objects in the scene.</li>
-              <li> There are at most <strong>two keys</strong> hidden among the boxes.</li>
-              <li> The player knows that the puzzle is solvable, which means there are just enough keys to reach any of the target gems.
-              </ul>
-              Your task is to figure out what the player's <strong>goal</strong> is,
-              and also what the player <strong>believes</strong> about the contents of the boxes.<br>
-              <br>
-              Press the <strong>Next</strong> button to continue.
+              There is one Adventurer <img class="caption-image" src="images/human.png"> whose goal is to collect fruit <img class="caption-image" src="images/banana.png">, <img class="caption-image" src="images/berry.png">, <img class="caption-image" src="images/orange.png">.
+              The black tiles on the map represent walls which cannot be passed through.
+              Locked doors <img class="caption-image" src="images/door.png"> blokc the Adventurer's path to the fruit and can only be unlocked with a specific key <img class="caption-image" src="images/key.png">.
+              The Adventurer knows that the chamber Architect has designed so that an adventurer could infer what key matched with what door.
+ <br> <br>
+              The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage.
+              In the design stage, the Architect arranges a set of keys among the orange tiles.
+              Then in the play stage, the Adventurer decides which key to use on each door.
+ <br> <br>
+              The Architect and the Adventurer do not know each other and cannot communicate. They both receive rewards if the doors are unlocked and the fruits collected.
+              Therefore, it is in the interest of both the Architect and the Adventurer to optimally place and use the keys.
+ <br> <br>
+              In this experiment, you are playing the role of the Adventurer. We will show you the map after the Architect has rearranged the keys, and ask you to match which key corresponds to what door(s).
+              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map.
+
+ <br> <br>
+
+ Press the <strong>Next</strong> button to continue.
+
+
               `,
         image: "stimuli/segments/demo_1.gif"
       }, 
