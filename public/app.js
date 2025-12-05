@@ -531,43 +531,30 @@ experimentApp.controller('ExperimentController',
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
     $scope.instructions = [
-      // {
-      //   text: `Welcome to our guessing game!
-      //         <br><br>
-      //         Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
-      //         <br><br>
-      //         Press <strong>Next</strong> to continue.`,
-      // },
-      // {
-      //   text: `You're watching someone play the treasure game shown to the left.
-      //         <br><br>
-      //         You are currently looking at an empty map with empty item slots.
-      //         You control a character <img class="caption-image" src="images/human.png">,
-      //         whose goal is to defeat the a monster <img class="caption-image" src="images/monster.png">.
-      //         However, the character is currently too weak to fight the monster and must first collect items to become stronger.
-      //         <br><br>
-      //         Press the <strong>Next</strong> button to continue.`,
-      //         image: "stimuli/segments/tutorial_b.png"
-      // },
       {
-        text: `Welcome to the Potion or Poison game!
+        text: `Welcome to the Doors and Keys game!
               <br><br>
               Before you begin your task, you'll complete a brief guided tutorial (~ 2 minutes) to understand the game.
               <br><br>
               Press <strong>Next</strong> to continue.`,
       },
       {
-        text: `You're playing an adventure game shown to the left. 
+        text: `You're watching someone play the exploration game shown to the left.
               <br><br>
-              There is one Knight <img class="caption-image" src="images/human.png"> whose goal is to defeat the Monster <img class="caption-image" src="images/monster.png">. The black tiles on the map represent walls which cannot be passed through. there are two kinds of flasks in the game: a health potion or a poison. The flasks containing potions look identical to the flasks containing poisons and the flasks can only be placed in the orange tiles.
+              There is one Adventurer <img class="caption-image" src="images/human.png"> whose goal is to collect fruit <img class="caption-image" src="images/banana.png">, <img class="caption-image" src="images/berry.png">, <img class="caption-image" src="images/orange.png">.
+              The black tiles on the map represent walls which cannot be passed through.
+              Locked doors <img class="caption-image" src="images/door.png"> blokc the Adventurer's path to the fruit and can only be unlocked with a specific key <img class="caption-image" src="images/key.png">.
+              The Adventurer knows that the chamber Architect has designed so that an adventurer could infer what key matched with what door.
  <br> <br>
-              The chance of defeating the Monster is improved by consuming a potion, and diminishes by consuming a poison. To help the Knight defeat the Monster, a Wizard has secretly re-arranged the placements of the flasks. The Wizard cannot remove poison flasks from the map.
+              The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage.
+              In the design stage, the Architect arranges a set of keys among the orange tiles.
+              Then in the play stage, the Adventurer decides which key to use on each door.
  <br> <br>
-              The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage. In the design stage, the Wizard arranges a set of flasks among the orange tiles. Then in the play stage, the Knight decides which flasks to obtain to defeat the Monster. The Knight <strong> knows </strong> that the flasks have been arranged by a helpful Wizard.
+              The Architect and the Adventurer do not know each other and cannot communicate. They both receive rewards if the doors are unlocked and the fruits collected.
+              Therefore, it is in the interest of both the Architect and the Adventurer to optimally place and use the keys.
  <br> <br>
-              The Wizard and the Knight do not know each other and cannot communicate. They both receive rewards if the Monster is defeated at the end. Therefore, it is in the interest of both the Wizard and the Knight to optimally place and use the flasks.
- <br> <br>
-              In this experiment, you are playing the role of the Knight. We will show you the map after the Wizard has rearranged the flasks, and ask you to rate which flasks are potions and which ones are poison. You don't know how many potions/poisons there are. It's possible to have posion or potion in all the flasks.
+              In this experiment, you are playing the role of the Adventurer. We will show you the map after the Architect has rearranged the keys, and ask you to match which key corresponds to what door(s).
+              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map.
 
  <br> <br>
 
