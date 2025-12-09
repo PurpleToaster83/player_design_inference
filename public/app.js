@@ -543,7 +543,7 @@ experimentApp.controller('ExperimentController',
               <br><br>
               There is one Adventurer <img class="caption-image" src="images/human.png"> whose goal is to collect fruit <img class="caption-image" src="images/banana.png">, <img class="caption-image" src="images/berry.png">, <img class="caption-image" src="images/orange.png">.
               The black tiles on the map represent walls which cannot be passed through.
-              Locked doors <img class="caption-image" src="images/door.png"> blokc the Adventurer's path to the fruit and can only be unlocked with a specific key <img class="caption-image" src="images/key.png">.
+              Locked doors <img class="caption-image" src="images/door.png"> block the Adventurer's path to the fruit and can only be unlocked with a specific key <img class="caption-image" src="images/key.png">.
               The Adventurer knows that the chamber Architect has designed so that an adventurer could infer what key matched with what door.
  <br> <br>
               The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage.
