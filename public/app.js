@@ -582,7 +582,7 @@ experimentApp.controller('ExperimentController',
         question_types: ["beliefs"],
         statements: ["Is flask <strong>A</strong> a Potion or a Poison? ",
                     "Is flask <strong>B</strong> a Potion or a Poison?"],
-        image: "stimuli/segments/tutorial.png",
+        image: "stimuli/segments/tutorial1.png",
       },
       {
         image: "stimuli/segments/tutorial.png",
@@ -593,7 +593,7 @@ experimentApp.controller('ExperimentController',
         <br><br><br>
         Press <strong>Next</strong> to continue.`,
         tutorial: true,
-        image: "stimuli/segments/tutorial2_b.png",
+        image: "stimuli/segments/tutorial_b.png",
 
       },
       {
@@ -763,7 +763,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "1_2",
         "images": [
-          "stimuli/segments/1_1_b.png",
+          "stimuli/segments/1_2_b.png",
           "stimuli/segments/1_2.png"
         ],
         "times": [
@@ -782,7 +782,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "1_3",
         "images": [
-          "stimuli/segments/1_3_b.png",
+          "stimuli/segments/1_1_b.png",
           "stimuli/segments/1_3.png"
         ],
         "times": [
@@ -801,7 +801,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "1_4",
         "images": [
-          "stimuli/segments/1_4_b.png",
+          "stimuli/segments/1_2_b.png",
           "stimuli/segments/1_4.png"
         ],
         "times": [
@@ -841,7 +841,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "2_2",
         "images": [
-          "stimuli/segments/2_1_b.png",
+          "stimuli/segments/2_2_b.png",
           "stimuli/segments/2_2.png"
         ],
         "times": [
@@ -862,7 +862,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "2_3",
         "images": [
-          "stimuli/segments/2_3_b.png",
+          "stimuli/segments/2_1_b.png",
           "stimuli/segments/2_3.png"
         ],
         "times": [
@@ -925,7 +925,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "3_2",
         "images": [
-          "stimuli/segments/3_2_b.png",
+          "stimuli/segments/3_1_b.png",
           "stimuli/segments/3_2.png"
         ],
         "times": [
@@ -946,7 +946,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "3_3",
         "images": [
-          "stimuli/segments/3_2_b.png",
+          "stimuli/segments/3_3_b.png",
           "stimuli/segments/3_3.png"
         ],
         "times": [
@@ -969,7 +969,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         "name": "3_4",
         "images": [
-          "stimuli/segments/3_4_b.png",
+          "stimuli/segments/3_3_b.png",
           "stimuli/segments/3_4.png"
         ],
         "times": [
