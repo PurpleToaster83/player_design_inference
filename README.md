@@ -1,1 +1,0 @@
-# Pragmatic Design_Inference
