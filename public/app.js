@@ -544,32 +544,33 @@ experimentApp.controller('ExperimentController',
               There is one Adventurer <img class="caption-image" src="images/human.png"> whose goal is to collect fruit <img class="caption-image" src="images/banana.png">, <img class="caption-image" src="images/berry.png">, <img class="caption-image" src="images/orange.png">.
               The black tiles on the map represent walls which cannot be passed through.
               Locked doors <img class="caption-image" src="images/door.png"> block the Adventurer's path to the fruit and can only be unlocked with a specific key <img class="caption-image" src="images/key.png">.
-              The Adventurer knows that the chamber Architect has designed so that an adventurer could infer what key matched with what door.
- <br> <br>
+              The Adventurer knows that the chamber Architect has designed the room so that an adventurer could infer what key matched with what door.
+              <br> <br>
               The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage.
-              In the design stage, the Architect arranges a set of keys among the orange tiles.
+              In the design stage, the Architect arranges a set of keys on trays <img class="caption-image" src="images/tray.png">.
               Then in the play stage, the Adventurer decides which key to use on each door.
- <br> <br>
+              <br> <br>
               The Architect and the Adventurer do not know each other and cannot communicate. They both receive rewards if the doors are unlocked and the fruits collected.
               Therefore, it is in the interest of both the Architect and the Adventurer to optimally place and use the keys.
- <br> <br>
+              <br> <br>
               In this experiment, you are playing the role of the Adventurer. We will show you the map after the Architect has rearranged the keys, and ask you to match which key corresponds to what door(s).
-              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map.
+              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map. At least one fruit is obtainable on each map.
 
- <br> <br>
+              <br> <br>
 
- Press the <strong>Next</strong> button to continue.
+              Press the <strong>Next</strong> button to continue.
 
 
               `,
         image: "stimuli/segments/tutorial_b.png",
       }, 
       {
-        text: `At each trial, we will show you the flask placement and ask you questions about the <strong>type</strong> of liquid in the flask.<br>
+        text: `At each trial, we will show you the key placement and ask you questions about the <strong>which</strong> door each key unlocks.<br>
               <br>
-              Rate <strong>100</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>potion</strong> in the associated flask.<br>
-              Rate <strong>50</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the flask contains a potion or poison.             <br>
-              Rate <strong>1</strong> if you're <strong>certain</strong> that there <strong>is</strong> a <strong>poison</strong> in the associated flask.<br>
+              Rate <strong>100</strong> if you're <strong>certain</strong> that the key <strong>unlocks</strong> a <strong>door</strong>.<br>
+              Rate <strong>50</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the does or does not <strong>unlock</strong> a <strong>door</strong>.<br>
+              Rate <strong>1</strong> if you're <strong>certain</strong> that the key <strong>does not unlock</strong> a <strong>door</strong>.<br>
+              <br>
               Press <strong>Next</strong> to watch what happens.
               `,
         image: "stimuli/segments/tutorial_b.png"
@@ -580,20 +581,19 @@ experimentApp.controller('ExperimentController',
         tutorial: true,
         show_questions: true,
         question_types: ["beliefs"],
-        statements: ["Is flask <strong>A</strong> a Potion or a Poison? ",
-                    "Is flask <strong>B</strong> a Potion or a Poison?"],
-        image: "stimuli/segments/tutorial.png",
+        statements: ["Does <strong>Key A</strong> unlock <strong>Door 1</strong>?"],
+        image: "stimuli/segments/tutorial1.png",
       },
       {
-        image: "stimuli/segments/tutorial.png",
-        text: "In this case, flask A contains a potion and flask B contains a poison. This is because the wizard chooses to place flask B in the far away slot when they have a choice of placing it closer."
+        image: "stimuli/segments/tutorial1.png",
+        text: "In this case, Key A unlocks Door 1. This is because the Architect chose to place Key A close to Door 1 when they had a choice of placing it farther."
       },
       {
-        text: `Now look at this map which has been slightly altered from the previous one. Think about how does removing the empty slot in the middle change your judgment.
+        text: `Now look at this map which has been slightly altered from the previous one. Think about how moving the Key to a different tray changed your judgment.
         <br><br><br>
         Press <strong>Next</strong> to continue.`,
         tutorial: true,
-        image: "stimuli/segments/tutorial2_b.png",
+        image: "stimuli/segments/tutorial_b.png",
 
       },
       {
@@ -601,32 +601,31 @@ experimentApp.controller('ExperimentController',
         tutorial: true,
         show_questions: true,
         question_types: ["beliefs"],
-        statements: ["Is flask <strong>A</strong> a Potion or a Poison? ",
-          "Is flask <strong>B</strong> a Potion or a Poison?"],
+        statements: ["Does <strong>Key A</strong> unlock <strong>Door 1</strong>?"],
         image: "stimuli/segments/tutorial2.png"
       },
       {
         image: "stimuli/segments/tutorial2.png",
-        text: "In this case both flasks contain potions! In this case, the wizard intentionally places Flask B (a potion) far away from the agent, because there is no other spare orange slots left."
+        text: "In this case Key A unlocks Nothing! The Architect intentionally placed Key A far away from the agent to indicate it did not unlock the door."
       },
       {
-        text: `As mentioned, you should assume that the Wizard wants you to succeed as both of you will benefit if you guess correctly (Monster defeated!). The reward scheme is as follows:
+        text: `As mentioned, you should assume that the Architect wants you to succeed as both of you will benefit if you answer correctly. The reward scheme is as follows:
 
-<br><br>
-For each question, Your rating will be compared to the answer key and rewards will be calibrated by considering the difference.
+              <br><br>
+              For each question, Your rating will be compared to the answer key and rewards will be calibrated by considering the difference.
 
-<br><br>
+              <br><br>
 
-If the flask contains a poison and you answer 100, you receive -50 points. If you answer 0, you receive 50 points. If you answer 50, you receive 0 points.
-<br><br>
-Similarly, if the flask contains a potion and you answer 100, you receive 50 points. If you answer 0, you receive -50 points. If you answer 50, you receive 0 points.
+              If the key does not unlock a door and you answer 100, you receive -50 points. If you answer 0, you receive 50 points. If you answer 50, you receive 0 points.
+              <br><br>
+              Similarly, if the key unlocks a door and you answer 100, you receive 50 points. If you answer 0, you receive -50 points. If you answer 50, you receive 0 points.
 
-<br><br>
-You accumulate the points you receive over all the maps you play and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 1000 points.
- `
+              <br><br>
+              You accumulate the points you receive over all the maps you play and will be paid a bonus at the end of the experiment, at a rate of 1 USD per 1000 points.
+              `
       },
       {
-        text: `You've now finished the practice round and the player can fight the Monster using the potions and poisons you've collected!`
+        text: `You've now finished the practice round and the Adventurer can search for fruits using the keys you've collected!`
       },
       {
         text: `<strong>Comprehension Questions</strong> <br>
@@ -638,83 +637,83 @@ You accumulate the points you receive over all the maps you play and will be pai
               `
       },
       {
-        text: `<strong>Question 1/5:</strong> What is the Knight's goal?`,
-        options: ["Collect all Flasks",
-                  "Defeat the Monster",
-                  "Collect all the potions"],
-        answer: 1,
-        exam: true
-      },
-      {
-        text: `<strong>Question 1/5:</strong> What is the Knight's goal?`,
-        options: ["Collect all Flasks",
-                  "Defeat the Monster",
-                  "Collect all the potions"],
-        answer: 1,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Control the Knight to defeat the Monster",
+        text: `<strong>Question 1/5:</strong> What is the Adventurers's goal?`,
+        options: ["Collect all the fruit",
                   "Explore the map",
-                  "Guess whether each flask contains potion or poison"],
-        answer: 2,
-        exam: true
-      },
-      {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Control the Knight to defeat the Monster",
-                  "Explore the map",
-                  "Guess whether each flask contains potion or poison"],
-        answer: 2,
-        feedback: true
-      },
-      {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The Wizard strategically placed the flasks for the Knight.",
-                  "The Wizard placed the flasks randomly.",
-                  "The flasks are all randomly assigned."],
+                  "Collect all the potions"],
         answer: 0,
         exam: true
       },
       {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The Wizard strategically placed the flasks for the Knight.",
-                  "The Wizard placed the flasks randomly.",
-                  "The flasks are all randomly assigned."],
+        text: `<strong>Question 1/5:</strong> What is the Knight's goal?`,
+        options: ["Collect all the fruit",
+                  "Explore the map",
+                  "Collect all the potions"],
         answer: 0,
         feedback: true
       },
       {
-        text: `<strong>Question 4/5:</strong> Where can the wizard place the potions?`,
+        text: `<strong>Question 2/5:</strong> How many doors <strong>must</strong> be unlockable each trial?`,
+        options: ["Zero",
+                  "One",
+                  "All of them"],
+        answer: 1,
+        exam: true
+      },
+      {
+        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
+        options: ["Zero",
+                  "One",
+                  "All of them"],
+        answer: 1,
+        feedback: true
+      },
+      {
+        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
+        options: ["The Architect placed the flasks randomly.",
+                  "The keys are all randomly assigned.",
+                  "The Architect strategically placed the flasks for the Adventurer."],
+        answer: 2,
+        exam: true
+      },
+      {
+        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
+        options: ["The Architect placed the flasks randomly.",
+                  "The keys are all randomly assigned.",
+                  "The Architect strategically placed the flasks for the Adventurer."],
+        answer: 2,
+        feedback: true
+      },
+      {
+        text: `<strong>Question 4/5:</strong> Where can the Architect place the keys?`,
         options: ["Anywhere on the map.",
-                  "ONLY in the orange slots.",
-                  "ONLY next to a wall, the knight, or the monster."],
+                  "ONLY on the trays.",
+                  "ONLY next to a wall, the Adventurer, or the fruit."],
         answer: 1,
         exam: true
       },
       {
         text: `<strong>Question 4/5:</strong> Which of the following is true?`,
         options: ["Anywhere on the map.",
-                  "ONLY in the orange slots.",
-                  "ONLY next to a wall, the knight, or the monster."],
+                  "ONLY on the trays.",
+                  "ONLY next to a wall, the Adventurer, or the fruit."],
         answer: 1,
         feedback: true
       },
       {
-        text: `<strong>Question 5/5:</strong> If the wizard arranged two flasks and there are two orange slots. How many potions or poisons are there?`,
-        options: ["Both are poisons",
-                  "Both are potions",
-                  "They can be all potion, all poison, or one of each."],
-        answer: 2,
+        text: `<strong>Question 5/5:</strong> If the Architect arranged one keys and there are two doors. What fruit can the Adventurer obtain?`,
+        options: ["Neither of them",
+                  "Either of them",
+                  "Both of them"],
+        answer: 1,
         exam: true
       },
       {
         text: `<strong>Question 5/5:</strong> Which of the following is true?`,
-        options: ["Both are poisons",
-                  "Both are potions",
-                  "They can be all potion, all poison, or one of each."],
-        answer: 2,
+        options: ["Neither of them",
+                  "Either of them",
+                  "Both of them"],
+        answer: 1,
         feedback: true
       },
       {
@@ -724,7 +723,7 @@ You accumulate the points you receive over all the maps you play and will be pai
       {
         text: `Congratulations! You've finished the tutorial.
                <br><br>
-               You will now play the game for 12 different rounds.
+               You will now play the game for 20 different rounds.
                <br><br>
                Ready to start? Press <strong>Next</strong> to continue!`
       }
@@ -753,8 +752,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -774,8 +775,12 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -795,8 +800,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -816,8 +823,12 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?",
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -837,7 +848,8 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -856,7 +868,8 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -875,7 +888,8 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -894,7 +908,8 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -913,8 +928,12 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?",
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -934,8 +953,12 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?",
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -955,8 +978,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -976,8 +1001,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -997,7 +1024,11 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -1016,7 +1047,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -1035,9 +1069,15 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?",
-          "What <strong>Door</strong> does <strong>Key C</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+          "Does <strong>Key C</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key C</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key C</strong> unlock <strong>Door 3</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -1058,9 +1098,15 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?",
-          "What <strong>Door</strong> does <strong>Key C</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+          "Does <strong>Key C</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key C</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key C</strong> unlock <strong>Door 3</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -1081,8 +1127,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -1102,8 +1150,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
         ],
         "length": 2,
         ground_truth: [
@@ -1123,8 +1173,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
         ],
         "length": 2,
         ground_truth: [
@@ -1144,8 +1196,10 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "What <strong>Door</strong> does <strong>Key A</strong> open?",
-          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
+          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
         ],
         "length": 2,
         ground_truth: [

@@ -156,7 +156,7 @@
         <br>
         <ul ng-show="!hide_questions() && has_belief_question()" class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
           <span class="statement"><span ng-bind-html="style_statement(stmt)"></span><br></span>
-          <!-- <div class="rating-scale">
+          <div class="rating-scale">
             <div class="wrapper">
                 <label for="belief_rating_{{$index}}" class="slider_value">{{response.beliefs[$index]}}</label>
                 <input type="range" 
@@ -171,22 +171,10 @@
                     <p>0</p>
                     <p>100</p>
                 </div>
-                -->
                 <div class="display">
-                    <div>Door A</div>
-                    <div>Door B</div>
+                    <div>No</div>
+                    <div>Yes</div>
                 </div>
-              <!--
-                <br>
-            </div> -->
-            <div class="rating-button" ng-repeat="n in [1, 2, 3, 4, 5, 6, 7]">
-            <label for="belief_rating_{{$parent.$index}}_{{n}}" class="rating-number">{{n}}</label>
-            <input type="radio" name="belief_rating_{{$parent.$index}}" id="belief_rating_{{$parent.$index}}_{{n}}"
-                ng-model="response.beliefs[$parent.$index]" ng-value="n" ng-change="validate_belief()"
-                ng-disabled="disable_questions()"/>
-            <label for="belief_rating_{{$parent.$index}}_{{n}}" class="rating-text" ng-bind-html="rating_text[n-1]"></label>
-            </div>
-
           </div>
         </ul>
       </div>
