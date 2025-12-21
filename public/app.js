@@ -753,17 +753,19 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
         ],
         "length": 2,
         ground_truth: [
-          "A is a Poison"
+          "Key A unlocks Nothing",
+          "Key B unlocks Door 2"
         ]
       },
       {
         "name": "1_2",
         "images": [
-          "stimuli/segments/1_1_b.png",
+          "stimuli/segments/1_2_b.png",
           "stimuli/segments/1_2.png"
         ],
         "times": [
@@ -772,11 +774,13 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison? ",
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
         ],
         "length": 2,
         ground_truth: [
-          "A is a Potion"
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 3"
         ]
       },
       {
@@ -791,11 +795,13 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
         ],
         "length": 2,
         ground_truth: [
-          "A is a Poison"
+          "Key A unlocks Nothing",
+          "Key B unlocks Door 2"
         ]
       },
       {
@@ -810,11 +816,13 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?",
         ],
         "length": 2,
         ground_truth: [
-          "A is a Potion"
+          "Key A unlocks Door 2",
+          "Key B unlocks Door 3"
         ]
       },
       {
@@ -829,19 +837,17 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?",
-          "Is flask <strong>B</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
         ],
         "length": 2,
         ground_truth: [
-          "A is a Potion",
-          "B is a Poison"
+          "Key A unlocks Door 1",
         ]
       },
       {
         "name": "2_2",
         "images": [
-          "stimuli/segments/2_1_b.png",
+          "stimuli/segments/2_2_b.png",
           "stimuli/segments/2_2.png"
         ],
         "times": [
@@ -850,13 +856,11 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?",
-          "Is flask <strong>B</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?"
         ],
         "length": 2,
         ground_truth: [
-          "A is a Poison",
-          "B is a Poison"
+          "Key A unlocks Door 2"
         ]
       },
       {
@@ -871,13 +875,11 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?",
-          "Is flask <strong>B</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?"
         ],
         "length": 2,
         ground_truth: [
-          "A is a Potion",
-          "B is a Poison"
+          "Key A unlocks Door 2"
         ]
       },
       {
@@ -892,13 +894,11 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?",
-          "Is flask <strong>B</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?"
         ],
         "length": 2,
         ground_truth: [
-          "A is a Potion",
-          "B is a Potion"
+          "Key A unlocks Door 1"
         ]
       },
       {
@@ -913,13 +913,13 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?",
-          "Is flask <strong>B</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?",
         ],
         "length": 2,
         ground_truth: [
-          "A is a Poison",
-          "B is a Poison"
+          "Key A unlocks either Door 1 or Door 3",
+          "Key B unlocks Door 2"
         ]
       },
       {
@@ -934,19 +934,19 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?",
-          "Is flask <strong>B</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?",
         ],
         "length": 2,
         ground_truth: [
-          "A is a Poison",
-          "B is a Poison"
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 3"
         ]
       },
       {
         "name": "3_3",
         "images": [
-          "stimuli/segments/3_2_b.png",
+          "stimuli/segments/3_3_b.png",
           "stimuli/segments/3_3.png"
         ],
         "times": [
@@ -955,15 +955,13 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?",
-          "Is flask <strong>B</strong> a Potion or a Poison?",
-          "Is flask <strong>C</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
         ],
         "length": 2,
         ground_truth: [
-          "A is a Potion",
-          "B is a Potion",
-          "C is a Potion"
+          "Key A unlocks Door 2",
+          "Key B unlocks Nothing"
         ]
       },
       {
@@ -978,15 +976,181 @@ You accumulate the points you receive over all the maps you play and will be pai
           1
         ],
         "statements": [
-          "Is flask <strong>A</strong> a Potion or a Poison?",
-          "Is flask <strong>B</strong> a Potion or a Poison?",
-          "Is flask <strong>C</strong> a Potion or a Poison?"
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
         ],
         "length": 2,
         ground_truth: [
-          "A is a Potion",
-          "B is a Poison",
-          "C is a Potion"
+          "Key A unlocks Door 1",
+          "Key B unlocks Nothing"
+        ]
+      },
+      {
+        "name": "4_1",
+        "images": [
+          "stimuli/segments/4_1_b.png",
+          "stimuli/segments/4_1.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2"
+        ]
+      },
+      {
+        "name": "4_2",
+        "images": [
+          "stimuli/segments/4_2_b.png",
+          "stimuli/segments/4_2.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          "What <strong>Door</strong> does <strong>Key A</strong> open?"
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1"
+        ]
+      },
+      {
+        "name": "4_3",
+        "images": [
+          "stimuli/segments/4_3_b.png",
+          "stimuli/segments/4_3.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?",
+          "What <strong>Door</strong> does <strong>Key C</strong> open?"
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+          "Key B unlocks Door 3",
+          "Key C unlocks Door 1"
+        ]
+      },
+      {
+        "name": "4_4",
+        "images": [
+          "stimuli/segments/4_4_b.png",
+          "stimuli/segments/4_4.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?",
+          "What <strong>Door</strong> does <strong>Key C</strong> open?"
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+          "Key B unlocks Door 1",
+          "Key C unlocks Door 3"
+        ]
+      },
+      {
+        "name": "5_1",
+        "images": [
+          "stimuli/segments/5_1_b.png",
+          "stimuli/segments/5_1.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Nothing",
+          "Key B unlocks Door 2"
+        ]
+      },
+      {
+        "name": "5_2",
+        "images": [
+          "stimuli/segments/5_2_b.png",
+          "stimuli/segments/5_2.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Nothing",
+          "Key B unlocks Door 1",
+        ]
+      },
+      {
+        "name": "5_3",
+        "images": [
+          "stimuli/segments/5_3_b.png",
+          "stimuli/segments/5_3.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 2"
+        ]
+      },
+      {
+        "name": "5_4",
+        "images": [
+          "stimuli/segments/5_4_b.png",
+          "stimuli/segments/5_4.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          "What <strong>Door</strong> does <strong>Key A</strong> open?",
+          "What <strong>Door</strong> does <strong>Key B</strong> open?"
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 2"
         ]
       },
     ]
