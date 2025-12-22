@@ -320,7 +320,7 @@ experimentApp.controller('ExperimentController',
           var step_ratings = $scope.compute_ratings($scope.response);
           $scope.ratings = step_ratings;
           $scope.log(step_ratings);
-          // $scope.calc_stim_reward($scope.response);
+          $scope.calc_stim_reward($scope.response);
           $scope.total_reward += $scope.stim_reward;
           $scope.div.innerHTML = "";
           $scope.div.innerHTML += "<u>These are the door key assignments:</u>" + "<br><br>";
@@ -460,8 +460,8 @@ experimentApp.controller('ExperimentController',
       $scope.stim_reward = 0;
 
       response.beliefs.forEach((belief, index) => {
-        const liquid_type = $scope.stimuli_set[$scope.stim_id].ground_truth[index].substring(7);
-        if (liquid_type == "Potion") {
+        const unlock = $scope.stimuli_set[$scope.stim_id].calc_GT;
+        if (unlock == "y") {
           $scope.diff = 100 - belief;
         }
         else {
@@ -740,6 +740,12 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Nothing",
           "Key B unlocks Door 2"
+        ],
+        calc_GT: [
+          "n",
+          "n",
+          "n",
+          "y"
         ]
       },
       {
@@ -765,6 +771,14 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Door 1",
           "Key B unlocks Door 3"
+        ],
+        calc_GT: [
+          "y",
+          "n",
+          "n",
+          "n",
+          "n",
+          "y"
         ]
       },
       {
@@ -788,6 +802,12 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Nothing",
           "Key B unlocks Door 2"
+        ],
+        calc_GT: [
+          "n",
+          "n",
+          "n",
+          "y"
         ]
       },
       {
@@ -813,6 +833,14 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Door 2",
           "Key B unlocks Door 3"
+        ],
+        calc_GT: [
+          "n",
+          "y",
+          "n",
+          "n",
+          "n",
+          "y"
         ]
       },
       {
@@ -833,6 +861,10 @@ experimentApp.controller('ExperimentController',
         "length": 2,
         ground_truth: [
           "Key A unlocks Door 1",
+        ],
+        calc_GT: [
+          "y",
+          "n"
         ]
       },
       {
@@ -853,6 +885,10 @@ experimentApp.controller('ExperimentController',
         "length": 2,
         ground_truth: [
           "Key A unlocks Door 2"
+        ],
+        calc_GT: [
+          "n",
+          "y"
         ]
       },
       {
@@ -873,6 +909,10 @@ experimentApp.controller('ExperimentController',
         "length": 2,
         ground_truth: [
           "Key A unlocks Door 2"
+        ],
+        calc_GT: [
+          "n",
+          "y"
         ]
       },
       {
@@ -893,6 +933,10 @@ experimentApp.controller('ExperimentController',
         "length": 2,
         ground_truth: [
           "Key A unlocks Door 1"
+        ],
+        calc_GT: [
+          "y",
+          "n"
         ]
       },
       {
@@ -918,6 +962,14 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks either Door 1 or Door 3",
           "Key B unlocks Door 2"
+        ],
+        calc_GT: [
+          "y",
+          "n",
+          "y",
+          "n",
+          "y",
+          "n"
         ]
       },
       {
@@ -943,6 +995,14 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Door 1",
           "Key B unlocks Door 3"
+        ],
+        calc_GT: [
+          "y",
+          "n",
+          "n",
+          "n",
+          "n",
+          "y"
         ]
       },
       {
@@ -966,6 +1026,12 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Door 2",
           "Key B unlocks Nothing"
+        ],
+        calc_GT: [
+          "n",
+          "y",
+          "n",
+          "n",
         ]
       },
       {
@@ -989,6 +1055,12 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Door 1",
           "Key B unlocks Nothing"
+        ],
+        calc_GT: [
+          "y",
+          "n",
+          "n",
+          "n"
         ]
       },
       {
@@ -1011,7 +1083,14 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 2"
+          "Key A unlocks Door 2",
+          "Key B unlocks Nothing"
+        ],
+        calc_GT: [
+          "n",
+          "y",
+          "n",
+          "n"
         ]
       },
       {
@@ -1033,7 +1112,14 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 1"
+          "Key A unlocks Door 1",
+          "Key B unlocks Nothing"
+        ],
+        calc_GT: [
+          "y",
+          "n",
+          "n",
+          "n"
         ]
       },
       {
@@ -1063,6 +1149,17 @@ experimentApp.controller('ExperimentController',
           "Key A unlocks Door 2",
           "Key B unlocks Door 3",
           "Key C unlocks Door 1"
+        ],
+        calc_GT: [
+          "n",
+          "y",
+          "n",
+          "n",
+          "n",
+          "y",
+          "y",
+          "n",
+          "n"
         ]
       },
       {
@@ -1092,6 +1189,17 @@ experimentApp.controller('ExperimentController',
           "Key A unlocks Door 2",
           "Key B unlocks Door 1",
           "Key C unlocks Door 3"
+        ],
+        calc_GT: [
+          "n",
+          "y",
+          "n",
+          "y",
+          "n",
+          "n",
+          "n",
+          "n",
+          "y"
         ]
       },
       {
@@ -1115,6 +1223,12 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Nothing",
           "Key B unlocks Door 2"
+        ],
+        calc_GT: [
+          "n",
+          "n",
+          "n",
+          "y",
         ]
       },
       {
@@ -1138,6 +1252,12 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Nothing",
           "Key B unlocks Door 1"
+        ],
+        calc_GT: [
+          "n",
+          "n",
+          "y",
+          "n"
         ]
       },
       {
@@ -1161,6 +1281,12 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Door 1",
           "Key B unlocks Door 2"
+        ],
+        calc_GT: [
+          "y",
+          "n",
+          "n",
+          "y"
         ]
       },
       {
@@ -1184,6 +1310,12 @@ experimentApp.controller('ExperimentController',
         ground_truth: [
           "Key A unlocks Door 1",
           "Key B unlocks Door 2"
+        ],
+        calc_GT: [
+          "y",
+          "n",
+          "n",
+          "y"
         ]
       },
     ]
