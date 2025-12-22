@@ -1,0 +1,86 @@
+{
+  "experimentName": "Door-Key-Fruit Player Design Inference",
+  "description": "Player inference over the utility of keys relating to doors that block fruit goals.",
+  "paperDOI": "",
+  "taskType": [
+    "Reasoning",
+    "Causal Inference"
+  ],
+  "responseType": [
+    "single-slider"
+  ],
+  "contributors": [
+    "Lance Ying",
+    "William Van Uitert"
+  ],
+  "stimuli_count": 20,
+  "judgment_count": 0,
+  "participants_info": {
+    "count": 0,
+    "age": 0,
+    "gender": {},
+    "ethnicity": {}
+  },
+  "experimentFlow": [
+    {
+      "blocks": [
+        [
+            "inst_01",
+            "inst_02",
+            "tutorial_b",
+            "tutorial1",
+            "tutorial_b",
+            "tutorial2",
+            "question1",
+            "question2",
+            "question3",
+            "question4",
+            "question5"
+        ],
+        [
+            "trial01_b",
+            "trial01",
+            "trial02_b",
+            "trial02",
+            "trial03_b",
+            "trial03",
+            "trial04_b",
+            "trial04",
+            "trial05_b",
+            "trial05",
+            "trial06_b",
+            "trial06",
+            "trial07_b",
+            "trial07",
+            "trial08_b",
+            "trial08",
+            "trial09_b",
+            "trial10_b",
+            "trial10",
+            "trial11_b",
+            "trial11",
+            "trial12_b",
+            "trial12",
+            "trial13_b",
+            "trial13",
+            "trial14_b",
+            "trial14",
+            "trial15_b",
+            "trial15",
+            "trial16_b",
+            "trial16",
+            "trial17_b",
+            "trial17",
+            "trial18_b",
+            "trial18",
+            "trial19_b",
+            "trial19",
+            "trial20_b",
+            "trial20"
+        ]
+      ],
+      "block_randomization": false,
+      "stimuli_randomization": true
+    }
+  ]
+}
