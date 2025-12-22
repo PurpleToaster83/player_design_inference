@@ -152,6 +152,7 @@
         <div id="ground_truth" ng-show="section == 'stimuli && (part_id == -1) || inst_id == 3" ng-hide="section != 'stimuli' || part_id == 0 || part_id == 1"></div>
         <br>
         <p ng-show="inst_id == 4 || inst_id == 7">Press <strong>Next</strong> to continue.</p>
+        <p ng-show="!hide_questions() && has_belief_question()"><strong>Please rate how likely the following statements are:</strong></p>
         <br>
         <ul ng-show="!hide_questions() && has_belief_question()" class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
           <span class="statement"><span ng-bind-html="style_statement(stmt)"></span><br></span>
@@ -160,8 +161,8 @@
                 <label for="belief_rating_{{$index}}" class="slider_value">{{response.beliefs[$index]}}</label>
 
                 <div class="display">
-                    <div>No</div>
-                    <div>Yes</div>
+                    <div>Definetly False</div>
+                    <div>Definetly True</div>
                 </div>
 
                 <input type="range" 

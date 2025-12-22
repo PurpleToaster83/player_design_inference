@@ -60,6 +60,7 @@ experimentApp.controller('ExperimentController',
     $scope.button_disabled = false;
     $scope.countdown_time = 0;
     $scope.timer_active = false;
+    $scope.statement_select = 0;
 
     $scope.data = {
       "user_id": NaN,
@@ -92,7 +93,7 @@ experimentApp.controller('ExperimentController',
 
     $scope.get_statement_counts = async function (stim_id) {
       let cur_stim = $scope.stimuli_set[stim_id];
-      let n = cur_stim.statements.length;
+      let n = cur_stim.statements[$scope.statement_select].length;
       if ($location.search().local == "true") {
         $scope.belief_statement_counts = Array(n).fill(0);
         return $scope.belief_statement_counts;
@@ -138,14 +139,14 @@ experimentApp.controller('ExperimentController',
     
     $scope.set_belief_statements = async function (stim_id) {
       let cur_stim = $scope.stimuli_set[stim_id];
-      $scope.n_displayed_statements = cur_stim.statements.length;
+      $scope.n_displayed_statements = cur_stim.length;
 
-      let n = cur_stim.statements.length;
+      let n = cur_stim.statements[$scope.statement_select].length;
       let ids = Array.from(Array(n).keys());
       $scope.belief_statement_ids =
       $scope.array_sample(ids, $scope.n_displayed_statements);
       
-      $scope.belief_statements = $scope.belief_statement_ids.map(id => cur_stim.statements[id]);
+      $scope.belief_statements = $scope.belief_statement_ids.map(id => cur_stim.statements[$scope.statement_select][id]);
       $scope.log("Belief statement IDs: " + $scope.belief_statement_ids);
       $scope.log("Belief statements: " + $scope.belief_statements);
     }
@@ -245,7 +246,7 @@ experimentApp.controller('ExperimentController',
         }
         // Set new belief statements
         if ($scope.has_belief_question()) {
-          $scope.belief_statements = $scope.instructions[$scope.inst_id].statements;
+          $scope.belief_statements = $scope.instructions[$scope.inst_id].statements[$scope.statement_select];
           let n = $scope.belief_statements.length;
           $scope.belief_statement_ids = Array.from(Array(n).keys());
         }
@@ -305,7 +306,8 @@ experimentApp.controller('ExperimentController',
         $scope.total_payment = ($scope.total_reward > 0) ? Math.round($scope.total_reward / 10) / 100 : 0;
         $scope.data.total_payment = $scope.total_payment;
         $scope.data.total_reward = $scope.total_reward;
-      }  else if ($scope.part_id < 0) {
+      } else if ($scope.part_id < 0) {
+        $scope.statement_select = Math.floor(Math.random() * $scope.stimuli_set[$scope.stim_id].statements.length);
         // Advance to first part
         $scope.part_id = $scope.part_id + 1;
         $scope.ratings = [];
@@ -505,7 +507,7 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.stimuli_sets = [
-      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
@@ -518,22 +520,21 @@ experimentApp.controller('ExperimentController',
               Press <strong>Next</strong> to continue.`,
       },
       {
-        text: `You're watching someone play the exploration game shown to the left.
+        text: `You're watching someone play a treasure game shown to the left.
               <br><br>
-              There is one Adventurer <img class="caption-image" src="images/human.png"> whose goal is to collect fruit <img class="caption-image" src="images/banana.png">, <img class="caption-image" src="images/berry.png">, <img class="caption-image" src="images/orange.png">.
-              The black tiles on the map represent walls which cannot be passed through.
-              Locked doors <img class="caption-image" src="images/door.png"> block the Adventurer's path to the fruit and can only be unlocked with a specific key <img class="caption-image" src="images/key.png">.
-              The Adventurer knows that the chamber Architect has designed the room so that an adventurer could infer what key matched with what door.
+              There is one Adventurer <img class="caption-image" src="images/human.png"> whose goal is to collect one of the fruits <img class="caption-image" src="images/banana.png">, <img class="caption-image" src="images/berry.png">, <img class="caption-image" src="images/orange.png">.
+              The player can only get exactly one fruit. The black tiles represent walls which cannot be passed through.
+              The fruits may be locked behind doors <img class="caption-image" src="images/door.png">, which can only be unlocked with a specific key <img class="caption-image" src="images/key.png">.
+              The keys can only be placed in purple trays <img class="caption-image" src="images/tray.png">.
               <br> <br>
-              The adventure game requires participation of two agents and each level has two stages - there is a design stage and a play stage.
-              In the design stage, the Architect arranges a set of keys on trays <img class="caption-image" src="images/tray.png">.
-              Then in the play stage, the Adventurer decides which key to use on each door.
+              The doors and keys are all unique and labeled. A door can only be unlocked by a particular key. Some keys may unlock neither doors in the room.
               <br> <br>
-              The Architect and the Adventurer do not know each other and cannot communicate. They both receive rewards if the doors are unlocked and the fruits collected.
-              Therefore, it is in the interest of both the Architect and the Adventurer to optimally place and use the keys.
+              The adventurer does not know which keys unlock which doors. To help the adventurer more efficiently reach their goal, <strong>the game designer</strong>,
+              who knows which keys unlock which doors, <strong>has arranged the keys strategically amoungst the purple trays.</strong>
               <br> <br>
-              In this experiment, you are playing the role of the Adventurer. We will show you the map after the Architect has rearranged the keys, and ask you to match which key corresponds to what door(s).
-              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map. At least one fruit is obtainable on each map.
+              In this experiment, you are playing the role of the Adventurer.
+              We will show you the map after the game designer has rearranged the keys, and ask you to match which key(s) corresponds to what door(s).
+              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map..
 
               <br> <br>
 
@@ -560,7 +561,7 @@ experimentApp.controller('ExperimentController',
         tutorial: true,
         show_questions: true,
         question_types: ["beliefs"],
-        statements: ["Does <strong>Key A</strong> unlock <strong>Door 1</strong>?"],
+        statements: [["<strong>Key A</strong> unlocks <strong>Door 1</strong>?"]],
         image: "stimuli/segments/tutorial1.png",
       },
       {
@@ -580,7 +581,7 @@ experimentApp.controller('ExperimentController',
         tutorial: true,
         show_questions: true,
         question_types: ["beliefs"],
-        statements: ["Does <strong>Key A</strong> unlock <strong>Door 1</strong>?"],
+        statements: [["<strong>Key A</strong> unlocks <strong>Door 1</strong>?"]],
         image: "stimuli/segments/tutorial2.png"
       },
       {
@@ -617,17 +618,17 @@ experimentApp.controller('ExperimentController',
       },
       {
         text: `<strong>Question 1/5:</strong> What is the Adventurers's goal?`,
-        options: ["Collect all the fruit",
+        options: ["Collect one of the fruits",
                   "Explore the map",
-                  "Collect all the potions"],
+                  "Collect all the fruits"],
         answer: 0,
         exam: true
       },
       {
         text: `<strong>Question 1/5:</strong> What is the Knight's goal?`,
-        options: ["Collect all the fruit",
+        options: ["Collect one of the fruits",
                   "Explore the map",
-                  "Collect all the potions"],
+                  "Collect all the fruits"],
         answer: 0,
         feedback: true
       },
@@ -731,10 +732,14 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
+          ],
+          [
+            "<strong> Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -760,12 +765,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -793,10 +802,14 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -822,12 +835,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -855,8 +872,10 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlock <strong>Door 1</strong>?",
+            "<strong>Key A</strong> unlock <strong>Door 2</strong>?"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -879,8 +898,10 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlock <strong>Door 1</strong>?",
+            "<strong>Key A</strong> unlock <strong>Door 2</strong>?"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -903,8 +924,10 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlock <strong>Door 1</strong>?",
+            "<strong>Key A</strong> unlock <strong>Door 2</strong>?"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -927,8 +950,10 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlock <strong>Door 1</strong>?",
+            "<strong>Key A</strong> unlock <strong>Door 2</strong>?"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -951,12 +976,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -984,12 +1013,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1017,10 +1050,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1046,10 +1085,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1075,11 +1120,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1105,10 +1155,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1134,15 +1190,21 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
-          "Does <strong>Key C</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key C</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key C</strong> unlock <strong>Door 3</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key C</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key C</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key C</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1174,15 +1236,21 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 3</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
-          "Does <strong>Key C</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key C</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key C</strong> unlock <strong>Door 3</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key C</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key C</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key C</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1214,10 +1282,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1243,10 +1317,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1272,10 +1352,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
@@ -1301,10 +1387,16 @@ experimentApp.controller('ExperimentController',
           1
         ],
         "statements": [
-          "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 1</strong>?",
-          "Does <strong>Key B</strong> unlock <strong>Door 2</strong>?"
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+          ]
         ],
         "length": 2,
         ground_truth: [
