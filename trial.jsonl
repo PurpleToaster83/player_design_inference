@@ -1,1 +1,216 @@
 {"id": "trial01_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/1_1_b.png"]}
+{"id": "trial01", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+    <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+    <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+    <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/1_1.png"]}
+{"id": "trial01_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Nothing
+    <br>Key B unlocks Door 2",
+    "media_url": ["assets/1_1.png"]}
+{"id": "trial02_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/1_2_b.png"]}
+{"id": "trial02", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/1_2.png"]}
+{"id": "trial02_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 1
+    <br>Key B unlocks Door 3",
+    "media_url": ["assets/1_2.png"]}
+{"id": "trial03_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/1_3_b.png"]}
+{"id": "trial03", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+    <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+    <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+    <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/1_3.png"]}
+{"id": "trial03_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Nothing
+    <br>Key B unlocks Door 2",
+    "media_url": ["assets/1_3.png"]}
+{"id": "trial04_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/1_4_b.png"]}
+{"id": "trial04", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/1_4.png"]}
+{"id": "trial04_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 2
+    <br>Key B unlocks Door 3",
+    "media_url": ["assets/1_4.png"]}
+{"id": "trial05_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/2_1_b.png"]}
+{"id": "trial05", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/2_1.png"]}
+{"id": "trial05_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 1",
+    "media_url": ["assets/2_1.png"]}
+{"id": "trial06_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/2_2_b.png"]}
+{"id": "trial06", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/2_2.png"]}
+{"id": "trial06_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 2",
+    "media_url": ["assets/2_2.png"]}
+{"id": "trial07_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/2_3_b.png"]}
+{"id": "trial07", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/2_3.png"]}
+{"id": "trial07_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 2",
+    "media_url": ["assets/2_3.png"]}
+{"id": "trial08_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/2_4_b.png"]}
+{"id": "trial08", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/2_4.png"]}
+{"id": "trial08_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 1",
+    "media_url": ["assets/2_4.png"]}
+{"id": "trial09_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/3_1_b.png"]}
+{"id": "trial09", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/3_1.png"]}
+{"id": "trial09_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks either Door 1 or Door 3
+    <br>Key B unlocks Door 2",
+    "media_url": ["assets/3_1.png"]}
+{"id": "trial10_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/3_2_b.png"]}
+{"id": "trial10", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/3_2.png"]}
+{"id": "trial10_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 1
+    <br>Key B unlocks Door 3",
+    "media_url": ["assets/3_2.png"]}
+{"id": "trial11_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/3_3_b.png"]}
+{"id": "trial11", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/3_3.png"]}
+{"id": "trial11_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 2
+    <br>Key B unlocks Nothing",
+    "media_url": ["assets/3_3.png"]}
+{"id": "trial12_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/3_4_b.png"]}
+{"id": "trial12", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/3_4.png"]}
+{"id": "trial12_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 1
+    <br>Key B unlocks Nothing",
+    "media_url": ["assets/3_4.png"]}
+{"id": "trial13_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/4_1_b.png"]}
+{"id": "trial13", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/4_1.png"]}
+{"id": "trial13_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 2
+    <br>Key B unlocks Nothing",
+    "media_url": ["assets/4_1.png"]}
+{"id": "trial14_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/4_2_b.png"]}
+{"id": "trial14", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+        <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/4_2.png"]}
+{"id": "trial14_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 1
+    <br>Key B unlocks Nothing",
+    "media_url": ["assets/4_2.png"]}
+{"id": "trial15_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/4_3_b.png"]}
+{"id": "trial15", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?
+          <br>Does <strong>Key C</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key C</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key C</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/4_3.png"]}
+{"id": "trial15_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 2
+    <br>Key B unlocks Door 3
+    <br> Key C unlocks Door 1",
+    "media_url": ["assets/4_3.png"]}
+{"id": "trial16_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/4_4_b.png"]}
+{"id": "trial16", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 3</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 3</strong>?
+          <br>Does <strong>Key C</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key C</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key C</strong> unlock <strong>Door 3</strong>?",
+"media_url": ["assets/4_4.png"]}
+{"id": "trial16_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 2
+    <br>Key B unlocks Door 1
+    <br> Key C unlocks Door 3",
+    "media_url": ["assets/4_4.png"]}
+{"id": "trial17_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/5_1_b.png"]}
+{"id": "trial17", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/5_1.png"]}
+{"id": "trial17_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Nothing
+    <br>Key B unlocks Door 2",
+    "media_url": ["assets/5_1.png"]}
+{"id": "trial18_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/5_2_b.png"]}
+{"id": "trial18", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/5_2.png"]}
+{"id": "trial18_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Nothing
+    <br>Key B unlocks Door 1",
+    "media_url": ["assets/5_2.png"]}
+{"id": "trial19_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/5_3_b.png"]}
+{"id": "trial19", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/5_3.png"]}
+{"id": "trial19_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 1
+    <br>Key B unlocks Door 2",
+    "media_url": ["assets/5_3.png"]}
+{"id": "trial20_b", "type": "instruction", "text": "Please take a moment to look over this empty map.", "media_url": ["assets/5_4_b.png"]}
+{"id": "trial20", "type": "instruction", "text": "Does <strong>Key A</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key A</strong> unlock <strong>Door 2</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 1</strong>?
+          <br>Does <strong>Key B</strong> unlock <strong>Door 2</strong>?",
+"media_url": ["assets/5_4.png"]}
+{"id": "trial20_post", "type": "instruction", "text": "<u>Here are the key assignments</u>:
+    <br>Key A unlocks Door 1
+    <br>Key B unlocks Door 2",
+    "media_url": ["assets/5_4.png"]}
