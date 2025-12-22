@@ -146,11 +146,10 @@
 
       <!-- Belief Question -->
       <div id="question" class="captions" ng-cloak>
-        <p ng-show="!hide_questions() && has_belief_question()">The Architect agent has arranged the keys on the map. Please answer the following questions based on your beliefs of which key unlocks which door: <br><br> <strong> Please note that the Architects can ONLY place keys in the <span style="color:orange">orange</span> tiles! </strong></p>
+        <p ng-show="!hide_questions() && has_belief_question()">The Architect agent has arranged the keys on the map. Please answer the following questions based on your beliefs of which key unlocks which door: <br><br> <strong> Please note that the Architects can ONLY place keys in the <span style="color:rgb(179, 0, 255)">purple</span> trays! </strong></p>
         <br>
         <br>
-        <div id="ground_truth" ng-show="section == 'stimuli && (part_id == -1) || inst_id == 3" ng-hide="section != 'stimuli' || part_id == 0 || part_id == 1">
-        </div>
+        <div id="ground_truth" ng-show="section == 'stimuli && (part_id == -1) || inst_id == 3" ng-hide="section != 'stimuli' || part_id == 0 || part_id == 1"></div>
         <br>
         <p ng-show="inst_id == 4 || inst_id == 7">Press <strong>Next</strong> to continue.</p>
         <br>
@@ -159,6 +158,12 @@
           <div class="rating-scale">
             <div class="wrapper">
                 <label for="belief_rating_{{$index}}" class="slider_value">{{response.beliefs[$index]}}</label>
+
+                <div class="display">
+                    <div>No</div>
+                    <div>Yes</div>
+                </div>
+
                 <input type="range" 
                       ng-model="response.beliefs[$index]" 
                       id="belief_rating_{{$index}}" 
@@ -167,20 +172,16 @@
                       class="slider"
                       ng-init="response.beliefs[$index] = response.beliefs[$index] || 50"
                       ng-change="updateSliderValuePosition($index, response.beliefs[$index])">
+
                 <div class="label_nums">
                     <p>0</p>
                     <p>100</p>
                 </div>
-                <div class="display">
-                    <div>No</div>
-                    <div>Yes</div>
-                </div>
+                <br>
+            </div>
           </div>
         </ul>
       </div>
-
-
-
       <!-- Post-Stimulus Feedback -->
       <p ng-show="section == 'stimuli' && part_id < 0" class="feedback" ng-cloak>
         You earned <strong>{{stim_reward}}</strong> bonus point(s) this round, for a total of <strong>{{total_reward}}</strong> points.<br><br>
