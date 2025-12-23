@@ -139,7 +139,7 @@ experimentApp.controller('ExperimentController',
     
     $scope.set_belief_statements = async function (stim_id) {
       let cur_stim = $scope.stimuli_set[stim_id];
-      $scope.n_displayed_statements = cur_stim.length;
+      $scope.n_displayed_statements = cur_stim.statements[0].length;
 
       let n = cur_stim.statements[$scope.statement_select].length;
       let ids = Array.from(Array(n).keys());
@@ -462,7 +462,7 @@ experimentApp.controller('ExperimentController',
       $scope.stim_reward = 0;
 
       response.beliefs.forEach((belief, index) => {
-        const unlock = $scope.stimuli_set[$scope.stim_id].calc_GT;
+        const unlock = $scope.stimuli_set[$scope.stim_id].calc_GT[$scope.statement_select];
         if (unlock == "y") {
           $scope.diff = 100 - belief;
         }
@@ -561,7 +561,7 @@ experimentApp.controller('ExperimentController',
         tutorial: true,
         show_questions: true,
         question_types: ["beliefs"],
-        statements: [["<strong>Key A</strong> unlocks <strong>Door 1</strong>?"]],
+        statements: [["<strong>Key A</strong> unlocks <strong>Door 1</strong>"]],
         image: "stimuli/segments/tutorial1.png",
       },
       {
@@ -581,7 +581,7 @@ experimentApp.controller('ExperimentController',
         tutorial: true,
         show_questions: true,
         question_types: ["beliefs"],
-        statements: [["<strong>Key A</strong> unlocks <strong>Door 1</strong>?"]],
+        statements: [["<strong>Key A</strong> unlocks <strong>Door 1</strong>"]],
         image: "stimuli/segments/tutorial2.png"
       },
       {
@@ -747,10 +747,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 2"
         ],
         calc_GT: [
-          "n",
-          "n",
-          "n",
-          "y"
+          [
+            "n",
+            "n"
+          ],
+          [
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -782,12 +786,16 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 3"
         ],
         calc_GT: [
-          "y",
-          "n",
-          "n",
-          "n",
-          "n",
-          "y"
+          [
+            "y",
+            "n",
+            "n"
+          ],
+          [
+            "n",
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -817,10 +825,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 2"
         ],
         calc_GT: [
-          "n",
-          "n",
-          "n",
-          "y"
+          [
+            "n",
+            "n"
+          ],
+          [
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -852,12 +864,16 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 3"
         ],
         calc_GT: [
-          "n",
-          "y",
-          "n",
-          "n",
-          "n",
-          "y"
+          [
+            "n",
+            "y",
+            "n"
+          ],
+          [
+            "n",
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -873,8 +889,8 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           [
-            "<strong>Key A</strong> unlock <strong>Door 1</strong>?",
-            "<strong>Key A</strong> unlock <strong>Door 2</strong>?"
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
           ]
         ],
         "length": 2,
@@ -882,8 +898,10 @@ experimentApp.controller('ExperimentController',
           "Key A unlocks Door 1",
         ],
         calc_GT: [
-          "y",
-          "n"
+          [
+            "y",
+            "n"
+          ]
         ]
       },
       {
@@ -899,8 +917,8 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           [
-            "<strong>Key A</strong> unlock <strong>Door 1</strong>?",
-            "<strong>Key A</strong> unlock <strong>Door 2</strong>?"
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
           ]
         ],
         "length": 2,
@@ -908,8 +926,10 @@ experimentApp.controller('ExperimentController',
           "Key A unlocks Door 2"
         ],
         calc_GT: [
-          "n",
-          "y"
+          [
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -925,8 +945,8 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           [
-            "<strong>Key A</strong> unlock <strong>Door 1</strong>?",
-            "<strong>Key A</strong> unlock <strong>Door 2</strong>?"
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
           ]
         ],
         "length": 2,
@@ -934,8 +954,10 @@ experimentApp.controller('ExperimentController',
           "Key A unlocks Door 2"
         ],
         calc_GT: [
-          "n",
-          "y"
+          [
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -951,8 +973,8 @@ experimentApp.controller('ExperimentController',
         ],
         "statements": [
           [
-            "<strong>Key A</strong> unlock <strong>Door 1</strong>?",
-            "<strong>Key A</strong> unlock <strong>Door 2</strong>?"
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
           ]
         ],
         "length": 2,
@@ -960,8 +982,10 @@ experimentApp.controller('ExperimentController',
           "Key A unlocks Door 1"
         ],
         calc_GT: [
-          "y",
-          "n"
+          [
+            "y",
+            "n"
+          ]
         ]
       },
       {
@@ -993,12 +1017,16 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 2"
         ],
         calc_GT: [
-          "y",
-          "n",
-          "y",
-          "n",
-          "y",
-          "n"
+          [
+            "y",
+            "n",
+            "y"
+          ],
+          [
+            "n",
+            "y",
+            "n"
+          ]
         ]
       },
       {
@@ -1030,12 +1058,16 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 3"
         ],
         calc_GT: [
-          "y",
-          "n",
-          "n",
-          "n",
-          "n",
-          "y"
+          [
+            "y",
+            "n",
+            "n"
+          ],
+          [
+            "n",
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -1053,12 +1085,10 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
           ]
         ],
         "length": 2,
@@ -1067,10 +1097,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Nothing"
         ],
         calc_GT: [
-          "n",
-          "y",
-          "n",
-          "n",
+          [
+            "n",
+            "y"
+          ],
+          [
+            "n",
+            "n"
+          ],
         ]
       },
       {
@@ -1088,12 +1122,10 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
           ]
         ],
         "length": 2,
@@ -1102,10 +1134,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Nothing"
         ],
         calc_GT: [
-          "y",
-          "n",
-          "n",
-          "n"
+          [
+            "y",
+            "n"
+          ],
+          [
+            "n",
+            "n"
+          ]
         ]
       },
       {
@@ -1123,12 +1159,10 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
           ]
         ],
         "length": 2,
@@ -1137,10 +1171,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Nothing"
         ],
         calc_GT: [
-          "n",
-          "y",
-          "n",
-          "n"
+          [
+            "n",
+            "y"
+          ],
+          [
+            "n",
+            "n"
+          ]
         ]
       },
       {
@@ -1158,12 +1196,10 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
           ]
         ],
         "length": 2,
@@ -1172,10 +1208,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Nothing"
         ],
         calc_GT: [
-          "y",
-          "n",
-          "n",
-          "n"
+          [
+            "y",
+            "n"
+          ],
+          [
+            "n",
+            "n"
+          ]
         ]
       },
       {
@@ -1213,15 +1253,21 @@ experimentApp.controller('ExperimentController',
           "Key C unlocks Door 1"
         ],
         calc_GT: [
-          "n",
-          "y",
-          "n",
-          "n",
-          "n",
-          "y",
-          "y",
-          "n",
-          "n"
+          [
+            "n",
+            "y",
+            "n"
+          ],
+          [
+            "n",
+            "n",
+            "y"
+          ],
+          [
+            "y",
+            "n",
+            "n"
+          ]
         ]
       },
       {
@@ -1259,15 +1305,21 @@ experimentApp.controller('ExperimentController',
           "Key C unlocks Door 3"
         ],
         calc_GT: [
-          "n",
-          "y",
-          "n",
-          "y",
-          "n",
-          "n",
-          "n",
-          "n",
-          "y"
+          [
+            "n",
+            "y",
+            "n"
+          ],
+          [
+            "y",
+            "n",
+            "n"
+          ],
+          [
+            "n",
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -1285,12 +1337,10 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
           ]
         ],
         "length": 2,
@@ -1299,10 +1349,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 2"
         ],
         calc_GT: [
-          "n",
-          "n",
-          "n",
-          "y",
+          [
+            "n",
+            "n"
+          ],
+          [
+            "n",
+            "y"
+          ],
         ]
       },
       {
@@ -1320,12 +1374,10 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
           ]
         ],
         "length": 2,
@@ -1334,10 +1386,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 1"
         ],
         calc_GT: [
-          "n",
-          "n",
-          "y",
-          "n"
+          [
+            "n",
+            "n"
+          ],
+          [
+            "y",
+            "n"
+          ]
         ]
       },
       {
@@ -1369,10 +1425,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 2"
         ],
         calc_GT: [
-          "y",
-          "n",
-          "n",
-          "y"
+          [
+            "y",
+            "n"
+          ],
+          [
+            "n",
+            "y"
+          ]
         ]
       },
       {
@@ -1404,10 +1464,14 @@ experimentApp.controller('ExperimentController',
           "Key B unlocks Door 2"
         ],
         calc_GT: [
-          "y",
-          "n",
-          "n",
-          "y"
+          [
+            "y",
+            "n"
+          ],
+          [
+            "n",
+            "y"
+          ]
         ]
       },
     ]
