@@ -189,7 +189,7 @@ experimentApp.controller('ExperimentController',
           }
           $scope.data.demographic_survey = $scope.survey;
           $scope.increment_counter();
-          $scope.store_to_db($scope.user_id, $scope.data);
+          $scope.store_to_db($scope.user_id, $scope.data.exam);
         }
       }
     };
@@ -462,7 +462,7 @@ experimentApp.controller('ExperimentController',
       $scope.stim_reward = 0;
 
       response.beliefs.forEach((belief, index) => {
-        const unlock = $scope.stimuli_set[$scope.stim_id].calc_GT[$scope.statement_select];
+        const unlock = $scope.stimuli_set[$scope.stim_id].calc_GT[$scope.statement_select][index];
         if (unlock == "y") {
           $scope.diff = 100 - belief;
         }
@@ -549,7 +549,7 @@ experimentApp.controller('ExperimentController',
               <br>
               Rate <strong>100</strong> if you're <strong>certain</strong> that the key <strong>unlocks</strong> a <strong>door</strong>.<br>
               Rate <strong>50</strong> if you think there's an <strong>even, 50-50 chance</strong> whether the does or does not <strong>unlock</strong> a <strong>door</strong>.<br>
-              Rate <strong>1</strong> if you're <strong>certain</strong> that the key <strong>does not unlock</strong> a <strong>door</strong>.<br>
+              Rate <strong>0</strong> if you're <strong>certain</strong> that the key <strong>does not unlock</strong> a <strong>door</strong>.<br>
               <br>
               Press <strong>Next</strong> to watch what happens.
               `,
@@ -1411,12 +1411,10 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
           ]
         ],
         "length": 2,
@@ -1450,12 +1448,10 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
           ]
         ],
         "length": 2,
