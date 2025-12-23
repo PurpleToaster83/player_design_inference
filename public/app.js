@@ -534,8 +534,7 @@ experimentApp.controller('ExperimentController',
               <br> <br>
               In this experiment, you are playing the role of the Adventurer.
               We will show you the map after the game designer has rearranged the keys, and ask you to match which key(s) corresponds to what door(s).
-              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map..
-
+              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map.
               <br> <br>
 
               Press the <strong>Next</strong> button to continue.
@@ -566,7 +565,7 @@ experimentApp.controller('ExperimentController',
       },
       {
         image: "stimuli/segments/tutorial1.png",
-        text: "In this case, Key A unlocks Door 1. This is because the Architect chose to place Key A close to Door 1 when they had a choice of placing it farther."
+        text: "In this case, Key A unlocks Door 1. This is because the room designer chose to place Key A close to Door 1 when they had a choice of placing it farther."
       },
       {
         text: `Now look at this map which has been slightly altered from the previous one. Think about how moving the Key to a different tray changed your judgment.
@@ -586,10 +585,10 @@ experimentApp.controller('ExperimentController',
       },
       {
         image: "stimuli/segments/tutorial2.png",
-        text: "In this case Key A unlocks Nothing! The Architect intentionally placed Key A far away from the agent to indicate it did not unlock the door."
+        text: "In this case Key A unlocks Nothing! The room designer intentionally placed Key A far away from the agent to indicate it did not unlock the door."
       },
       {
-        text: `As mentioned, you should assume that the Architect wants you to succeed as both of you will benefit if you answer correctly. The reward scheme is as follows:
+        text: `As mentioned, you should assume that the room designer wants you to succeed as both of you will benefit if you answer correctly. The reward scheme is as follows:
 
               <br><br>
               For each question, Your rating will be compared to the answer key and rewards will be calibrated by considering the difference.
@@ -617,55 +616,55 @@ experimentApp.controller('ExperimentController',
               `
       },
       {
-        text: `<strong>Question 1/5:</strong> What is the Adventurers's goal?`,
-        options: ["Collect one of the fruits",
-                  "Explore the map",
-                  "Collect all the fruits"],
+        text: `<strong>Question 1/5:</strong> How many keys are needed to unlock a door?`,
+        options: ["1",
+                  "2",
+                  "Depends on the door"],
         answer: 0,
         exam: true
       },
       {
-        text: `<strong>Question 1/5:</strong> What is the Knight's goal?`,
-        options: ["Collect one of the fruits",
-                  "Explore the map",
-                  "Collect all the fruits"],
+        text: `<strong>Question 1/5:</strong> How many keys are needed to unlock a door?`,
+        options: ["1",
+                  "2",
+                  "Depends on the door"],
         answer: 0,
         feedback: true
       },
       {
-        text: `<strong>Question 2/5:</strong> How many doors <strong>must</strong> be unlockable each trial?`,
-        options: ["Zero",
-                  "One",
-                  "All of them"],
+        text: `<strong>Question 2/5:</strong> Which of the following statements is true?`,
+        options: ["A jey can be used to unlock any door",
+                  "A key can only be used to unlock a specific door",
+                  "A key can be used to unlock many doors"],
         answer: 1,
         exam: true
       },
       {
-        text: `<strong>Question 2/5:</strong> What is your task in this game?`,
-        options: ["Zero",
-                  "One",
-                  "All of them"],
+        text: `<strong>Question 2/5:</strong> Which of the following statements is true?`,
+        options: ["A jey can be used to unlock any door",
+                  "A key can only be used to unlock a specific door",
+                  "A key can be used to unlock many doors"],
         answer: 1,
         feedback: true
       },
       {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The Architect placed the flasks randomly.",
-                  "The keys are all randomly assigned.",
-                  "The Architect strategically placed the flasks for the Adventurer."],
+        text: `<strong>Question 3/5:</strong> Which of the following statements is true?`,
+        options: ["The room designer placed the flasks randomly.",
+                  "The room designer placed the keys in trays close to doors they can unlock.",
+                  "The room designer placed the keys strategically amoung the key trays to help the player"],
         answer: 2,
         exam: true
       },
       {
-        text: `<strong>Question 3/5:</strong> Which of the following is true?`,
-        options: ["The Architect placed the flasks randomly.",
-                  "The keys are all randomly assigned.",
-                  "The Architect strategically placed the flasks for the Adventurer."],
+        text: `<strong>Question 3/5:</strong> Which of the following statements is true?`,
+        options: ["The room designer placed the flasks randomly.",
+                  "The room designer placed the keys in trays close to doors they can unlock.",
+                  "The room designer placed the keys strategically amoung the key trays to help the player"],
         answer: 2,
         feedback: true
       },
       {
-        text: `<strong>Question 4/5:</strong> Where can the Architect place the keys?`,
+        text: `<strong>Question 4/5:</strong> Where can the room designer place the keys?`,
         options: ["Anywhere on the map.",
                   "ONLY on the trays.",
                   "ONLY next to a wall, the Adventurer, or the fruit."],
@@ -673,7 +672,7 @@ experimentApp.controller('ExperimentController',
         exam: true
       },
       {
-        text: `<strong>Question 4/5:</strong> Which of the following is true?`,
+        text: `<strong>Question 4/5:</strong> Where can the room designer place the keys?`,
         options: ["Anywhere on the map.",
                   "ONLY on the trays.",
                   "ONLY next to a wall, the Adventurer, or the fruit."],
@@ -681,18 +680,18 @@ experimentApp.controller('ExperimentController',
         feedback: true
       },
       {
-        text: `<strong>Question 5/5:</strong> If the Architect arranged one keys and there are two doors. What fruit can the Adventurer obtain?`,
-        options: ["Neither of them",
-                  "Either of them",
-                  "Both of them"],
+        text: `<strong>Question 5/5:</strong> If the map has one key and there is only one tray and two doors, what conclusion can you draw?`,
+        options: ["The key must unlock the closest door",
+                  "The key may or may not unlock any door",
+                  "The key can unlock both of them"],
         answer: 1,
         exam: true
       },
       {
-        text: `<strong>Question 5/5:</strong> Which of the following is true?`,
-        options: ["Neither of them",
-                  "Either of them",
-                  "Both of them"],
+        text: `<strong>Question 5/5:</strong> If the map has one key and there is only one tray and two doors, what conclusion can you draw?`,
+        options: ["The key must unlock the closest door",
+                  "The key may or may not unlock any door",
+                  "The key can unlock both of them"],
         answer: 1,
         feedback: true
       },
