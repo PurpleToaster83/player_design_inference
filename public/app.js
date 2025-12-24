@@ -751,11 +751,13 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "n",
-            "n"
+            "n",
+            "y"
           ],
           [
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },
@@ -793,12 +795,14 @@ experimentApp.controller('ExperimentController',
           [
             "y",
             "n",
+            "n",
             "n"
           ],
           [
             "n",
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },
@@ -833,11 +837,13 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "n",
-            "n"
+            "n",
+            "y"
           ],
           [
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },
@@ -875,12 +881,14 @@ experimentApp.controller('ExperimentController',
           [
             "n",
             "y",
+            "n",
             "n"
           ],
           [
             "n",
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },
@@ -909,6 +917,7 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "y",
+            "n",
             "n"
           ]
         ]
@@ -938,7 +947,8 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },
@@ -967,7 +977,8 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },
@@ -996,6 +1007,7 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "y",
+            "n",
             "n"
           ]
         ]
@@ -1034,11 +1046,13 @@ experimentApp.controller('ExperimentController',
           [
             "y",
             "n",
-            "y"
+            "y",
+            "n"
           ],
           [
             "n",
             "y",
+            "n",
             "n"
           ]
         ]
@@ -1077,12 +1091,14 @@ experimentApp.controller('ExperimentController',
           [
             "y",
             "n",
+            "n",
             "n"
           ],
           [
             "n",
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },
@@ -1117,11 +1133,13 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "n",
-            "y"
+            "y",
+            "n"
           ],
           [
             "n",
-            "n"
+            "n",
+            "y"
           ],
         ]
       },
@@ -1156,11 +1174,13 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "y",
+            "n",
             "n"
           ],
           [
             "n",
-            "n"
+            "n",
+            "y"
           ]
         ]
       },
@@ -1234,11 +1254,13 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "y",
+            "n",
             "n"
           ],
           [
             "n",
-            "n"
+            "n",
+            "y"
           ]
         ]
       },
@@ -1269,24 +1291,20 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 2",
+          "Key A unlocks either Door 2 or Door 3",
           "Key B unlocks Door 3",
-          "Key C unlocks Door 1"
         ],
         calc_GT: [
           [
             "n",
             "y",
+            "n",
             "n"
           ],
           [
             "n",
             "n",
-            "y"
-          ],
-          [
             "y",
-            "n",
             "n"
           ]
         ]
@@ -1318,26 +1336,22 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 2",
+          "Key A unlocks either Door 2 or Door 3",
           "Key B unlocks Door 1",
-          "Key C unlocks Door 3"
         ],
         calc_GT: [
           [
             "n",
             "y",
+            "n",
             "n"
           ],
           [
             "y",
             "n",
+            "n",
             "n"
           ],
-          [
-            "n",
-            "n",
-            "y"
-          ]
         ]
       },
       {
@@ -1371,11 +1385,13 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "n",
-            "n"
+            "n",
+            "y"
           ],
           [
             "n",
-            "y"
+            "y",
+            "n"
           ],
         ]
       },
@@ -1410,10 +1426,12 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "n",
-            "n"
+            "n",
+            "y"
           ],
           [
             "y",
+            "n",
             "n"
           ]
         ]
@@ -1449,11 +1467,13 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "y",
+            "n",
             "n"
           ],
           [
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },
@@ -1488,11 +1508,13 @@ experimentApp.controller('ExperimentController',
         calc_GT: [
           [
             "y",
+            "n",
             "n"
           ],
           [
             "n",
-            "y"
+            "y",
+            "n"
           ]
         ]
       },

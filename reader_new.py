@@ -1,8 +1,8 @@
 import json
 import csv
 
-file = "./JSONs/08_19_25.json"
-flask_letters = ["A", "B", "C", "D"]
+file = "./JSONs/12_24_25.json"
+key_letters = ["A", "B", "C", "D"]
 person_id = []
 participants = 10
 
@@ -23,19 +23,19 @@ with open(file, 'r') as file:
         person_data = raw_data[person]['stimuli_set']
         for i, map in enumerate(person_data):
             for f in range(len(person_data[map]) - 1):
-                if not map_info[map].get(f'{flask_letters[f]}'):
-                    map_info[map].update({f'{flask_letters[f]}': {
+                if not map_info[map].get(f'{key_letters[f]}'):
+                    map_info[map].update({f'{key_letters[f]}': {
                         'answers': [],
                     }})
                     for p in range(participants):
-                        map_info[map][f'{flask_letters[f]}'].update({f'person{p}': None})
-                if map_info[map][f'{flask_letters[f]}'].get('answers'):
-                    map_info[map][f'{flask_letters[f]}']['answers'].extend([person_data[map][f'{f}']])
+                        map_info[map][f'{key_letters[f]}'].update({f'person{p}': None})
+                if map_info[map][f'{key_letters[f]}'].get('answers'):
+                    map_info[map][f'{key_letters[f]}']['answers'].extend([person_data[map][f'{f}']])
                 else:
-                    map_info[map][f'{flask_letters[f]}']['answers'] = [person_data[map][f'{f}']]
+                    map_info[map][f'{key_letters[f]}']['answers'] = [person_data[map][f'{f}']]
 
                 idx = person_id.index(person)
-                map_info[map][f'{flask_letters[f]}'][f'person{idx}'] = person_data[map][f'{f}']
+                map_info[map][f'{key_letters[f]}'][f'person{idx}'] = person_data[map][f'{f}']
     for map in map_info.items():
         for flask in map[1].items():
             sum = 0
@@ -75,7 +75,7 @@ with open('08_19_25_data.csv', 'w', newline='') as csvfile:
     
     for name, map in map_info.items():
         for id, flask in map.items():
-            gt = ground_truth[name][flask_letters.index(id)]
+            gt = ground_truth[name][key_letters.index(id)]
             if gt == f'{id} is a Potion':
                 val = 100
             else:
