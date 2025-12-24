@@ -61,6 +61,7 @@ experimentApp.controller('ExperimentController',
     $scope.countdown_time = 0;
     $scope.timer_active = false;
     $scope.statement_select = 0;
+    $scope.qSeries = ["a", "b", "c"];
 
     $scope.data = {
       "user_id": NaN,
@@ -189,7 +190,7 @@ experimentApp.controller('ExperimentController',
           }
           $scope.data.demographic_survey = $scope.survey;
           $scope.increment_counter();
-          $scope.store_to_db($scope.user_id, $scope.data.exam);
+          $scope.store_to_db($scope.user_id, $scope.data);
         }
       }
     };
@@ -333,7 +334,7 @@ experimentApp.controller('ExperimentController',
         $scope.part_id = $scope.part_id + 1;
         if ($scope.part_id == $scope.stimuli_set[$scope.stim_id].length) {
           // Store ratings
-          $scope.data.stimuli_set[$scope.stimuli_set[$scope.stim_id].name] = $scope.ratings;
+          $scope.data.stimuli_set[$scope.stimuli_set[$scope.stim_id].name + "_" + $scope.qSeries[$scope.statement_select]] = $scope.ratings;
           // Advance to next problem.
           $scope.part_id = -1;
           $scope.stim_id = $scope.stim_id + 1;
@@ -633,7 +634,7 @@ experimentApp.controller('ExperimentController',
       },
       {
         text: `<strong>Question 2/5:</strong> Which of the following statements is true?`,
-        options: ["A jey can be used to unlock any door",
+        options: ["A key can be used to unlock any door",
                   "A key can only be used to unlock a specific door",
                   "A key can be used to unlock many doors"],
         answer: 1,
@@ -641,7 +642,7 @@ experimentApp.controller('ExperimentController',
       },
       {
         text: `<strong>Question 2/5:</strong> Which of the following statements is true?`,
-        options: ["A jey can be used to unlock any door",
+        options: ["A key can be used to unlock any door",
                   "A key can only be used to unlock a specific door",
                   "A key can be used to unlock many doors"],
         answer: 1,
@@ -681,18 +682,18 @@ experimentApp.controller('ExperimentController',
       },
       {
         text: `<strong>Question 5/5:</strong> If the map has one key and there is only one tray and two doors, what conclusion can you draw?`,
-        options: ["The key must unlock the closest door",
-                  "The key may or may not unlock any door",
+        options: ["The key may or may not unlock any door",
+                  "The key must unlock the closest door",
                   "The key can unlock both of them"],
-        answer: 1,
+        answer: 0,
         exam: true
       },
       {
         text: `<strong>Question 5/5:</strong> If the map has one key and there is only one tray and two doors, what conclusion can you draw?`,
-        options: ["The key must unlock the closest door",
-                  "The key may or may not unlock any door",
+        options: ["The key may or may not unlock any door",
+                  "The key must unlock the closest door",
                   "The key can unlock both of them"],
-        answer: 1,
+        answer: 0,
         feedback: true
       },
       {
@@ -733,11 +734,13 @@ experimentApp.controller('ExperimentController',
         "statements": [
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong> Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>"
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -771,12 +774,14 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key A</strong> unlocks <strong>none</strong> of the doors"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key B</strong> unlocks <strong>none</strong> of the doors"
           ]
         ],
         "length": 2,
@@ -811,11 +816,13 @@ experimentApp.controller('ExperimentController',
         "statements": [
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>"
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -849,12 +856,14 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key A</strong> unlocks <strong>none</strong> of the doors"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key B</strong> unlocks <strong>none</strong> of the doors"
           ]
         ],
         "length": 2,
@@ -889,7 +898,8 @@ experimentApp.controller('ExperimentController',
         "statements": [
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -917,7 +927,8 @@ experimentApp.controller('ExperimentController',
         "statements": [
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -945,7 +956,8 @@ experimentApp.controller('ExperimentController',
         "statements": [
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -973,7 +985,8 @@ experimentApp.controller('ExperimentController',
         "statements": [
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1002,12 +1015,14 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key A</strong> unlocks <strong>none</strong> of the doors"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key B</strong> unlocks <strong>none</strong> of the doors"
           ]
         ],
         "length": 2,
@@ -1043,12 +1058,14 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key A</strong> unlocks <strong>none</strong> of the doors"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key B</strong> unlocks <strong>none</strong> of the doors"
           ]
         ],
         "length": 2,
@@ -1084,10 +1101,12 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1121,10 +1140,12 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1158,10 +1179,12 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1195,10 +1218,12 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1232,17 +1257,20 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key A</strong> unlocks <strong>none</strong> of the doors"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key B</strong> unlocks <strong>none</strong> of the doors"
           ],
           [
             "<strong>Key C</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key C</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key C</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key C</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key C</strong> unlocks <strong>none</strong> of the doors"
           ]
         ],
         "length": 2,
@@ -1284,17 +1312,20 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key A</strong> unlocks <strong>none</strong> of the doors"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key B</strong> unlocks <strong>none</strong> of the doors"
           ],
           [
             "<strong>Key C</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key C</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key C</strong> unlocks <strong>Door 3</strong>"
+            "<strong>Key C</strong> unlocks <strong>Door 3</strong>",
+            "<strong>Key C</strong> unlocks <strong>none</strong> of the doors"
           ]
         ],
         "length": 2,
@@ -1336,10 +1367,12 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1373,10 +1406,12 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1410,10 +1445,12 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1447,10 +1484,12 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key A</strong> unlocks <strong>neither</strong> door"
           ],
           [
             "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
