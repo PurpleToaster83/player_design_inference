@@ -1200,11 +1200,6 @@ experimentApp.controller('ExperimentController',
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
             "<strong>Key A</strong> unlocks <strong>neither</strong> door"
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1216,10 +1211,6 @@ experimentApp.controller('ExperimentController',
           [
             "n",
             "y"
-          ],
-          [
-            "n",
-            "n"
           ]
         ]
       },
@@ -1239,11 +1230,6 @@ experimentApp.controller('ExperimentController',
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
             "<strong>Key A</strong> unlocks <strong>neither</strong> door"
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>neither</strong> door"
           ]
         ],
         "length": 2,
@@ -1256,11 +1242,6 @@ experimentApp.controller('ExperimentController',
             "y",
             "n",
             "n"
-          ],
-          [
-            "n",
-            "n",
-            "y"
           ]
         ]
       },
