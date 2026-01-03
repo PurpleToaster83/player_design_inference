@@ -528,14 +528,14 @@ experimentApp.controller('ExperimentController',
               The fruits may be locked behind doors <img class="caption-image" src="images/door.png">, which can only be unlocked with a specific key <img class="caption-image" src="images/key.png">.
               The keys can only be placed in purple trays <img class="caption-image" src="images/tray.png">.
               <br> <br>
-              The doors and keys are all unique and labeled. A door can only be unlocked by a particular key. Some keys may unlock neither doors in the room.
+              The doors and keys are all unique and labeled. A door can only be unlocked by a particular key.
               <br> <br>
               The adventurer does not know which keys unlock which doors. To help the adventurer more efficiently reach their goal, <strong>the game designer</strong>,
               who knows which keys unlock which doors, <strong>has arranged the keys strategically amoungst the purple trays.</strong>
               <br> <br>
               In this experiment, you are playing the role of the Adventurer.
               We will show you the map after the game designer has rearranged the keys, and ask you to match which key(s) corresponds to what door(s).
-              Keys have the potential to unlock one, none, or multiple doors but can only be used once for each chamber map.
+              Keys have the potential to unlock one or multiple doors but can only be used once for each chamber map.
               <br> <br>
 
               Press the <strong>Next</strong> button to continue.
