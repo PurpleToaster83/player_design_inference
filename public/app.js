@@ -441,11 +441,12 @@ experimentApp.controller('ExperimentController',
       // Uncomment for testing stimuli
       let stim_idx = [];
       let count = await $scope.get_counter();
-      stim_idx = $scope.stimuli_sets[count % $scope.stimuli_sets.length];  
+      stim_idx = $scope.stimuli_sets[count % $scope.stimuli_sets.length];
+      $scope.blah = stim_idx
 
       $scope.log("stimuli idx = " , stim_idx);
       for (i = 0; i < stim_idx.length; i++) {
-        $scope.stimuli_set.push($scope.stimuli[stim_idx[i] - 1]);
+        $scope.stimuli_set.push($scope.stimuli[stim_idx[i]]);
       }
       $scope.stimuli_set = $scope.array_shuffle($scope.stimuli_set);
       $scope.log("stimuli ", $scope.stimuli_set);
@@ -686,7 +687,7 @@ experimentApp.controller('ExperimentController',
       },
       {
         text: `<strong>Question 5/5:</strong> If the map has one key and there is only one tray and two doors, what conclusion can you draw?`,
-        options: ["The key may or may not unlock any door",
+        options: ["The key must unlock one of the two doors",
                   "The key must unlock the closest door",
                   "The key can unlock both of them"],
         answer: 0,
@@ -694,7 +695,7 @@ experimentApp.controller('ExperimentController',
       },
       {
         text: `<strong>Question 5/5:</strong> If the map has one key and there is only one tray and two doors, what conclusion can you draw?`,
-        options: ["The key may or may not unlock any door",
+        options: ["The key must unlock one of the two doors",
                   "The key must unlock the closest door",
                   "The key can unlock both of them"],
         answer: 0,
