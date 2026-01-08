@@ -89,7 +89,9 @@ experimentApp.controller('ExperimentController',
     }
     
     $scope.increment_counter = function() {
-      counterRef.child(counterKey).set($scope.user_count + 1);
+      counterRef.child(counterKey).transaction(function(currentValue) {
+        return (currentValue || 0) + 1;
+      });
     }
 
     $scope.get_statement_counts = async function (stim_id) {
@@ -508,7 +510,9 @@ experimentApp.controller('ExperimentController',
     };
 
     $scope.stimuli_sets = [
-      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+      [0, 4, 8, 9, 13, 14, 15, 19, 23, 25],
+      [1, 5, 6, 11, 16, 20, 21, 26, 28, 29],
+      [2, 3, 7, 10, 12, 17, 18, 22, 24, 27]
     ]
 
     $scope.stimuli_set_length = $scope.stimuli_sets[0].length;
@@ -723,7 +727,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "1_1",
         "images": [
-          "stimuli/segments/1_1_b.png",
+          "stimuli/segments/1_b.png",
           "stimuli/segments/1_1.png"
         ],
         "times": [
@@ -735,32 +739,23 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-          ],
-          [
-            "<strong> Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
           ]
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Nothing",
-          "Key B unlocks Door 2"
+          "Key A unlocks Door 1",
         ],
         calc_GT: [
           [
-            "n",
-            "n",
-          ],
-          [
-            "n",
             "y",
+            "n",
           ]
         ]
       },
       {
         "name": "1_2",
         "images": [
-          "stimuli/segments/1_2_b.png",
+          "stimuli/segments/1_b.png",
           "stimuli/segments/1_2.png"
         ],
         "times": [
@@ -772,27 +767,14 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
           ]
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 1",
-          "Key B unlocks Door 3"
+          "Key A unlocks Door 2",
         ],
         calc_GT: [
           [
-            "y",
-            "n",
-            "n",
-          ],
-          [
-            "n",
             "n",
             "y",
           ]
@@ -801,7 +783,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "1_3",
         "images": [
-          "stimuli/segments/1_3_b.png",
+          "stimuli/segments/1_b.png",
           "stimuli/segments/1_3.png"
         ],
         "times": [
@@ -821,56 +803,15 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Nothing",
+          "Key A unlocks Door 1",
           "Key B unlocks Door 2"
         ],
         calc_GT: [
           [
-            "n",
-            "n",
-          ],
-          [
-            "n",
-            "y",
-          ]
-        ]
-      },
-      {
-        "name": "1_4",
-        "images": [
-          "stimuli/segments/1_4_b.png",
-          "stimuli/segments/1_4.png"
-        ],
-        "times": [
-          1,
-          30,
-          1
-        ],
-        "statements": [
-          [
-            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
-          ]
-        ],
-        "length": 2,
-        ground_truth: [
-          "Key A unlocks Door 2",
-          "Key B unlocks Door 3"
-        ],
-        calc_GT: [
-          [
-            "n",
             "y",
             "n",
           ],
           [
-            "n",
             "n",
             "y",
           ]
@@ -879,7 +820,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "2_1",
         "images": [
-          "stimuli/segments/2_1_b.png",
+          "stimuli/segments/2_b.png",
           "stimuli/segments/2_1.png"
         ],
         "times": [
@@ -907,7 +848,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "2_2",
         "images": [
-          "stimuli/segments/2_2_b.png",
+          "stimuli/segments/2_b.png",
           "stimuli/segments/2_2.png"
         ],
         "times": [
@@ -923,7 +864,7 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 2"
+          "Key A unlocks Door 2",
         ],
         calc_GT: [
           [
@@ -935,7 +876,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "2_3",
         "images": [
-          "stimuli/segments/2_3_b.png",
+          "stimuli/segments/2_b.png",
           "stimuli/segments/2_3.png"
         ],
         "times": [
@@ -947,41 +888,22 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
           ]
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 2"
+          "Key A unlocks Door 2",
+          "Key B unlocks Door 1"
         ],
         calc_GT: [
           [
             "n",
             "y",
-          ]
-        ]
-      },
-      {
-        "name": "2_4",
-        "images": [
-          "stimuli/segments/2_4_b.png",
-          "stimuli/segments/2_4.png"
-        ],
-        "times": [
-          1,
-          30,
-          1
-        ],
-        "statements": [
-          [
-            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-          ]
-        ],
-        "length": 2,
-        ground_truth: [
-          "Key A unlocks Door 1"
-        ],
-        calc_GT: [
+          ],
           [
             "y",
             "n",
@@ -991,7 +913,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "3_1",
         "images": [
-          "stimuli/segments/3_1_b.png",
+          "stimuli/segments/3_b.png",
           "stimuli/segments/3_1.png"
         ],
         "times": [
@@ -1003,27 +925,14 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
           ]
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks either Door 1 or Door 3",
-          "Key B unlocks Door 2"
+          "Key A unlocks Door 1",
         ],
         calc_GT: [
           [
-            "y",
-            "n",
-            "y",
-          ],
-          [
-            "n",
             "y",
             "n",
           ]
@@ -1032,7 +941,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "3_2",
         "images": [
-          "stimuli/segments/3_2_b.png",
+          "stimuli/segments/3_b.png",
           "stimuli/segments/3_2.png"
         ],
         "times": [
@@ -1044,27 +953,14 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
           ]
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 1",
-          "Key B unlocks Door 3"
+          "Key A unlocks Door 2",
         ],
         calc_GT: [
           [
-            "y",
-            "n",
-            "n",
-          ],
-          [
-            "n",
             "n",
             "y",
           ]
@@ -1073,7 +969,7 @@ experimentApp.controller('ExperimentController',
       {
         "name": "3_3",
         "images": [
-          "stimuli/segments/3_3_b.png",
+          "stimuli/segments/3_b.png",
           "stimuli/segments/3_3.png"
         ],
         "times": [
@@ -1094,7 +990,7 @@ experimentApp.controller('ExperimentController',
         "length": 2,
         ground_truth: [
           "Key A unlocks Door 2",
-          "Key B unlocks Nothing"
+          "Key B unlocks Door 1"
         ],
         calc_GT: [
           [
@@ -1102,16 +998,16 @@ experimentApp.controller('ExperimentController',
             "y",
           ],
           [
+            "y",
             "n",
-            "n",
-          ],
+          ]
         ]
       },
       {
-        "name": "3_4",
+        "name": "4_1",
         "images": [
-          "stimuli/segments/3_4_b.png",
-          "stimuli/segments/3_4.png"
+          "stimuli/segments/4_b.png",
+          "stimuli/segments/4_1.png"
         ],
         "times": [
           1,
@@ -1122,33 +1018,24 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
           ]
         ],
         "length": 2,
         ground_truth: [
           "Key A unlocks Door 1",
-          "Key B unlocks Nothing"
         ],
         calc_GT: [
           [
             "y",
             "n",
-          ],
-          [
-            "n",
-            "n",
           ]
         ]
       },
       {
-        "name": "4_1",
+        "name": "4_2",
         "images": [
-          "stimuli/segments/4_1_b.png",
-          "stimuli/segments/4_1.png"
+          "stimuli/segments/4_b.png",
+          "stimuli/segments/4_2.png"
         ],
         "times": [
           1,
@@ -1173,10 +1060,47 @@ experimentApp.controller('ExperimentController',
         ]
       },
       {
-        "name": "4_2",
+        "name": "4_3",
         "images": [
-          "stimuli/segments/4_2_b.png",
-          "stimuli/segments/4_2.png"
+          "stimuli/segments/4_b.png",
+          "stimuli/segments/4_3.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 2"
+        ],
+        calc_GT: [
+          [
+            "y",
+            "n",
+          ],
+          [
+            "n",
+            "y",
+          ]
+        ]
+      },
+      {
+        "name": "5_1",
+        "images": [
+          "stimuli/segments/5_b.png",
+          "stimuli/segments/5_1.png"
         ],
         "times": [
           1,
@@ -1201,128 +1125,9 @@ experimentApp.controller('ExperimentController',
         ]
       },
       {
-        "name": "4_3",
-        "images": [
-          "stimuli/segments/4_3_b.png",
-          "stimuli/segments/4_3.png"
-        ],
-        "times": [
-          1,
-          30,
-          1
-        ],
-        "statements": [
-          [
-            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
-          ]
-        ],
-        "length": 2,
-        ground_truth: [
-          "Key A unlocks either Door 2 or Door 3",
-          "Key B unlocks Door 1",
-        ],
-        calc_GT: [
-          [
-            "n",
-            "y",
-            "n",
-          ],
-          [
-            "n",
-            "n",
-            "y",
-          ]
-        ]
-      },
-      {
-        "name": "4_4",
-        "images": [
-          "stimuli/segments/4_4_b.png",
-          "stimuli/segments/4_4.png"
-        ],
-        "times": [
-          1,
-          30,
-          1
-        ],
-        "statements": [
-          [
-            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 3</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 3</strong>",
-          ]
-        ],
-        "length": 2,
-        ground_truth: [
-          "Key A unlocks either Door 2 or Door 3",
-          "Key B unlocks either Door 1 or Door 3",
-        ],
-        calc_GT: [
-          [
-            "n",
-            "y",
-            "n",
-          ],
-          [
-            "y",
-            "n",
-            "n",
-          ],
-        ]
-      },
-      {
-        "name": "5_1",
-        "images": [
-          "stimuli/segments/5_1_b.png",
-          "stimuli/segments/5_1.png"
-        ],
-        "times": [
-          1,
-          30,
-          1
-        ],
-        "statements": [
-          [
-            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
-          ]
-        ],
-        "length": 2,
-        ground_truth: [
-          "Key A unlocks Nothing",
-          "Key B unlocks Door 2"
-        ],
-        calc_GT: [
-          [
-            "n",
-            "n",
-          ],
-          [
-            "n",
-            "y",
-          ],
-        ]
-      },
-      {
         "name": "5_2",
         "images": [
-          "stimuli/segments/5_2_b.png",
+          "stimuli/segments/5_b.png",
           "stimuli/segments/5_2.png"
         ],
         "times": [
@@ -1334,32 +1139,23 @@ experimentApp.controller('ExperimentController',
           [
             "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
             "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
-          ],
-          [
-            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
-            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
           ]
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Nothing",
-          "Key B unlocks Door 1"
+          "Key A unlocks Door 2",
         ],
         calc_GT: [
           [
             "n",
-            "n",
-          ],
-          [
             "y",
-            "n",
           ]
         ]
       },
       {
         "name": "5_3",
         "images": [
-          "stimuli/segments/5_3_b.png",
+          "stimuli/segments/5_b.png",
           "stimuli/segments/5_3.png"
         ],
         "times": [
@@ -1379,6 +1175,99 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
+          "Key A unlocks Door 2",
+          "Key B unlocks Door 1"
+        ],
+        calc_GT: [
+          [
+            "n",
+            "y",
+          ],
+          [
+            "y",
+            "n",
+          ]
+        ]
+      },
+      {
+        "name": "6_1",
+        "images": [
+          "stimuli/segments/6_b.png",
+          "stimuli/segments/6_1.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+        ],
+        calc_GT: [
+          [
+            "y",
+            "n",
+          ]
+        ]
+      },
+      {
+        "name": "6_2",
+        "images": [
+          "stimuli/segments/6_b.png",
+          "stimuli/segments/6_2.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+        ],
+        calc_GT: [
+          [
+            "n",
+            "y",
+          ]
+        ]
+      },
+      {
+        "name": "6_3",
+        "images": [
+          "stimuli/segments/6_b.png",
+          "stimuli/segments/6_3.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
           "Key A unlocks Door 1",
           "Key B unlocks Door 2"
         ],
@@ -1394,10 +1283,345 @@ experimentApp.controller('ExperimentController',
         ]
       },
       {
-        "name": "5_4",
+        "name": "7_1",
         "images": [
-          "stimuli/segments/5_4_b.png",
-          "stimuli/segments/5_4.png"
+          "stimuli/segments/7_b.png",
+          "stimuli/segments/7_1.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+        ],
+        calc_GT: [
+          [
+            "y",
+            "n",
+          ]
+        ]
+      },
+      {
+        "name": "7_2",
+        "images": [
+          "stimuli/segments/7_b.png",
+          "stimuli/segments/7_2.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+        ],
+        calc_GT: [
+          [
+            "n",
+            "y",
+          ]
+        ]
+      },
+      {
+        "name": "7_3",
+        "images": [
+          "stimuli/segments/7_b.png",
+          "stimuli/segments/7_3.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+          "Key B unlocks Door 1"
+        ],
+        calc_GT: [
+          [
+            "n",
+            "y",
+          ],
+          [
+            "y",
+            "n",
+          ]
+        ]
+      },
+      {
+        "name": "8_1",
+        "images": [
+          "stimuli/segments/8_b.png",
+          "stimuli/segments/8_1.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+        ],
+        calc_GT: [
+          [
+            "y",
+            "n",
+          ]
+        ]
+      },
+      {
+        "name": "8_2",
+        "images": [
+          "stimuli/segments/8_b.png",
+          "stimuli/segments/8_2.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+        ],
+        calc_GT: [
+          [
+            "n",
+            "y",
+          ]
+        ]
+      },
+      {
+        "name": "8_3",
+        "images": [
+          "stimuli/segments/8_b.png",
+          "stimuli/segments/8_3.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+          "Key B unlocks Door 1"
+        ],
+        calc_GT: [
+          [
+            "n",
+            "y",
+          ],
+          [
+            "y",
+            "n",
+          ]
+        ]
+      },
+      {
+        "name": "9_1",
+        "images": [
+          "stimuli/segments/9_b.png",
+          "stimuli/segments/9_1.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+        ],
+        calc_GT: [
+          [
+            "y",
+            "n",
+          ]
+        ]
+      },
+      {
+        "name": "9_2",
+        "images": [
+          "stimuli/segments/9_b.png",
+          "stimuli/segments/9_2.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+        ],
+        calc_GT: [
+          [
+            "n",
+            "y",
+          ]
+        ]
+      },
+      {
+        "name": "9_3",
+        "images": [
+          "stimuli/segments/9_b.png",
+          "stimuli/segments/9_3.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ],
+          [
+            "<strong>Key B</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key B</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 2"
+        ],
+        calc_GT: [
+          [
+            "y",
+            "n",
+          ],
+          [
+            "n",
+            "y",
+          ]
+        ]
+      },
+      {
+        "name": "10_1",
+        "images": [
+          "stimuli/segments/10_b.png",
+          "stimuli/segments/10_1.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 1",
+        ],
+        calc_GT: [
+          [
+            "y",
+            "n",
+          ]
+        ]
+      },
+      {
+        "name": "10_2",
+        "images": [
+          "stimuli/segments/10_b.png",
+          "stimuli/segments/10_2.png"
+        ],
+        "times": [
+          1,
+          30,
+          1
+        ],
+        "statements": [
+          [
+            "<strong>Key A</strong> unlocks <strong>Door 1</strong>",
+            "<strong>Key A</strong> unlocks <strong>Door 2</strong>",
+          ]
+        ],
+        "length": 2,
+        ground_truth: [
+          "Key A unlocks Door 2",
+        ],
+        calc_GT: [
+          [
+            "n",
+            "y",
+          ]
+        ]
+      },
+      {
+        "name": "10_3",
+        "images": [
+          "stimuli/segments/10_b.png",
+          "stimuli/segments/10_3.png"
         ],
         "times": [
           1,
