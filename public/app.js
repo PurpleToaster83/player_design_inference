@@ -897,8 +897,8 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 2",
-          "Key B unlocks Door 1"
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 2"
         ],
         calc_GT: [
           [
@@ -990,8 +990,8 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 2",
-          "Key B unlocks Door 1"
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 2"
         ],
         calc_GT: [
           [
@@ -1176,8 +1176,8 @@ experimentApp.controller('ExperimentController',
         ],
         "length": 2,
         ground_truth: [
-          "Key A unlocks Door 2",
-          "Key B unlocks Door 1"
+          "Key A unlocks Door 1",
+          "Key B unlocks Door 2"
         ],
         calc_GT: [
           [
