@@ -152,36 +152,36 @@
         <div id="ground_truth" ng-show="section == 'stimuli && (part_id == -1) || inst_id == 3" ng-hide="section != 'stimuli' || part_id == 0 || part_id == 1"></div>
         <br>
         <p ng-show="inst_id == 4 || inst_id == 7">Press <strong>Next</strong> to continue.</p>
-        <p ng-show="!hide_questions() && has_belief_question()"><strong>Please rate how likely the following statements are:</strong></p>
-        <br>
-        <ul ng-show="!hide_questions() && has_belief_question()" class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
-          <span class="statement"><span ng-bind-html="style_statement(stmt)"></span><br></span>
-          <div class="rating-scale">
+        <div class="all_statements">
+          <p ng-show="!hide_questions() && has_belief_question()"><strong>Please rate how likely the following statements are:</strong></p>
+          <br>
+          <ul ng-show="!hide_questions() && has_belief_question()" class="no-bullets" ng-repeat="stmt in belief_statements track by $index">
+            <span class="statement"><span ng-bind-html="style_statement(stmt)"></span><br></span>
             <div class="wrapper">
-                <label for="belief_rating_{{$index}}" class="slider_value">{{response.beliefs[$index]}}</label>
+                  <label for="belief_rating_{{$index}}" class="slider_value">{{response.beliefs[$index]}}</label>
 
-                <div class="display">
-                    <div>Definetly False</div>
-                    <div>Definetly True</div>
-                </div>
+                  <div class="display">
+                      <div>Definetly False</div>
+                      <div>Definetly True</div>
+                  </div>
 
-                <input type="range" 
-                      ng-model="response.beliefs[$index]" 
-                      id="belief_rating_{{$index}}" 
-                      min="0" 
-                      max="100" 
-                      class="slider"
-                      ng-init="response.beliefs[$index] = response.beliefs[$index] || 50"
-                      ng-change="updateSliderValuePosition($index, response.beliefs[$index])">
+                  <input type="range" 
+                        ng-model="response.beliefs[$index]" 
+                        id="belief_rating_{{$index}}" 
+                        min="0" 
+                        max="100" 
+                        class="slider"
+                        ng-init="response.beliefs[$index] = response.beliefs[$index] || 50"
+                        ng-change="updateSliderValuePosition($index, response.beliefs[$index])">
 
-                <div class="label_nums">
-                    <p>0</p>
-                    <p>100</p>
-                </div>
-                <br>
+                  <div class="label_nums">
+                      <p>0</p>
+                      <p>100</p>
+                  </div>
+                  <br>
             </div>
-          </div>
-        </ul>
+          </ul>
+        </div>
       </div>
 
       <!-- Post-Stimulus Feedback -->

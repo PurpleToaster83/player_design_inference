@@ -92,7 +92,6 @@ ul.no-bullets-full-row {
 
 .statement {
   font-size: 13pt;
-  /* background-color: red; */
 }
 
 .rating-scale{
@@ -256,11 +255,14 @@ input[type=radio] {
   background-color: red;
 }
 
+.all_statements {
+  transform: translateY(-50px);
+}
+
 .wrapper {  
-    width: 750px;
+    width: 700px;
     text-align: center;
     position: relative;
-    transform: translateX(-70px);
 }
 
 .slider_value {
