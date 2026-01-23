@@ -190,7 +190,6 @@ experimentApp.controller('ExperimentController',
             feedback: $scope.feedback_q.value
           }
           $scope.data.demographic_survey = $scope.survey;
-          $scope.increment_counter();
           $scope.store_to_db($scope.user_id, $scope.data);
         }
       }
@@ -439,6 +438,7 @@ experimentApp.controller('ExperimentController',
       // Uncomment for testing stimuli
       let stim_idx = [];
       let count = await $scope.get_counter();
+      $scope.increment_counter();
       stim_idx = $scope.stimuli_sets[count % $scope.stimuli_sets.length];
       $scope.blah = stim_idx
 
